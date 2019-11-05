@@ -10,3 +10,6 @@ TO DO until monday, November 11:
 - find & read papers (file "literature")
 - prepare/read the task
 - check the data sets of the task
+
+NEXT
+- write basic code: next one/two weeks
