@@ -1,0 +1,4 @@
+necessarius	0.887
+nepos	0.687
+pontifex	0.420
+virtus	0.258

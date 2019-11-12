@@ -1,0 +1,4 @@
+Gott	0.311
+und	0.301
+haben	0.587
+ändern	0.687

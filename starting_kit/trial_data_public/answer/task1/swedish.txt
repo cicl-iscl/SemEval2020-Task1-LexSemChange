@@ -1,0 +1,4 @@
+sorn	1
+äro	0
+första	1
+blef	1
