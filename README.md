@@ -15,4 +15,6 @@ TO DO until monday, November 11:
 NEXT
 - write basic code: next one/two weeks
 - find similar approaches to our task and how they solved it
-- Meet Saturday, Nov. 16th at 10:00 at University
+
+- solve the alignment of the embedding over 2 corpora
+- need more memory - can we use server from SfS?
