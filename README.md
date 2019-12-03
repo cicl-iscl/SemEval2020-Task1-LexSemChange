@@ -20,6 +20,9 @@ NEXT
 - need more memory - can we use server from SfS? -> YES, connected via SSH
 
 
+
+
+
 TRAINING MODEL CONTEXTUAL EMBEDDINGS:
 
 This is in the python file /bilm-tf-master/bin/train_elmo.py - n_train_tokens have to be adjusted for each corpus (we do not use held out files anymore)
