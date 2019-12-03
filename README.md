@@ -21,8 +21,8 @@ NEXT
 
 TRAINING MODEL CONTEXTUAL EMBEDDINGS:
 This is in the python file /bilm-tf-master/bin/train_elmo.py - n_train_tokens have to be adjusted for each corpus (we do not use held out files anymore)
-    # number of tokens in training data (this for 1B Word Benchmark)
-    #n_train_tokens = 768648884
-    ## these are the amount of words in all training files (1 sentence per file) ignoring the heldout files if we have them
-    #n_train_tokens = 181530  # GERMAN C1 + C2
+    //number of tokens in training data (this for 1B Word Benchmark)
+    //n_train_tokens = 768648884
+    //these are the amount of words in all training files (1 sentence per file) ignoring the heldout files if we have them
+    //n_train_tokens = 181530  # GERMAN C1 + C2
     n_train_tokens = 176451  # ENGLISH C1 + C2 (train model on own corpus)
