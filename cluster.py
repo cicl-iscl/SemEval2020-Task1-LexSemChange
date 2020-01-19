@@ -209,7 +209,7 @@ if __name__ == "__main__":
     joined_corpus = corpus_old + corpus_new
 
     # 5.Create a dictionary of indices of each word in the corpus
-    ind_joined = 0 # returns a dictionary with ALL WORDS and their indices
+    ind_joined = collect_all_occurrences(joined_corpus) # returns a dictionary with ALL WORDS and their indices
     print("Printing the indices at which ", word, " occurs...")
     for x in ind_joined[word]:
         print(x)
