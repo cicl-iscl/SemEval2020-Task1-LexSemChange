@@ -403,7 +403,7 @@ if __name__ == '__main__':
     # ## SWEDISH #######################################################################################################
     # arg 1: the absolute path from the repo top dir to you model dir (path on tesniere server)
     # arg 2: default batch_size: 64
-    e_SWE = Embedder('/home/pia/train_elmo/SemEval2020/173-swedish-model', batch_size=64)
+    e_SWE = Embedder('../models/173-swedish-model', batch_size=64)
 
     corpus_old = preprocess(
         '/home/pia/train_elmo/SemEval2020/starting_kit/trial_data_public/corpora/swedish/corpus1/corpus1.txt')
