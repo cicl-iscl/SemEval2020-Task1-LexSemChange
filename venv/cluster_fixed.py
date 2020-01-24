@@ -13,6 +13,7 @@ from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from elmoformanylangs import Embedder
 from sklearn.cluster import KMeans
+from silhouette_score import get_silhouette_scores, get_silhouette_score_with_plot
 np.set_printoptions(threshold=sys.maxsize)
 
 
@@ -317,6 +318,7 @@ def get_k(word, emb_single_word, range_upper_bound):
     return distance_of_points_from_line.index(max(distance_of_points_from_line))
 
 
+
 """
     Determines the optimal amount of clusters for each word and clusters accordingly.
     Saves the elbow plots and the labels for each word and each corpus in the directory ./out (automatically created)
@@ -330,7 +332,17 @@ def cluster(language, corpus_id, word, embeddings, save_to_file = False):
 
     # 1. Cluster the data points of the single word of one corpus and get the optimal k
     # get the optimal k from the reduced embeddings, indicate the upper range bound of k (k = 11-1 --> k will be maximally 10)
-    optimal_k_corp_word = get_k(word + "_" + language + corpus_id, embeddings, 11)
+    # TODO: optimal_k_corp_word = get_k(word + "_" + language + corpus_id, embeddings, 11)
+    silhouette_scores = get_silhouette_scores(embeddings)
+    max = 0
+    optimal_k_corp_word = 0
+    for i in silhouette_scores.keys(): # TODO: Change to a more efficient way
+        if silhouette_scores[i] > max:
+            max = silhouette_scores[i]
+            optimal_k_corp_word = i
+        print(i, silhouette_scores[i])
+
+    print("The best score is ")
     print("\nOptimal k for " + word + " in " + language + " " + corpus_id + ": ", optimal_k_corp_word, "\n")
 
     # 2. Cluster again with optimal k and get the labels. Count the amount of each label
@@ -339,8 +351,8 @@ def cluster(language, corpus_id, word, embeddings, save_to_file = False):
     labels_corp_word = list(kmeans.labels_)  # returns an array like: array([1, 1, 1, 0, 0, 0], dtype=int32) that's converted to a list
     # 3. Save the labels into a text file
     if save_to_file:
-        with open("./out/labels_" + word + "_" + language + corpus_id + ".txt", "w+", encoding="utf8") as f:
-            f.write(str(labels_corp_word))
+        with open("./out/labels_" + word + "_" + language + "_" + corpus_id + ".txt", "w+", encoding="utf8") as f:
+            f.write(str(labels_corp_word).replace("[","").replace("]",""))
 
     return labels_corp_word
 
@@ -533,11 +545,11 @@ if __name__ == '__main__':
 
         # 7. Get sentence and word embeddings for the combined corpus
         sent_embeddings_both, word_embeddings_both = get_embeddings(indices_joined, joined_corpus, elmo, word,
-                                                                    "both corpora")
+                                                                    "both_corpora")
         print("_______________________________________________________________")
 
         # 8. Cluster the WORD embeddings and get the labels for the combined corpus
-        labels_both = cluster(lang, "both corpora", word, word_embeddings_both, True)
+        labels_both = cluster(lang, "both_corpora", word, word_embeddings_both, True)
         combined_clusters = Counter(labels_both)
 
         # OPTIONAL STEP:  DO 7 and 8 FOR ALL CORPORA (BECAUSE WE WANT TO SEE HOW CLUSTERING DIFFERS)
