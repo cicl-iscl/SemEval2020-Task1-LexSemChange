@@ -405,7 +405,7 @@ def changed_sense(all_clusters, cor1_clusters, cor2_clusters, k):
 
         :param all_clusters: a list of unique clusters
         :param cor1_clusters:  a dictionary of {cluster1_label: num_occurrences_in_corpus1}
-        :param cor2_clusters:  a dictionary of {cluster1_label: num_occurrences_in_corpus1}
+        :param cor2_clusters:  a dictionary of {cluster2_label: num_occurrences_in_corpus1}
         :param k: the number of times a word has to occur in order to be classified as having changed
         :return True: if a word has changed senses, False otherwise
     """
@@ -536,7 +536,7 @@ if __name__ == '__main__':
 
     # 6. Iterate over the target words
 
-    for word in target_words:
+    for word in target_words: #target_words = [""]
         print("Printing the indices at which ", word, " occurs...")
         for x in indices_joined[word]:
             print(x)
@@ -598,6 +598,7 @@ if __name__ == '__main__':
         # 11. Based on the clustering results, decide whether a word has changed senses or not
         # TODO: CHANGE k
         k = 3
+        # TODO: write a method that checks the clusters of corpus c1 ={0: 5, 1:10}, c2= {0:10, 1:1}, discard 1:1 because it is below the threshold
         if changed_sense(combined_clusters.keys(), cor1_clusters, cor2_clusters, k):
             results[word] = "Changed sense(s)"
         else:
