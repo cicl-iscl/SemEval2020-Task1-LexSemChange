@@ -1,6 +1,21 @@
-from cluster_fixed import collect_all_occurrences, load_corpus
+import sys
 from collections import Counter
 from pandas.core.common import flatten
+
+DIVIDER = "---------------------------------------------"
+
+def load_corpus_hash(filename):
+    """
+        Loads a corpus into a list. Keeps only the tokens with HASHTAGS!
+
+        :param filename: the name of the file containing the corpus
+        :returns tokenized: a list of sentences, where each sentence is a list of words [["I", "eat", "apples"], ["she", "sleeps"]]
+    """
+    with open(filename, encoding="utf8") as f:
+        content = f.readlines()
+    tokenized = flatten([line.strip().split() for line in content]) #filter(lambda x: (x % 13 == 0), my_list)
+    tokenized = list(filter(lambda x : ("#" in x), tokenized))
+    return tokenized
 
 def write_to_file(liste, filename):
     with open(filename, "w+", encoding="utf8") as f:
@@ -23,12 +38,16 @@ def changed_sense(all_unique_words, cor1_words, cor2_words, k):
     if len(all_unique_words) == 1:
         print("No change as combined corpora have only 1 cluster in total")
         return False
-    results = {}
+
+    words_changed = []
+    words_unchanged = []
+
     for word in all_unique_words:
         # if word appears in both corpora, ignore it
         if word in cor1_words and word in cor2_words:
-            results[word] = "in_both"
+            words_unchanged.append(word)
             print("word ", word, " is in BOTH", cor1_words.get(word))
+            continue
 
         # if the word lost a sense (in C1 but not in C2)
         if word in cor1_words and word not in cor2_words:
@@ -42,57 +61,99 @@ def changed_sense(all_unique_words, cor1_words, cor2_words, k):
 
         if n_occur >= k:
             print("word ", word, " occurs ", n_occur, " times.", " k: ", k)
-            results[word] = "changed"
-    return results
+            words_changed.append(word)
+    return words_changed, words_unchanged
 
-if __name__ == "__main__":
-
-    # 1. Load the corpora
-    corpus1 = load_corpus('../starting_kit/trial_data_public/corpora/{}/corpus{}/corpus{}.txt'.format("latin",1,1)) #"latin/corpus1/corpus1.txt"
-    corpus2 = load_corpus('../starting_kit/trial_data_public/corpora/{}/corpus{}/corpus{}.txt'.format("latin",2,2)) # "latin/corpus2/corpus2.txt"
-
-    # 2. Get the num of occurrences of each word {'sum': 1104, 'et': 698, 'in': 675, 'quis#2': 550}
-    c1_occurrences = Counter(list(flatten(corpus1)))
-    c2_occurrences = Counter(list(flatten(corpus2)))
-
-    # 3. Select words with hash tags {'dico#2', 148, 'Brutus#2', 2, 'volo#1', 40}
-    keys_hash_c1 = {k: v for k, v in c1_occurrences.items() if '#' in k}
-    keys_hash_c2 = {k: v for k, v in c2_occurrences.items() if '#' in k}
+def print_analysis(c1_occurrences, c2_occurrences, unique_keys,changed_senses, unchanged_senses, changed_words):
 
     # Print what we've got so far
-    print("---------------------------------------------")
+    print(DIVIDER)
     print("Corpus 1:")
+    print(DIVIDER)
     print(c1_occurrences)
-    print("---------------------------------------------")
-    for i in keys_hash_c1.items():
+    print(DIVIDER)
+    for i in c1_occurrences.items():
         print(i)
-    print("---------------------------------------------")
+    print(DIVIDER)
 
     print("Corpus 2:")
-    print("---------------------------------------------")
-    for i in keys_hash_c2.items():
+    print(DIVIDER)
+    print(c2_occurrences)
+    print(DIVIDER)
+    for i in c2_occurrences.items():
         print(i)
 
-    # 4. Print the unique keys
-    unique_keys = sorted(list(set(list(keys_hash_c1.keys()) + list(keys_hash_c2.keys()))))
-    print("---------------------------------------------")
-    print("Unique keys from both corpora: ", len(unique_keys))
+
+    print(DIVIDER)
+    print("Unique SENSES from both corpora: ", len(unique_keys))
+    print(DIVIDER)
     for i in unique_keys:
-        print(i)
-    print("---------------------------------------------")
+        print("Corpus 1: ", i, c1_occurrences.get(i), "\t\t\tCorpus 2: ",  i, c2_occurrences.get(i))
+    print(DIVIDER)
 
-    # 5. Write unique keys to file
-    write_to_file(unique_keys, "out/unique_keys_hash.txt")
 
-    # 6. Check if changed sense
-    k = 2
-    res = changed_sense(unique_keys, keys_hash_c1, keys_hash_c2, k)
-    print("---------------------------------------------")
-    print("Printing words that changed senses:")
-    for k in res.keys():
-        if res.get(k) == "changed":
-            print("CHANGED:", k, res.get(k))
-    print("Number of words that changed senses:", len(res)) # TODO: this is not correct because some words (with diff senses occur several times)
-    print("---------------------------------------------")
+    print(DIVIDER)
+    print("Printing senses that CHANGED:")
+    print(DIVIDER)
+    for i in changed_senses:
+        print("CHANGED:", i)
+    print(DIVIDER)
+    print("Number of senses that changed:",
+          len(changed_senses))
+    print(DIVIDER)
 
+    print("Printing senses that stayed UNCHANGED:")
+    print(DIVIDER)
+    for i in unchanged_senses:
+        print("UNchanged:", i)
+    print(DIVIDER)
+    print("Number of senses that did not change:", len(unchanged_senses))
+    print(DIVIDER)
+
+    print("Change in WORDS:")
+    print(DIVIDER)
+    for token in changed_words:
+        print("Word: ", token, " changed.")
+    print(DIVIDER)
+    print("Number of words that changed:", len(changed_words))
+    print(DIVIDER)
+
+
+
+if __name__ == "__main__":
+    try:
+        k = int(sys.argv[1])
+
+        # 1. Load the corpora
+        corpus1 = load_corpus_hash("latin/corpus1/corpus1.txt") #'../starting_kit/trial_data_public/corpora/{}/corpus{}/corpus{}.txt'.format("latin",1,1)) #
+        corpus2 = load_corpus_hash("latin/corpus2/corpus2.txt") #'../starting_kit/trial_data_public/corpora/{}/corpus{}/corpus{}.txt'.format("latin",2,2)) #
+
+        # 2. Get the num of occurrences of each Sprint(unique_without_hash)ENSE (not word!!!) {'quis#2': 550}
+        c1_occurrences = Counter(corpus1)
+        c2_occurrences = Counter(corpus2)
+
+
+        # 3. Print the unique keys
+        unique_keys = sorted(list(set(list(c1_occurrences.keys()) + list(c2_occurrences.keys())))) # [volo#2, volo#1, verum#1, verum#3]
+        unique_without_hash = sorted(list(set([token[:token.index("#")] for token in unique_keys]))) # [volo, verum]
+
+        # 4. Write unique keys to file
+        write_to_file(unique_keys, "out/unique_keys_hash.txt")
+
+        # 5. Check which senses changed
+        # k = 2 # TODO: change k
+        changed_senses, unchanged_senses = changed_sense(unique_keys, c1_occurrences, c2_occurrences, k)
+
+        changed_without_hash = [token[:token.index("#")] for token in changed_senses]
+
+        changed_words = [token for token in unique_without_hash if token in changed_without_hash]
+
+
+        print_analysis(c1_occurrences,c2_occurrences, unique_keys, changed_senses, unchanged_senses, changed_words)
+
+        write_to_file(changed_senses, "out/changed_senses.txt")
+        write_to_file(unchanged_senses, "out/unchanged_senses.txt")
+        write_to_file(changed_words, "out/changed_WORDS.txt")
+    except IndexError:
+        print("Please enter a k that should be used in the changed_sense() method. It has to be smaller than 9.")
 
