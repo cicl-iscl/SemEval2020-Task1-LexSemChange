@@ -151,9 +151,9 @@ if __name__ == "__main__":
 
         print_analysis(c1_occurrences,c2_occurrences, unique_keys, changed_senses, unchanged_senses, changed_words)
 
-        write_to_file(changed_senses, "out/changed_senses.txt")
-        write_to_file(unchanged_senses, "out/unchanged_senses.txt")
-        write_to_file(changed_words, "out/changed_WORDS.txt")
+        write_to_file(changed_senses, "out/changed_senses_k{}.txt".format(k))
+        write_to_file(unchanged_senses, "out/unchanged_senses_k{}.txt".format(k))
+        write_to_file(changed_words, "out/changed_WORDS_k{}.txt".format(k))
     except IndexError:
         print("Please enter a k that should be used in the changed_sense() method. It has to be smaller than 9.")
 
