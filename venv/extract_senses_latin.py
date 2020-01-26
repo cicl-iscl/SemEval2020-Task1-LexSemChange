@@ -35,20 +35,19 @@ def changed_sense(all_unique_words, cor1_words, cor2_words, k):
         :return True: if a word has changed senses, False otherwise
     """
     n_occur = 0
-    if len(all_unique_words) == 1:
-        print("No change as combined corpora have only 1 cluster in total")
-        return False
-
     words_changed = []
     words_unchanged = []
+
+    if len(all_unique_words) == 1:
+        print("No change as combined corpora have only 1 cluster in total")
+        return words_changed.append(all_unique_words[0]), words_unchanged
+
 
     for word in all_unique_words:
         # if word appears in both corpora, ignore it
         if word in cor1_words and word in cor2_words:
             words_unchanged.append(word)
-            print("word ", word, " is in BOTH", cor1_words.get(word))
             continue
-
         # if the word lost a sense (in C1 but not in C2)
         if word in cor1_words and word not in cor2_words:
             print("word ", word, " is in corpus1", cor1_words.get(word))
@@ -123,7 +122,6 @@ def print_analysis(c1_occurrences, c2_occurrences, unique_keys,changed_senses, u
 if __name__ == "__main__":
     try:
         k = int(sys.argv[1])
-
         # 1. Load the corpora
         corpus1 = load_corpus_hash("latin/corpus1/corpus1.txt") #'../starting_kit/trial_data_public/corpora/{}/corpus{}/corpus{}.txt'.format("latin",1,1)) #
         corpus2 = load_corpus_hash("latin/corpus2/corpus2.txt") #'../starting_kit/trial_data_public/corpora/{}/corpus{}/corpus{}.txt'.format("latin",2,2)) #
@@ -141,7 +139,7 @@ if __name__ == "__main__":
         write_to_file(unique_keys, "out/unique_keys_hash.txt")
 
         # 5. Check which senses changed
-        # k = 2 # TODO: change k
+        # k = 2 # TODO: change k. THE RESULT DEPENDS ON THE K!
         changed_senses, unchanged_senses = changed_sense(unique_keys, c1_occurrences, c2_occurrences, k)
 
         changed_without_hash = [token[:token.index("#")] for token in changed_senses]
@@ -154,6 +152,7 @@ if __name__ == "__main__":
         write_to_file(changed_senses, "out/changed_senses_k{}.txt".format(k))
         write_to_file(unchanged_senses, "out/unchanged_senses_k{}.txt".format(k))
         write_to_file(changed_words, "out/changed_WORDS_k{}.txt".format(k))
+
     except IndexError:
         print("Please enter a k that should be used in the changed_sense() method. It has to be smaller than 9.")
 
