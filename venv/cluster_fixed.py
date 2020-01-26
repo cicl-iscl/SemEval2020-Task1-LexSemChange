@@ -15,9 +15,11 @@ from elmoformanylangs import Embedder
 from sklearn.cluster import KMeans
 from silhouette_score import get_silhouette_scores, get_silhouette_score_with_plot
 np.set_printoptions(threshold=sys.maxsize)
+import tensorflow_hub as hub
+import tensorflow as tf
+torch.cuda.empty_cache()
 
-
-
+DIVIDER = "---------------------------------------------"
 
 def load_corpus(filename):
     """
@@ -41,7 +43,7 @@ def load_targets(filename):
     """
     with open(filename, encoding="utf8") as f:
         content = f.readlines()
-    target_words = [line.strip().split() for line in content]
+    target_words = [line.strip() for line in content]
     return target_words
 
 
@@ -332,7 +334,8 @@ def cluster(language, corpus_id, word, embeddings, save_to_file = False):
 
     # 1. Cluster the data points of the single word of one corpus and get the optimal k
     # get the optimal k from the reduced embeddings, indicate the upper range bound of k (k = 11-1 --> k will be maximally 10)
-    # TODO: optimal_k_corp_word = get_k(word + "_" + language + corpus_id, embeddings, 11)
+    optimal_k_corp_word = get_k(word + "_" + language + corpus_id, embeddings, 11)
+    """
     silhouette_scores = get_silhouette_scores(embeddings)
     max = 0
     optimal_k_corp_word = 0
@@ -341,6 +344,7 @@ def cluster(language, corpus_id, word, embeddings, save_to_file = False):
             max = silhouette_scores[i]
             optimal_k_corp_word = i
         print(i, silhouette_scores[i])
+        """
 
     print("The best score is ")
     print("\nOptimal k for " + word + " in " + language + " " + corpus_id + ": ", optimal_k_corp_word, "\n")
@@ -356,9 +360,79 @@ def cluster(language, corpus_id, word, embeddings, save_to_file = False):
 
     return labels_corp_word
 
+def get_sentence_embeddings(occurrences_of_all_words, all_sentences, elmo, word, corpus_id):
+    """
+        Get Elmo embeddings for a specific word.
+
+        :param occurrences_of_all_words: a dictionary of {word : [(sentence_index, word_index)]} pairs.
+        :param all_sentences: the list of sentences
+        :param elmo: the Elmo model
+        :param word: the target word
+        :param corpus_id: the name of the corpus
+        :return sentence_embeddings: an array with embeddings for the whole sentence
+    """
+    # occurrences_of_word = ind_joined -> basically, all words and their indices of occurrence
+    # {"work" : [(1,4), (10,3)],"he" : [(0,3), (54,11)]}
+
+    # 1. Get a list of sentences that contain the target word
+    sentences_with_word = [all_sentences[tup[0]] for tup in occurrences_of_all_words[word]]
+
+    # 2. Get the embeddings for all the sentences that contain the target word
+    sentence_embeddings = elmo.sents2elmo(sentences_with_word)  # list of numpy arrays, each with the shape = (seq_len, embedding_size)
+    print("\nSentence_embeddings length of {}: ".format(corpus_id), len(sentence_embeddings))
+    print("element 0 shapes: ", sentence_embeddings[0].shape, "\n")
+
+    return sentence_embeddings
+
+
+def get_word_embeddings(sentence_embed, word_indices, corpus_id):
+    """
+        Get Elmo embeddings for a specific word.
+
+        :param occurrences_of_all_words: a dictionary of {word : [(sentence_index, word_index)]} pairs.
+        :param all_sentences: the list of sentences
+        :param elmo: the Elmo model
+        :param word: the target word
+        :param corpus_id: the name of the corpus
+        :return sentence_embeddings: an array with embeddings for the whole sentence
+        :return word_embeddings: an array with embeddings just for the target word (occurrences of the word, 1024)
+    """
+    # 3. Get the individual word_embeddings (word_embeddings  is a list of 1D arrays: (occurrences of the word, 1024))
+    word_embeddings = [sentence_embed[i][tup[1]] for i, tup in enumerate(word_indices)]
+    print("word_embeddings length of {}: ".format(corpus_id), len(word_embeddings))
+    print("element 0 shapes: ", word_embeddings[0].shape, "\n")
+
+    # 4. Convert word_embeddings to a numpy array
+    word_embeddings = np.asarray(word_embeddings)
+    #embed_word_array = np.asarray(word_embeddings)
+    print("Type of word_embeddings in {} after change to np array: ".format(corpus_id), type(word_embeddings))
+    print("Shape: ", word_embeddings.shape, "\n")
+
+    return word_embeddings
+
+# TODO: context with element removed or empty string?
+def get_context_embeddings(sentence_embed, word_indices, corpus_id):
+    """
+        Get Elmo embeddings of contexts around a word
+        :param sentence_embed: the list of embeddings for sentences (list of numpy arrays)
+        :param corpus_id: the name of the corpus
+        :return sentence_embeddings: an array with context embeddings for sentence
+
+    """
+    # 3. Get the individual word_embeddings (word_embeddings  is a list of 1D arrays: (occurrences of the word, 1024))
+    context_embeddings = [sentence_embed[i].pop(tup[1]) for i, tup in enumerate(word_indices)]
+    print("context_embeddings length of {}: ".format(corpus_id), len(context_embeddings))
+    print("element 0 shapes: ", context_embeddings[0].shape, "\n")
+
+    # 4. Convert word_embeddings to a numpy array
+    context_embeddings = np.asarray(context_embeddings)
+    #embed_word_array = np.asarray(word_embeddings)
+    print("Type of context_embeddings in {} after change to np array: ".format(corpus_id), type(context_embeddings))
+    print("Shape: ", context_embeddings.shape, "\n")
+
+    return context_embeddings
 
 # TODO: change this later! Divide into three separate methdos: get_context_embeddings, get_word_embeddings, get_sentence_embeddings
-
 def get_embeddings(occurrences_of_all_words, all_sentences, elmo, word, corpus_id):
     """
         Get Elmo embeddings for a specific word.
@@ -397,7 +471,7 @@ def get_embeddings(occurrences_of_all_words, all_sentences, elmo, word, corpus_i
 
 
 
-def changed_sense(all_clusters, cor1_clusters, cor2_clusters, k):
+def changed_sense(all_clusters, cor1_clusters, cor2_clusters, k, threshold):
     """
         Determines whether there has been a change in a word's sense(s). It does not matter whether the word
         has gained or lost sense. A word is classified as gaining a sense, if the sense is never attested in corpus1,
@@ -407,6 +481,7 @@ def changed_sense(all_clusters, cor1_clusters, cor2_clusters, k):
         :param cor1_clusters:  a dictionary of {cluster1_label: num_occurrences_in_corpus1}
         :param cor2_clusters:  a dictionary of {cluster2_label: num_occurrences_in_corpus1}
         :param k: the number of times a word has to occur in order to be classified as having changed
+        :param threshold: the threshold which determines whether a cluster can be regarded as not having any datapoints
         :return True: if a word has changed senses, False otherwise
     """
     n_occur = 0
@@ -414,12 +489,23 @@ def changed_sense(all_clusters, cor1_clusters, cor2_clusters, k):
         print("No change as combined corpora have only 1 cluster in total")
         return False
 
+
     for label in all_clusters:
         # if word appears in both corpora, ignore it
         if label in cor1_clusters and label in cor2_clusters:
-            continue
+            if cor2_clusters.get(label) > threshold and cor1_clusters.get(label) > threshold:
+                print("Label ", label, " is above the threshold in both corpora: ", cor1_clusters.get(label))
+                continue
+            if cor1_clusters.get(label) == cor2_clusters.get(label): # no change if the number of data points in both is the same
+                print("Label ", label, " has equal number of datapoints", cor1_clusters.get(label))
+                continue
+            # IF the number of data points in one of the corpora is below the threshold, count it as change IF K
+            if cor2_clusters.get(label) <= threshold:
+                n_occur = cor1_clusters.get(label)
+            elif cor1_clusters.get(label) <= threshold:
+                n_occur = cor2_clusters.get(label)
         # if the word lost a sense (in C1 but not in C2)
-        if label in cor1_clusters and label not in cor2_clusters:
+        elif label in cor1_clusters and label not in cor2_clusters:
             print("Label ", label, " is in corpus1", cor1_clusters.get(label))
             n_occur = cor1_clusters.get(label)
         # if the word gained a sense (not in C1 but in C2)
@@ -427,7 +513,7 @@ def changed_sense(all_clusters, cor1_clusters, cor2_clusters, k):
             print("Label ", label, " is in corpus2", cor2_clusters.get(label))
             n_occur = cor2_clusters.get(label)
         if n_occur >= k:
-            print("Label ", label, " occurs ", n_occur, " times.", " k: ", k)
+            print("Label ", label, " occurs ", n_occur, " times IN only one of the corpora.", " k: ", k)
             return True
     return False
 
@@ -445,6 +531,20 @@ def get_start_index(word_indices, hist_corp_length):
                   hist_corp_length - 1)
             return idx
     return -1
+
+def get_averaged_context_embeddings(context_embed):
+    """
+    Method that averages the context embeddings for EACH SENTENCE
+    :param context_embed: output of get_sentence_embeddings (embeddings for context around the word)
+    :return averaged_embeddings: the average of each context of each sentence [np.array([0.25]), np.array([0.9])]
+    """
+    averaged_embeddings = [] # [np.array([0.25]), np.array([0.9])] where each element is the context of a word
+    for word_context in context_embed:
+        mean = sum(context_embed)/len(word_context) # 0.56
+        sentence_np_array = np.array([mean]) # np.array([0.56])
+        averaged_embeddings.append(sentence_np_array)
+    return averaged_embeddings
+
 
 def print_analysis(historic_clusters, modern_clusters ,comb_clusters):
     """
@@ -466,17 +566,64 @@ def print_analysis(historic_clusters, modern_clusters ,comb_clusters):
     print("\nNumber of clusters in the combined corpus: ", len(comb_clusters.keys()))
     for c in comb_clusters.keys():
         print(c, comb_clusters.get(c))
-    print("----------------------------------------------------------------")
+    print(DIVIDER)
+
+def print_optional(corpus_historic, corpus_modern, word, elmo, combined_clusters, embed_word = True):
+    # OPTIONAL STEP:  DO 7 and 8 FOR ALL CORPORA (BECAUSE WE WANT TO SEE HOW CLUSTERING DIFFERS)
+    indices_corpus1 = collect_all_occurrences(corpus_historic)
+    indices_corpus2 = collect_all_occurrences(corpus_modern)
+
+    # FOR REFERENCE:
+    # get_sent_emb(occurrences_of_all_words, all_sentences, elmo, word, corpus_id):
+    # get_word_embeddings(sentence_embed, word_indices, corpus_id):
+    # get_context_embeddings(sentence_embed, word_indices, corpus_id, empty_element = False):
+
+    # Get sentence embeddings for both corpora, they will be used to extract either context or word embeddings
+    sent_embeddings_corpus1 = get_sentence_embeddings(indices_corpus1, corpus_historic, elmo, word,"corpus1")
+    sent_embeddings_corpus2 = get_sentence_embeddings(indices_corpus2, corpus_modern, elmo, word, "corpus2")
+
+    if embed_word:
+        embeddings_corpus1 = get_word_embeddings(sent_embeddings_corpus1, indices_corpus1[word], "corpus1")
+        embeddings_corpus2 = get_word_embeddings(sent_embeddings_corpus2, indices_corpus2[word], "corpus2")
+    else:
+        embeddings_corpus1 = get_context_embeddings(sent_embeddings_corpus1,indices_corpus1[word], "corpus1")
+        embeddings_corpus2 = get_context_embeddings(sent_embeddings_corpus2, indices_corpus2[word], "corpus2")
+
+    # TODO: need to add a method that averages the context embeddings
+
+    print("_______________________________________________________________")
+    labels_historic = cluster(lang, "corpus1", word, embeddings_corpus1, True)
+    labels_modern = cluster(lang, "corpus2", word, embeddings_corpus2, True)
+
+    # Use the Counter object to count clusters
+    historic_corpus_clusters = Counter(labels_historic)
+    modern_corpus_clusters = Counter(labels_modern)
+
+    # OPTIONAL: Print analysis for ALL THREE:
+    print(DIVIDER)
+    print("Analyzing clustering results for {} AMONG THE THREE CORPORA:".format(word))
+    print(DIVIDER)
+    print_analysis(historic_corpus_clusters, modern_corpus_clusters, combined_clusters)
+
+def print_labels(labels1, labels2, word):
+    print("\n" + DIVIDER)
+    print("\nAnalyzing clustering results for {} in the COMBINED CORPUS".format(word))
+    print(DIVIDER)
+    print("Labels corpus 1: \n")
+    print(labels1)
+    print("Labels corpus 2: \n")
+    print(labels2)
 
 
 if __name__ == '__main__':
 
-    # TODO: USAGE for single word: python cluster_fixed.py latin classify_single_target_word -w quis
+    # TODO: USAGE for single word: python cluster_fixed.py latin k classify_single_target_word -w quis
     # TODO: USAGE for MULTIPLE words:  make a targets folder in train_elmo/SemEval2020/venv
-    #  python cluster_fixed.py latin classify_words -t file_with_targets.txt
+    #  python cluster_fixed.py latin k classify_words -t file_with_targets.txt
 
     parser = argparse.ArgumentParser()
     parser.add_argument("language", type=str, help="the language of the corpora")
+    parser.add_argument("k", type=int, help="the k used for determining if a word changed (given by the SemEval people")
     parser.add_argument("-t", "--target_words", dest = "targets", help="the file to read target words from")
     parser.add_argument("-w", "--word", help=" The word to classify")
     parser.add_argument('command',
@@ -485,12 +632,14 @@ if __name__ == '__main__':
 
     #  Some variables to be used later
     lang = args.language
-    #word = args.word
+    k = args.k
     target_file = args.targets
     target_words = []
+
+    # TODO: choose whether we want to cluster context or word embeddings. if contexts -> set cluster_words = False
+    cluster_words = True
     results = dict()
 
-    # TODO: if we want to read a file with targets -> should use load_targets from cluster.py
     if args.command == 'classify_words':
         if target_file is None:
             parser.error('The file containing the target words is required if you want to classify words. Please '
@@ -502,11 +651,14 @@ if __name__ == '__main__':
         if args.word is None:
             parser.error('Please enter the word that should be classified.')
         else:
-            target_words = [args.word]
+            target_words.append(args.word)
 
     # 2. Load the elmo model for this language
     model_path = '../models/{}-model'.format(lang)
-    elmo = Embedder(model_path, batch_size=64)
+    if lang == "english":
+        elmo = hub.Module("https://tfhub.dev/google/elmo/2", trainable=True)
+    else:
+        elmo = Embedder(model_path, batch_size=64)
 
     # 3. Load the corpora
     path_to_corpus = '../starting_kit/trial_data_public/corpora/{}/corpus{}/corpus{}.txt'
@@ -517,13 +669,14 @@ if __name__ == '__main__':
         corpus_historic = clean_corpus(corpus_historic)
         corpus_modern = clean_corpus(corpus_modern)
 
+    # 4. Concatenate the two corpora
+    joined_corpus = corpus_historic + corpus_modern
+
+
     # TODO: there's a problem when the 2nd corpus is read. For some reason, it shows that there are fewer sentences in the corpus
     print("The length of the first corpus is ", len(corpus_historic))
     print("The length of the second corpus is ", len(corpus_modern))
     print("This means that the index of the last sentence in the first corpus is ", len(corpus_historic) - 1)
-
-    # 4. Concatenate the two corpora
-    joined_corpus = corpus_historic + corpus_modern
     print("The length of the joined corpus is ", len(joined_corpus))
 
 
@@ -533,76 +686,62 @@ if __name__ == '__main__':
     #    print(x)
 
 
-
     # 6. Iterate over the target words
-
     for word in target_words: #target_words = [""]
         print("Printing the indices at which ", word, " occurs...")
         for x in indices_joined[word]:
             print(x)
 
-        print("\nSTARTING THE ANALYSIS FOR TARGET WORD: " + word + "\n---------------------------------------------------")
+        print("\nSTARTING THE ANALYSIS FOR TARGET WORD: " + word + "\n" + DIVIDER)
 
-        # 7. Get sentence and word embeddings for the combined corpus
-        sent_embeddings_both, word_embeddings_both = get_embeddings(indices_joined, joined_corpus, elmo, word,
-                                                                    "both_corpora")
-        print("_______________________________________________________________")
+        # 7. Get sentence embeddings for the combined corpus
+        #sent_embeddings_both, word_embeddings_both = get_embeddings(indices_joined, joined_corpus, elmo, word,
+                                                                   # "both_corpora")
 
-        # 8. Cluster the WORD embeddings and get the labels for the combined corpus
-        labels_both = cluster(lang, "both_corpora", word, word_embeddings_both, True)
+        # TODO: use the official English model
+        # Extract ELMo features
+        #embeddings = elmo(x, signature="default", as_dict=True)["elmo"]
+        #embeddings.shape
+
+        sent_embeddings_both = get_sentence_embeddings(indices_joined, joined_corpus,elmo,word, "both_corpora")
+
+        # 8. Determine what to cluster : word embeddings or context embeddings. Get the embeddings
+        if cluster_words:
+            final_embeddings_both = get_word_embeddings(sent_embeddings_both, indices_joined[word], "both_corpora")
+        else:
+            final_embeddings_both = get_context_embeddings(sent_embeddings_both, indices_joined[word], "both_corpora")
+            final_embeddings_both = get_averaged_context_embeddings(final_embeddings_both) # RETURNS THE AVERAGE!
+
+        print(DIVIDER)
+
+        # 9. Cluster the WORD/CONTEXT embeddings and get the labels for the combined corpus
+        labels_both = cluster(lang, "both_corpora", word, final_embeddings_both, True)
         combined_clusters = Counter(labels_both)
 
-        # OPTIONAL STEP:  DO 7 and 8 FOR ALL CORPORA (BECAUSE WE WANT TO SEE HOW CLUSTERING DIFFERS)
-        indices_corpus1 = collect_all_occurrences(corpus_historic)
-        indices_corpus2 = collect_all_occurrences(corpus_modern)
-        sent_embeddings_corpus1, word_embeddings_corpus1 = get_embeddings(indices_corpus1, corpus_historic, elmo, word, "corpus1")
-        print("_______________________________________________________________")
-        sent_embeddings_corpus2, word_embeddings_corpus2 = get_embeddings(indices_corpus2, corpus_modern, elmo, word,"corpus2")
-        print("_______________________________________________________________")
-        labels_historic = cluster(lang, "corpus1", word, word_embeddings_corpus1, True)
-        labels_modern = cluster(lang, "corpus2", word, word_embeddings_corpus2, True)
-        # Use the Counter object to count clusters
-        historic_corpus_clusters = Counter(labels_historic)
-        modern_corpus_clusters = Counter(labels_modern)
+        # TODO: this is the optional part (analysis of SEPARATE clustering for corpus 1, corpus2)
+        # embed_word = True is if we want to cluster word embeddings, set to False if you want context embeddings
+        print_optional(corpus_historic, corpus_modern, word, elmo, combined_clusters, embed_word=True)
 
-        # OPTIONAL: Print analysis for ALL THREE:
-        print("----------------------------------------------------------------")
-        print("Analyzing clustering results for {} AMONG THE THREE CORPORA:".format(word))
-        print("----------------------------------------------------------------")
-        print_analysis(historic_corpus_clusters, modern_corpus_clusters, combined_clusters)
-
-
-        # 9. Determine where sentences from corpus2 start in sentences_with_target_word
-        """ for testing purposes:
-        tmp = [(1, 2), (2, 3), (3, 3), (4, 3)]
-        joined = [["a", "b"], ["a", "b", "f"], ["r"], ["bla"], ["z", "t", "b", "f"]]
-        corpus_historic = [["a", "b"], ["a", "b", "f"], ["r"]] """
-
-        start_ind = get_start_index(indices_joined[word],len(corpus_historic)) # get start index of corpus2 (helps divided the labels)
+        # 10. Determine where sentences from corpus2 start in sentences_with_target_word
+        start_ind = get_start_index(indices_joined[word],len(corpus_historic)) # get start index of corpus2 (helps divide the labels)
         labels_corpus1 = labels_both[0:start_ind]  # [0, 0, 1, 1, 1, 1, 0, 3, 3]
         labels_corpus2 = labels_both[start_ind:]  # [0, 0, 0, 2, 2, 2, 0, 3, 3, 3]
+        print_labels(labels_corpus1,labels_corpus2, word)
 
-        # 10. Use the Counter object to count clusters in each corpus AFTER partitioning them
+        # 11. Use the Counter object to count clusters in each corpus AFTER partitioning them
         cor1_clusters = Counter(labels_corpus1)
         cor2_clusters = Counter(labels_corpus2)
 
-        print("\n----------------------------------------------------------------")
-        print("\nAnalyzing clustering results for {} in the COMBINED CORPUS".format(word))
-        print("----------------------------------------------------------------")
-        print("Labels corpus 1: \n")
-        print(labels_corpus1)
-        print("Labels corpus 2: \n")
-        print(labels_corpus2)
         print_analysis(cor1_clusters, cor2_clusters, combined_clusters)
 
-        # 11. Based on the clustering results, decide whether a word has changed senses or not
-        # TODO: CHANGE k
-        k = 3
-        # TODO: write a method that checks the clusters of corpus c1 ={0: 5, 1:10}, c2= {0:10, 1:1}, discard 1:1 because it is below the threshold
-        if changed_sense(combined_clusters.keys(), cor1_clusters, cor2_clusters, k):
+        # 12. Based on the clustering results, decide whether a word has changed senses or not
+
+        # TODO: Problem: what if C1: 3 and C2:2 and threshold = 2
+        threshold = 1 # threshold for determining whether a cluster has enough data points
+        if changed_sense(combined_clusters.keys(), cor1_clusters, cor2_clusters, k, threshold):
             results[word] = "Changed sense(s)"
         else:
             results[word] = "No change in senses"
 
     print("Results for {}: ".format(lang), results)
-    print("----------------------------------------------------------------")
+    print(DIVIDER)
