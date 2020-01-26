@@ -17,7 +17,8 @@ from silhouette_score import get_silhouette_scores, get_silhouette_score_with_pl
 np.set_printoptions(threshold=sys.maxsize)
 import tensorflow_hub as hub
 import tensorflow as tf
-torch.cuda.empty_cache()
+from metrics import calculate_jsd
+from sklearn.cluster import DBSCAN
 
 DIVIDER = "---------------------------------------------"
 
@@ -164,56 +165,49 @@ def plot_word(word_to_plot, path_corpus, filename_plot, filename_datapoints_word
         ax.annotate(text, (x_dim[i], y_dim[i]))
 
     print("Saving the plot...")
-    plt.title("Context embeddings for \"" + word_to_plot + "\"")
+    plt.title("Embeddings for \"" + word_to_plot + "\"")
     plt.xlabel("x_dimension")
     plt.ylabel("y_dimension")
     # save the plot as it's not possible to show the plot when running on the server
     plt.savefig(filename_plot)
     plt.clf()
 
-
-def extract_reduced_dim_single_word(word_to_extract, path_corpus, filename_datapoints_words,
-                                    filename_datapoints_specific_word, reduced):
+# CHANGED!!! created this function
+# these eps and min_sample hyperparameters seem to be a good choice
+# when there are many data points (word occurrs often in corpus) it makes sense to set min_samples much higher
+# when there are only very few, set it to a low number (maybe 2 or 3?)
+# eps is difficult to set. Between 3 and 4.5 seems to be a reasonable choice,
+# it looks like the more datapoints the lower eps has to be
+def cluster_DBSCAN(language, corpus_id, word, embeddings, save_to_file=False, eps=2, min_samples=2):
     """
-      Extracts reduced dimensions for a single word.
-
-    :param word_to_extract: string of the word that should be extracted
-    :param path_corpus: path of the corpus that contains the word
-    :param filename_datapoints_words: text file that will contain the data points of all the words from the corpus,
-                                      format: x1   y1   word1
-                                              x2   y2   word2
-    :param filename_datapoints_specific_word: text file that will contain the data points of only the word_to_plot (same format as before)
-    :param reduced: embedding vectors reduced to 2 dimensions
-    :return:
+        Clustering using sklearn's DBSCAN
+        -> first 3 arguments are only for naming the file that is saved if save_to_file=True
+        :param language: german, latin, english or swedish
+        :param corpus_id: "1" = historic corpus, "2" = modern corpus, "combinded" = combined corpus
+        :param word: target word
+        :param embeddings: target word embedding(size: 16, 1024)
+        :param save_to_file: save return value to file (default is False)
+        -> PARAMETERS TO TUNE:
+        :param eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other.
+                    This is not a maximum bound on the distances of points within a cluster.
+                    This is the most important DBSCAN parameter to choose appropriately for your data set and distance function.
+        :param min_samples: The number of samples (or total weight) in a neighborhood for a point to be considered as
+                            a core point. This includes the point itself.
+        :return: labels_corp_word: the resulting labels from the clustering
     """
-    sentences = load_corpus(path_corpus)  # TODO: I changed the code to use load_corpus and list comprehension
-    all_tokens = [token for sentence in sentences for token in sentence]
+    # Cluster and get the labels. Count the amount of each label
+    # as later on we need to know how big is a cluster to correctly classify as lex. sem. change or not
+    clustering = DBSCAN(eps=eps, min_samples=min_samples).fit(embeddings)
 
-    # creates a text file containing the two dimensional data point of each word:
-    # x1   y1   word1
-    # x2   y2   word2
-    # ...
-    count = 0
-    with open(filename_datapoints_words, "w+", encoding="utf8") as f:
-        for i in reduced:
-            string = str(i[0]) + "\t" + str(i[1]) + "\t" + str(i[2]) + "\t" + all_tokens[count]
-            # CHANGE: ADDED str(i[2]) as we have 3 dim now
-            f.write(string + '\n')
-            count += 1
+    # clustering.labels_ returns an array like: array([1, 1, 1, 0, 0, 0], dtype=int32) that's converted to a list
+    labels_corp_word = list(clustering.labels_)
 
-    # plot only a single word, e.g. "walk"
-    indices = [i for i, x in enumerate(all_tokens) if x == word_to_extract]
+    # 3. Save the labels into a text file
+    if save_to_file:
+        with open("./out/DBSCAN-labels_" + word + "_" + language + "_" + corpus_id + ".txt", "w+", encoding="utf8") as f:
+            f.write(str(labels_corp_word).replace("[", "").replace("]", ""))
 
-    datapoints = []
-    with open(filename_datapoints_specific_word, "w+", encoding="utf8") as f_word:
-        for i in indices:
-            dp = [reduced[i][0], reduced[i][1]]
-            datapoints.append(dp)
-    word_array = np.array(datapoints)
-
-    return word_array
-# TODO: extract reduced and unreduced are basically the same with one difference: there is a write to file call for filename_datapoints_words
-
+    return labels_corp_word
 
 def extract_unreduced_dim_single_word(word_to_extract, path_corpus, unreduced):
     """
@@ -254,14 +248,20 @@ def calc_distance(x1, y1, a, b, c):
     return d
 
 
-# Determine the optimal number of k for a single word. Creates an elbow plot, and automatically determines the
-# bend in the plot.
-# The idea comes from Youtube Video of Bhavesh Bhatt "Finding K in K-means Clustering Automatically", see:
-# https://www.youtube.com/watch?v=IEBsrUQ4eMc
-# args: word - single word that will be clustered
-# emb_single_word - the reduced embedding (shape: (number of occurrences of the word, 2))
-# range_upper_bound - the maximum k that will be clustered for (it will always start with k=1, k=2, ..., k=range_upper_bound - 1)
+
 def get_k(word, emb_single_word, range_upper_bound):
+    """
+        Determine the optimal number of k for a single word.
+        Creates an elbow plot, and automatically determines the bend in the plot.
+        The idea comes from Youtube Video of Bhavesh Bhatt "Finding K in K-means Clustering Automatically",
+        see: https://www.youtube.com/watch?v=IEBsrUQ4eMc
+
+        :param word: target word
+        :param emb_single_word: embeddings of target word
+        :param range_upper_bound: the maximum k that will be clustered for
+                                  (it will always start with k=1, k=2, ..., k=range_upper_bound - 1)
+        :return: best_k: the optimal value for k
+    """
     dist_points_from_cluster_center = []
 
     # reshape the array into 2d array (which is needed to fit the model)
@@ -317,7 +317,9 @@ def get_k(word, emb_single_word, range_upper_bound):
     plt.savefig("./out/max-dist-from-line-at-k-for-" + word + ".png")
     plt.clf()
 
-    return distance_of_points_from_line.index(max(distance_of_points_from_line))
+    best_k = distance_of_points_from_line.index(max(distance_of_points_from_line))
+
+    return best_k
 
 
 
@@ -592,8 +594,8 @@ def print_optional(corpus_historic, corpus_modern, word, elmo, combined_clusters
     # TODO: need to add a method that averages the context embeddings
 
     print("_______________________________________________________________")
-    labels_historic = cluster(lang, "corpus1", word, embeddings_corpus1, True)
-    labels_modern = cluster(lang, "corpus2", word, embeddings_corpus2, True)
+    labels_historic = cluster(lang, "corpus1", word, embeddings_corpus1, True) #labels_historic = cluster_DBSCAN(lang, "corpus1", word, embeddings_corpus1, True)
+    labels_modern = cluster(lang, "corpus2", word, embeddings_corpus2, True) #labels_modern = cluster_DBSCAN(lang, "corpus2", word, embeddings_corpus2, True)
 
     # Use the Counter object to count clusters
     historic_corpus_clusters = Counter(labels_historic)
@@ -638,7 +640,8 @@ if __name__ == '__main__':
 
     # TODO: choose whether we want to cluster context or word embeddings. if contexts -> set cluster_words = False
     cluster_words = True
-    results = dict()
+    results = dict() # absolute semantic change (binary classificaiton)
+    results_jsd = dict() # degree of semantic change: Jensen-Shannon distance
 
     if args.command == 'classify_words':
         if target_file is None:
@@ -715,7 +718,7 @@ if __name__ == '__main__':
         print(DIVIDER)
 
         # 9. Cluster the WORD/CONTEXT embeddings and get the labels for the combined corpus
-        labels_both = cluster(lang, "both_corpora", word, final_embeddings_both, True)
+        labels_both = cluster(lang, "both_corpora", word, final_embeddings_both, True)# cluster_DBSCAN(lang, "both_corpora", word, final_embeddings_both, True)
         combined_clusters = Counter(labels_both)
 
         # TODO: this is the optional part (analysis of SEPARATE clustering for corpus 1, corpus2)
@@ -737,11 +740,11 @@ if __name__ == '__main__':
         # 12. Based on the clustering results, decide whether a word has changed senses or not
 
         # TODO: Problem: what if C1: 3 and C2:2 and threshold = 2
-        threshold = 1 # threshold for determining whether a cluster has enough data points
-        if changed_sense(combined_clusters.keys(), cor1_clusters, cor2_clusters, k, threshold):
+       # threshold = 1 # threshold for determining whether a cluster has enough data points
+        if changed_sense(combined_clusters.keys(), cor1_clusters, cor2_clusters, k, 1):
             results[word] = "Changed sense(s)"
         else:
             results[word] = "No change in senses"
 
-    print("Results for {}: ".format(lang), results)
+    print("Results for {}: ".format(lang), results, "Degree of change calculated with JSD: ", results_jsd)
     print(DIVIDER)
