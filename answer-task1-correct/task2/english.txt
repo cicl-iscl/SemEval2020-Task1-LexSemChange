@@ -1,0 +1,4 @@
+walk	1.452
+distance	0.15
+small	0.92
+god	0.852
