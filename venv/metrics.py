@@ -31,6 +31,8 @@ from scipy.spatial import distance
         label_dict_corp2: dict or Counter of labels of corpus 2
                 log_base: base of logarithm that will be used for the Jensen-Shannon-Divergence, default is 2 
     
+    returns: the Jensen Shannon Distance
+    
     EXAMPLE: Swedish word "första":
     labels corpus 1: [0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0] --> dict object = {0: 11, 1: 7}
     labels corpus 2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]                         --> dict object = {0: 10}
@@ -62,8 +64,8 @@ def calculate_jsd(label_dict_corp1, label_dict_corp2, log_base=2.0):
     for key, value in labels2.items():
         prob_array2[key] = value/total_datapoints2
 
-    print("prob array 1: ", prob_array1)
-    print("prob array 1: ", prob_array2)
+    #print("prob array 1: ", prob_array1)
+    #print("prob array 1: ", prob_array2)
 
     jsd = distance.jensenshannon(prob_array1, prob_array2, log_base)
 
