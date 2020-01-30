@@ -19,10 +19,10 @@ import tensorflow_hub as hub
 import tensorflow as tf
 from metrics import calculate_jsd
 from sklearn.cluster import DBSCAN
-
+from plotting import plot_word_2dim,plot_word_3dim
 DIVIDER = "---------------------------------------------"
 
-def load_corpus(filename):
+def load_corpus(filename, tokenize=True):
     """
         Loads a corpus into a list.
 
@@ -32,6 +32,9 @@ def load_corpus(filename):
     print(filename)
     with open(filename, encoding="utf8") as f:
         content = f.readlines()
+    if tokenize is False:
+        print(content)
+        return content
     tokenized = [line.strip().split() for line in content]
     return tokenized
 
@@ -92,85 +95,6 @@ def collect_all_occurrences(corpus):
             #print("index of ", word, " in ", sent, " is ", idx)
     return indices
 
-
-def reduce_dimensions(embeddings_array):
-    """
-        Reduces the 1024 dimensions (output by ELMo) of an array of embeddings using PCA and t-SNE
-        down to 2 so that we can review the outputs from the model.
-
-        :param embeddings_array: an array of embeddings
-        :return reduced: reduced embedding space of shape (num_words, 2)
-    """
-    print("Unreduced array has dimensions: ", embeddings_array.shape)
-    pca = PCA(n_components=50)                       # reduce down to 50 dim
-    y = pca.fit_transform(embeddings_array)
-    reduced = TSNE(n_components=3).fit_transform(y)  # further reduce to 2 dim using t-SNE
-    print("Finished reduction")
-    # print("reduced emb space: ", reduced)
-    print("Reduced space dimensions: ", reduced.shape)
-
-    return reduced
-
-
-
-def plot_word(word_to_plot, path_corpus, filename_plot, filename_datapoints_words, filename_datapoints_specific_word,
-              reduced):
-    """
-        Plots the data points for a specific word.
-
-        :param word_to_plot: string of the word that should be plotted
-        :param path_corpus: path of the corpus that contains the word
-        :param filename_plot: name under which the plot will be saved
-        :param filename_datapoints_words: text file that will contain the data points of all the words from the corpus
-                                            format: x1   y1   word1
-                                                    x2   y2   word2
-        :param filename_datapoints_specific_word: text file that will contain the data points of
-                                                 only the word_to_plot (same format as before)
-        :param reduced: embedding vectors reduced to 2 dimensions
-
-    """
-    all_tokens = []  # list of the words of the specified corpus
-    with open(path_corpus, 'r', encoding="utf8") as f:
-        for line in f:
-            for word in line.split():
-                all_tokens.append(word)
-
-    # creates a text file containing the two dimensional data point of each word:
-    # x1   y1   word1
-    # x2   y2   word2
-    # ...
-    count = 0
-    with open(filename_datapoints_words, "w+", encoding="utf8") as f:
-        for i in reduced:
-            string = str(i[0]) + "\t" + str(i[1]) + "\t" + all_tokens[count]
-            f.write(string + '\n')
-            count += 1
-
-    # plot only a single word, e.g. "walk"
-    indices = [i for i, x in enumerate(all_tokens) if x == word_to_plot]
-
-    with open(filename_datapoints_specific_word, "w+", encoding="utf8") as f_word:
-        for i in indices:
-            string = str(reduced[i][0]) + "\t" + str(reduced[i][1]) + "\t" + all_tokens[i]
-            f_word.write(string + '\n')
-
-    # plot
-    x_dim = np.loadtxt(filename_datapoints_specific_word, usecols=0)
-    y_dim = np.loadtxt(filename_datapoints_specific_word, usecols=1)
-    labels = np.loadtxt(filename_datapoints_specific_word, dtype=str, usecols=2)
-    ax = plt.subplot()
-    ax.scatter(x_dim, y_dim)
-
-    for i, text in enumerate(labels):
-        ax.annotate(text, (x_dim[i], y_dim[i]))
-
-    print("Saving the plot...")
-    plt.title("Embeddings for \"" + word_to_plot + "\"")
-    plt.xlabel("x_dimension")
-    plt.ylabel("y_dimension")
-    # save the plot as it's not possible to show the plot when running on the server
-    plt.savefig(filename_plot)
-    plt.clf()
 
 # CHANGED!!! created this function
 # these eps and min_sample hyperparameters seem to be a good choice
@@ -249,7 +173,7 @@ def calc_distance(x1, y1, a, b, c):
 
 
 
-def get_k(word, emb_single_word, range_upper_bound):
+def get_k(word, emb_single_word, range_upper_bound, embed_context = False):
     """
         Determine the optimal number of k for a single word.
         Creates an elbow plot, and automatically determines the bend in the plot.
@@ -265,7 +189,11 @@ def get_k(word, emb_single_word, range_upper_bound):
     dist_points_from_cluster_center = []
 
     # reshape the array into 2d array (which is needed to fit the model)
-    nsamples, _ = emb_single_word.shape
+    if embed_context:
+        nsamples = len(emb_single_word)
+        print("nsamples:", len(emb_single_word))
+    else:
+        nsamples, _ = emb_single_word.shape
     #d2_emb_single_word = emb_single_word.reshape((nsamples, nx * ny))
 
     # in case there are less occurrences of the word in the corpus, e.g. Gott appears only 3 times in GER2 corpus:
@@ -332,11 +260,11 @@ def get_k(word, emb_single_word, range_upper_bound):
         path_corp: path of the historic corpus of that language
         word:       the individual word that is investigated
 """
-def cluster(language, corpus_id, word, embeddings, save_to_file = False):
+def cluster(language, corpus_id, word, embeddings, save_to_file = False, embed_context = False):
 
     # 1. Cluster the data points of the single word of one corpus and get the optimal k
     # get the optimal k from the reduced embeddings, indicate the upper range bound of k (k = 11-1 --> k will be maximally 10)
-    optimal_k_corp_word = get_k(word + "_" + language + corpus_id, embeddings, 11)
+    optimal_k_corp_word = get_k(word + "_" + language + corpus_id, embeddings, 11,embed_context)
     """
     silhouette_scores = get_silhouette_scores(embeddings)
     max = 0
@@ -422,9 +350,10 @@ def get_context_embeddings(sentence_embed, word_indices, corpus_id):
 
     """
     # 3. Get the individual word_embeddings (word_embeddings  is a list of 1D arrays: (occurrences of the word, 1024))
-    context_embeddings = [sentence_embed[i].pop(tup[1]) for i, tup in enumerate(word_indices)]
+    context_embeddings = [np.delete(sentence_embed[i],tup[1], axis=0)for i, tup in enumerate(word_indices)]
     print("context_embeddings length of {}: ".format(corpus_id), len(context_embeddings))
-    print("element 0 shapes: ", context_embeddings[0].shape, "\n")
+    print("Shape of context embedding element 0 before deleting word:", sentence_embed[0].shape)
+    print("element 0 shapes after deleting: ", context_embeddings[0].shape, "\n")
 
     # 4. Convert word_embeddings to a numpy array
     context_embeddings = np.asarray(context_embeddings)
@@ -541,8 +470,15 @@ def get_averaged_context_embeddings(context_embed):
     :return averaged_embeddings: the average of each context of each sentence [np.array([0.25]), np.array([0.9])]
     """
     averaged_embeddings = [] # [np.array([0.25]), np.array([0.9])] where each element is the context of a word
-    for word_context in context_embed:
-        mean = sum(context_embed)/len(word_context) # 0.56
+    for sent_context in context_embed:
+        word_array = []
+        for word in sent_context:
+            #print(sum(word))
+            word_array.append(sum(word))
+        #print("word array:", word_array)
+        #print("length of word array:", len(word_array))
+        #print()
+        mean = sum(word_array)/len(word_array) # 0.56
         sentence_np_array = np.array([mean]) # np.array([0.56])
         averaged_embeddings.append(sentence_np_array)
     return averaged_embeddings
@@ -590,6 +526,8 @@ def print_optional(corpus_historic, corpus_modern, word, elmo, combined_clusters
     else:
         embeddings_corpus1 = get_context_embeddings(sent_embeddings_corpus1,indices_corpus1[word], "corpus1")
         embeddings_corpus2 = get_context_embeddings(sent_embeddings_corpus2, indices_corpus2[word], "corpus2")
+        embeddings_corpus1 = get_averaged_context_embeddings(embeddings_corpus1)
+        embeddings_corpus2  = get_averaged_context_embeddings(embeddings_corpus2 )
 
     # TODO: need to add a method that averages the context embeddings
 
@@ -639,7 +577,7 @@ if __name__ == '__main__':
     target_words = []
 
     # TODO: choose whether we want to cluster context or word embeddings. if contexts -> set cluster_words = False
-    cluster_words = True
+    cluster_words = False #True
     results = dict() # absolute semantic change (binary classificaiton)
     results_jsd = dict() # degree of semantic change: Jensen-Shannon distance
 
@@ -658,6 +596,7 @@ if __name__ == '__main__':
 
     # 2. Load the elmo model for this language
     model_path = '../models/{}-model'.format(lang)
+
     if lang == "english":
         elmo = hub.Module("https://tfhub.dev/google/elmo/2", trainable=True)
     else:
@@ -714,16 +653,18 @@ if __name__ == '__main__':
         else:
             final_embeddings_both = get_context_embeddings(sent_embeddings_both, indices_joined[word], "both_corpora")
             final_embeddings_both = get_averaged_context_embeddings(final_embeddings_both) # RETURNS THE AVERAGE!
+            print("length of averaged embeddings:", len(final_embeddings_both),"shape of its first element:", final_embeddings_both[0].shape)
 
         print(DIVIDER)
 
         # 9. Cluster the WORD/CONTEXT embeddings and get the labels for the combined corpus
-        labels_both = cluster(lang, "both_corpora", word, final_embeddings_both, True)# cluster_DBSCAN(lang, "both_corpora", word, final_embeddings_both, True)
+        cluster_embed = True # TODO: should be reset if do not need to cluster embeddings
+        labels_both = cluster(lang, "both_corpora", word, final_embeddings_both, True, cluster_embed)# cluster_DBSCAN(lang, "both_corpora", word, final_embeddings_both, True)
         combined_clusters = Counter(labels_both)
 
         # TODO: this is the optional part (analysis of SEPARATE clustering for corpus 1, corpus2)
         # embed_word = True is if we want to cluster word embeddings, set to False if you want context embeddings
-        print_optional(corpus_historic, corpus_modern, word, elmo, combined_clusters, embed_word=True)
+        #print_optional(corpus_historic, corpus_modern, word, elmo, combined_clusters, embed_word=True)
 
         # 10. Determine where sentences from corpus2 start in sentences_with_target_word
         start_ind = get_start_index(indices_joined[word],len(corpus_historic)) # get start index of corpus2 (helps divide the labels)
@@ -745,6 +686,9 @@ if __name__ == '__main__':
             results[word] = "Changed sense(s)"
         else:
             results[word] = "No change in senses"
+
+        jsd = calculate_jsd(cor1_clusters,cor2_clusters)
+        results_jsd[word]= round(jsd, 3)
 
     print("Results for {}: ".format(lang), results, "Degree of change calculated with JSD: ", results_jsd)
     print(DIVIDER)
