@@ -102,7 +102,7 @@ def collect_all_occurrences(corpus):
 # when there are only very few, set it to a low number (maybe 2 or 3?)
 # eps is difficult to set. Between 3 and 4.5 seems to be a reasonable choice,
 # it looks like the more datapoints the lower eps has to be
-def cluster_DBSCAN(language, corpus_id, word, embeddings, save_to_file=False, eps=2, min_samples=2):
+def cluster_DBSCAN(language, corpus_id, word, embeddings, save_to_file=False, eps=2.5, min_samples=2):
     """
         Clustering using sklearn's DBSCAN
         -> first 3 arguments are only for naming the file that is saved if save_to_file=True
@@ -226,7 +226,6 @@ def get_k(word, emb_single_word, range_upper_bound, embed_context = False):
 
     # draw a line so the elbow line will get a "hypotenuse" and calculate the distance from each elbow-point to the hypotenuse
     # --> where the longest distance is -> this is the optimal k
-    # (y1 – y2)x + (x2 – x1)y + (x1y2 – x2y1) = 0
     # https://bobobobo.wordpress.com/2008/01/07/solving-linear-equations-ax-by-c-0/
     a = dist_points_from_cluster_center[0] - dist_points_from_cluster_center[range_upper_bound - 1]
     b = K[range_upper_bound - 1] - K[0]
@@ -461,6 +460,7 @@ def get_start_index(word_indices, hist_corp_length):
             print("Index:", t[0], "length of historic corpus:", hist_corp_length, " last index in historic corpus:",
                   hist_corp_length - 1)
             return idx
+    print("returning -1")
     return -1
 
 def get_averaged_context_embeddings(context_embed):
@@ -643,12 +643,13 @@ if __name__ == '__main__':
         # TODO: use the official English model
         # Extract ELMo features
         #embeddings = elmo(x, signature="default", as_dict=True)["elmo"]
-        #embeddings.shape
+        #print(embeddings.shape)
 
         sent_embeddings_both = get_sentence_embeddings(indices_joined, joined_corpus,elmo,word, "both_corpora")
 
         # 8. Determine what to cluster : word embeddings or context embeddings. Get the embeddings
         if cluster_words:
+            final_embeddings_both = get_word_embeddings(sent_embeddings_both, indices_joined[word], "both_corpora")
             final_embeddings_both = get_word_embeddings(sent_embeddings_both, indices_joined[word], "both_corpora")
         else:
             final_embeddings_both = get_context_embeddings(sent_embeddings_both, indices_joined[word], "both_corpora")
@@ -659,7 +660,7 @@ if __name__ == '__main__':
 
         # 9. Cluster the WORD/CONTEXT embeddings and get the labels for the combined corpus
         cluster_embed = True # TODO: should be reset if do not need to cluster embeddings
-        labels_both = cluster(lang, "both_corpora", word, final_embeddings_both, True, cluster_embed)# cluster_DBSCAN(lang, "both_corpora", word, final_embeddings_both, True)
+        labels_both = cluster_DBSCAN(lang, "both_corpora", word, final_embeddings_both, False) #cluster(lang, "both_corpora", word, final_embeddings_both, True, cluster_embed) cluster_DBSCAN(lang, "both_corpora", word, final_embeddings_both, True)
         combined_clusters = Counter(labels_both)
 
         # TODO: this is the optional part (analysis of SEPARATE clustering for corpus 1, corpus2)
@@ -682,7 +683,7 @@ if __name__ == '__main__':
 
         # TODO: Problem: what if C1: 3 and C2:2 and threshold = 2
        # threshold = 1 # threshold for determining whether a cluster has enough data points
-        if changed_sense(combined_clusters.keys(), cor1_clusters, cor2_clusters, k, 1):
+        if changed_sense(combined_clusters.keys(), cor1_clusters, cor2_clusters, k, 0):
             results[word] = "Changed sense(s)"
         else:
             results[word] = "No change in senses"
