@@ -3,6 +3,7 @@ import argparse
 import math
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.metrics import accuracy_score
 import tensorflow as tf
 import torch
 import chart_studio.plotly as py
@@ -21,6 +22,7 @@ from metrics import calculate_jsd
 from sklearn.cluster import DBSCAN
 from plotting import plot_word_2dim,plot_word_3dim
 DIVIDER = "---------------------------------------------"
+tf.config.optimizer.set_jit(True)
 
 def load_corpus(filename):
     """
@@ -34,6 +36,17 @@ def load_corpus(filename):
         content = f.readlines()
     tokenized = [line.strip().split() for line in content]
     return tokenized
+
+
+def load_model(lang):
+    model_path = '../models/{}-model'.format(lang)
+
+    if lang == "english":
+        model = hub.Module("https://tfhub.dev/google/elmo/3", trainable=True)
+    else:
+        model = Embedder(model_path, batch_size=64)
+
+    return model
 
 def load_targets(filename):
     """
@@ -93,16 +106,18 @@ def collect_all_occurrences(corpus):
                 indices[word].append((i, idx))
             #print("index of current sentence: ", i)
             #print("index of ", word, " in ", sent, " is ", idx)
+    print(indices)
     return indices
 
 
 # CHANGED!!! created this function
 # these eps and min_sample hyperparameters seem to be a good choice
-# when there are many data points (word occurrs often in corpus) it makes sense to set min_samples much higher
+# when there are many data points (word occurs often in corpus) it makes sense to set min_samples much higher
 # when there are only very few, set it to a low number (maybe 2 or 3?)
 # eps is difficult to set. Between 3 and 4.5 seems to be a reasonable choice,
 # it looks like the more datapoints the lower eps has to be
-def cluster_DBSCAN(language, corpus_id, word, embeddings, save_to_file=False, eps=2.5, min_samples=2):
+def cluster_DBSCAN(language, corpus_id, word, embeddings, eps, min_samples, save_to_file=False):
+
     """
         Clustering using sklearn's DBSCAN
         -> first 3 arguments are only for naming the file that is saved if save_to_file=True
@@ -173,7 +188,7 @@ def calc_distance(x1, y1, a, b, c):
 
 
 
-def get_k(word, emb_single_word, range_upper_bound, embed_context = False):
+def get_k(word, emb_single_word, range_upper_bound, kmk, embed_context = False):
     """
         Determine the optimal number of k for a single word.
         Creates an elbow plot, and automatically determines the bend in the plot.
@@ -216,7 +231,9 @@ def get_k(word, emb_single_word, range_upper_bound, embed_context = False):
         dist_points_from_cluster_center.append(k_model.inertia_)
 
     # it is possible to only have one cluster, so we need a value for 0 as well. Default is to double the value for k=1
-    distance_at_zero = dist_points_from_cluster_center[0] * 1.2  # get k=1 distance and multiply by the value given
+    print(type(1.2))
+    print(type(kmk))
+    distance_at_zero = dist_points_from_cluster_center[0] * kmk # get k=1 distance and multiply by the value given
     dist_points_from_cluster_center.insert(0, distance_at_zero)  # add it at the beginning of the list created above
     K = range(0, range_upper_bound)  # adjust range K
 
@@ -261,11 +278,11 @@ def get_k(word, emb_single_word, range_upper_bound, embed_context = False):
         word:       the individual word that is investigated
 """
 
-def cluster(language, corpus_id, word, embeddings, save_to_file = False, embed_context = False):
+def cluster(language, corpus_id, word, embeddings, kmk, save_to_file = False,  embed_context = False):
 
     # 1. Cluster the data points of the single word of one corpus and get the optimal k
     # get the optimal k from the reduced embeddings, indicate the upper range bound of k (k = 11-1 --> k will be maximally 10)
-    optimal_k_corp_word = get_k(word + "_" + language + corpus_id, embeddings, 11, embed_context)
+    optimal_k_corp_word = get_k(word + "_" + language + corpus_id, embeddings, 11, kmk, embed_context)
 
     """
     silhouette_scores = get_silhouette_scores(embeddings)
@@ -308,6 +325,7 @@ def get_sentence_embeddings(occurrences_of_all_words, all_sentences, elmo, word,
 
     # 1. Get a list of sentences that contain the target word
     sentences_with_word = [all_sentences[tup[0]] for tup in occurrences_of_all_words[word]]
+    print(len(sentences_with_word))
 
     # 2. Get the embeddings for all the sentences that contain the target word
     if language == "english":
@@ -377,7 +395,7 @@ def get_context_embeddings(sentence_embed, word_indices, corpus_id):
     return context_embeddings
 
 
-def changed_sense(all_clusters, cor1_clusters, cor2_clusters, k, threshold):
+def changed_sense(all_clusters, cor1_clusters, cor2_clusters, k, n):
     """
         Determines whether there has been a change in a word's sense(s). It does not matter whether the word
         has gained or lost sense. A word is classified as gaining a sense, if the sense is never attested in corpus1,
@@ -390,13 +408,38 @@ def changed_sense(all_clusters, cor1_clusters, cor2_clusters, k, threshold):
         :param threshold: the threshold which determines whether a cluster can be regarded as not having any datapoints
         :return True: if a word has changed senses, False otherwise
     """
-    n_occur = 0
+
+    for label in all_clusters:
+        print(all_clusters)
+        print(cor1_clusters.items())
+        print(cor2_clusters.items())
+        if lang == "latin":
+            print(type(k))
+            if cor1_clusters.get(label) is None:
+                n_occur_c1 = 0
+            else:
+                n_occur_c1 = cor1_clusters.get(label)
+            if cor2_clusters.get(label) is None:
+                n_occur_c2 = 0
+            else:
+                n_occur_c2 = cor2_clusters.get(label)
+            if n_occur_c1 <= k and n_occur_c2 >= n:
+                return True
+            if n_occur_c2 <= k and n_occur_c1 >= n:
+                return True
+            continue
+        # if the language is not latin
+        if label in cor1_clusters and label in cor2_clusters:
+            if cor1_clusters.get(label) <= k and cor2_clusters.get(label) >= n:
+                return True
+            if cor2_clusters.get(label) <= k and cor1_clusters.get(label) >= n:
+                return True
+    return False
+    """    
+       n_occur = 0
     if len(all_clusters) == 1:
         print("No change as combined corpora have only 1 cluster in total")
         return False
-
-
-    for label in all_clusters:
         # if word appears in both corpora, ignore it
         if label in cor1_clusters and label in cor2_clusters:
             if cor2_clusters.get(label) > threshold and cor1_clusters.get(label) > threshold:
@@ -421,7 +464,7 @@ def changed_sense(all_clusters, cor1_clusters, cor2_clusters, k, threshold):
         if n_occur >= k:
             print("Label ", label, " occurs ", n_occur, " times IN only one of the corpora.", " k: ", k)
             return True
-    return False
+    return False"""
 
 def get_start_index(word_indices, hist_corp_length):
     """
@@ -508,8 +551,14 @@ def print_optional(corpus_historic, corpus_modern, word, elmo, combined_clusters
     # TODO: need to add a method that averages the context embeddings
 
     print("_______________________________________________________________")
-    labels_historic = cluster(lang, "corpus1", word, embeddings_corpus1, True) #labels_historic = cluster_DBSCAN(lang, "corpus1", word, embeddings_corpus1, True)
-    labels_modern = cluster(lang, "corpus2", word, embeddings_corpus2, True) #labels_modern = cluster_DBSCAN(lang, "corpus2", word, embeddings_corpus2, True)
+    cluster_with_dbscan = True
+    if cluster_with_dbscan:
+        labels_historic = cluster_DBSCAN(lang, "corpus1", word, embeddings_corpus1, True)
+        labels_modern = cluster_DBSCAN(lang, "corpus2", word, embeddings_corpus2, True)
+
+    else:
+        labels_historic = cluster(lang, "corpus1", word, embeddings_corpus1, True)
+        labels_modern = cluster(lang, "corpus2", word, embeddings_corpus2, True)
 
     # Use the Counter object to count clusters
     historic_corpus_clusters = Counter(labels_historic)
@@ -530,20 +579,43 @@ def print_labels(labels1, labels2, word):
     print("Labels corpus 2: \n")
     print(labels2)
 
+def load_gold_labels(filename):
+    dictionary = {}
+    with open(filename, encoding='utf8') as f:
+        content = f.readlines()
+    for line in content:
+        vals = line.split()
+        print(line)
+        print(vals)
+        if len(vals) != 2:
+            print("does not contain two elements")
+            continue
+        dictionary[vals[0]] = vals[1]
+    return dictionary
 
 if __name__ == '__main__':
 
-    # TODO: USAGE for single word: python3 cluster_fixed.py latin k classify_single_target_word -w quis
-    # TODO: USAGE for MULTIPLE words:  make a targets folder in train_elmo/SemEval2020/venv
-    #  python3 cluster_fixed.py latin k classify_words -t file_with_targets.txt
+    # TODO: USAGE for single word: python3 cluster_fixed.py latin k classify_single_target_word kmeans -w quis
+    # TODO: USAGE for MULTIPLE words :  make a targets folder in train_elmo/SemEval2020/venv
+    #  KMEANS:
+    #  python3 cluster_fixed.py LANGUAGE K N classify_words kmeans -kmk VALUE_OF_KMK -t file_with_targets.txt
+    #  DBSCAN:
+    #  python3 cluster_fixed.py LANGUAGE K N classify_words dbscan -eps VALUE_OF_EPS - nsamp NUM_OF_SAMPLES -t file_with_targets.txt
 
     parser = argparse.ArgumentParser()
     parser.add_argument("language", type=str, help="the language of the corpora")
-    parser.add_argument("k", type=int, help="the k used for determining if a word changed (given by the SemEval people")
-    parser.add_argument("-t", "--target_words", dest = "targets", help="the file to read target words from")
-    parser.add_argument("-w", "--word", help=" The word to classify")
+    parser.add_argument("k", type=int, help="the k used for determining if a word changed. k=0 for Latin and k=2 for other languages.")
+    parser.add_argument("n", type=float, help="The threshold for the changed_sense method (n). n=1 for Latin and n=5 for "
+                                              "the other languages.")
     parser.add_argument('command',
                       choices=('classify_single_target_word', 'classify_words'))
+    parser.add_argument('clustering_algorithm',
+                        choices=('dbscan', 'kmeans'))
+    parser.add_argument("-kmk","--kmk",  help="the k used in kmeans")
+    parser.add_argument("-eps","--eps", help="Epsilon used in dbscan")
+    parser.add_argument("-nsamp", "--nsamp", help="Number of samples used in dbscan")
+    parser.add_argument("-t", "--target_words", dest = "targets", help="the file to read target words from")
+    parser.add_argument("-w", "--word", help=" The word to classify")
     args = parser.parse_args()
 
     #  Some variables to be used later
@@ -551,6 +623,8 @@ if __name__ == '__main__':
     k = args.k
     target_file = args.targets
     target_words = []
+    cluster_with_dbscan = False
+    n = args.n
 
     # TODO: choose whether we want to cluster context or word embeddings. if contexts -> set cluster_words = False
     cluster_words = True #False   TODO: should be reset if do not need to cluster embeddings
@@ -562,23 +636,33 @@ if __name__ == '__main__':
             parser.error('The file containing the target words is required if you want to classify words. Please '
                          'use the -t argument')
         else:
-            target_words = load_targets('targets/{}'.format(target_file)) # targets/file.txt
+            #target_words = load_targets('targets/{}'.format(target_file)) # targets/file.txt
+            target_words = load_targets('targets/{}'.format(target_file))
 
     else:
         if args.word is None:
             parser.error('Please enter the word that should be classified.')
         else:
             target_words.append(args.word)
+    if args.clustering_algorithm == 'dbscan':
+        cluster_with_dbscan = True
+        if args.eps is None:
+            parser.error('The epsilon is required when clustering with DBSCAN. Please use the -eps argument')
+        if args.nsamp is None:
+            parser.error('The number of samples is required when clustering with DBSCAN. Please use the -nsamp argument')
+        eps = float(args.eps)
+        n_samples = int(args.nsamp)
+    else:
+        if args.kmk is None:
+            parser.error('The k used in k means is required. Please use the -kmk argument')
+        kmk = float(args.kmk)
 
     # 2. Load the elmo model for this language
-    model_path = '../models/{}-model'.format(lang)
-
-    if lang == "english":
-        elmo = hub.Module("https://tfhub.dev/google/elmo/3", trainable=True)
-    else:
-        elmo = Embedder(model_path, batch_size=64)
+    elmo = load_model(lang)
 
     # 3. Load the corpora
+    # TODO: uncomment path if you want to use a second file for the same language (also might have to change semcor)
+    #path_to_corpus = '../starting_kit/trial_data_public/corpora/{}2/corpus{}/semcor{}.txt'
     path_to_corpus = '../starting_kit/trial_data_public/corpora/{}/corpus{}/corpus{}.txt'
     corpus_historic = load_corpus(path_to_corpus.format(lang, 1, 1))
     corpus_modern = load_corpus(path_to_corpus.format(lang, 2, 2))
@@ -634,15 +718,22 @@ if __name__ == '__main__':
         print(DIVIDER)
 
         # 9. Cluster the WORD/CONTEXT embeddings and get the labels for the combined corpus
-        labels_both = cluster(lang, "both_corpora", word, final_embeddings_both, True, cluster_words) # cluster_DBSCAN(lang, "both_corpora", word, final_embeddings_both, False)
+        # CLUSTER WITh DBSCAN OR KMEANS
+        if cluster_with_dbscan:
+            labels_both = cluster_DBSCAN(lang, "both_corpora", word, final_embeddings_both, eps, n_samples)
+        else:
+            labels_both = cluster(lang, "both_corpora", word, final_embeddings_both, kmk, True, cluster_words)
+        # labels_both = cluster_DBSCAN(lang, "both_corpora", word, final_embeddings_both, False)
         combined_clusters = Counter(labels_both)
 
         # TODO: this is the optional part (analysis of SEPARATE clustering for corpus 1, corpus2)
         # embed_word = True is if we want to cluster word embeddings, set to False if you want context embeddings
         #print_optional(corpus_historic, corpus_modern, word, elmo, combined_clusters, embed_word=True, lang)
-
+        print("printing combined_clusters")
+        print(combined_clusters)
         # 10. Determine where sentences from corpus2 start in sentences_with_target_word
         start_ind = get_start_index(indices_joined[word],len(corpus_historic)) # get start index of corpus2 (helps divide the labels)
+        print(start_ind)
         labels_corpus1 = labels_both[0:start_ind]  # [0, 0, 1, 1, 1, 1, 0, 3, 3]
         labels_corpus2 = labels_both[start_ind:]  # [0, 0, 0, 2, 2, 2, 0, 3, 3, 3]
         print_labels(labels_corpus1,labels_corpus2, word)
@@ -657,16 +748,65 @@ if __name__ == '__main__':
 
         # TODO: Problem: what if C1: 3 and C2:2 and threshold = 2
        # threshold = 1 # threshold for determining whether a cluster has enough data points
-        if changed_sense(combined_clusters.keys(), cor1_clusters, cor2_clusters, k, 1):
-            results[word] = "Changed sense(s)"
+        if changed_sense(combined_clusters.keys(), cor1_clusters, cor2_clusters, k, n):
+            results[word] = "1"
         else:
-            results[word] = "No change in senses"
+            results[word] = "0"
+        print(cor1_clusters)
+        print(cor2_clusters)
+        jsd = calculate_jsd(cor1_clusters, cor2_clusters)
+        results_jsd[word] = round(jsd, 3)
 
-    #jsd = calculate_jsd(cor1_clusters,cor2_clusters)
-    #results_jsd[word]= round(jsd, 3)
-
-    print("Results for {}: ".format(lang))
-    for i in results.items():
-        print(i)
-    #print("Degree of change calculated with JSD: ", results_jsd)
+    # 13. Calculate the accuracy score. Need a file with word true_label
+    # TODO: name your file with gold labels as show here: e.g. "english_with_change_info.txt"
+    true_vals = load_gold_labels("targets/{}_with_change_info.txt".format(lang))
+    incorrectly_predicted = []
+    y_true = []
+    y_pred = []
+    for i in true_vals.keys():
+        #print(results)
+        print(i, "true: ", true_vals[i], " prediction: ", results[i])
+        y_true.append(true_vals[i])
+        y_pred.append(results[i])
+        if true_vals[i] != results[i]:
+            incorrectly_predicted.append(i)
+    with open ("out/incorrect_pred{}.txt".format(lang), 'w') as f:
+        for i in incorrectly_predicted:
+            f.write(i)
     print(DIVIDER)
+
+
+    #print("Results for {}: ".format(lang))
+    #for i in results.items():
+        #print(i)
+
+    #  python3 cluster_fixed.py LANGUAGE K N classify_words kmeans -kmk VALUE_OF_KMK -t file_with_targets.txt
+    #  DBSCAN:
+    #  python3 cluster_fixed.py LANGUAGE K N classify_words dbscan -eps VALUE_OF_EPS - nsamp NUM_OF_SAMPLES -t file_with_targets.txt
+    out_file_path = "out/{}_pred_{}_{}_{}_".format(lang,cluster_with_dbscan,k,n)
+    to_file = {}
+    to_file["Language"] = lang
+    to_file["Target file"] = target_file
+    to_file["k"] = k
+    to_file["n"] = n
+    if cluster_with_dbscan:
+        to_file["algorithm"] = "DBSCAN"
+        to_file["epsilon"] = eps
+        to_file["Number of samples"] = n_samples
+        out_file_path = out_file_path + "{}_{}"
+        out_file_path.format(eps,n_samples)
+        out_file_path = out_file_path + ".txt"
+    else:
+        to_file["algorithm"] = "KMEANS"
+        to_file["k value for get_k"] = kmk
+        out_file_path = out_file_path + "{}"
+        out_file_path.format(kmk)
+        out_file_path = out_file_path +".txt"
+    to_file["accuracy"] = accuracy_score(y_true, y_pred)
+    to_file["jsd_score"] = results_jsd
+    print(DIVIDER)
+    print(to_file.items())
+    with open (out_file_path, 'w') as f:
+        for i in to_file.keys():
+            line = i + "\t"+ str(to_file[i])
+            f.write(line)
