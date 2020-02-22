@@ -57,10 +57,13 @@ def calculate_jsd(label_dict_corp1, label_dict_corp2, log_base=2.0):
 
     # replace cluster label -1 with a positive number: take the highest cluster label int and add 1
     max_int_label = max(distinct_labels)
-    labels1[max_int_label+1] = labels1[-1]
-    del labels1[-1]
-    labels2[max_int_label+1] = labels2[-1]
-    del labels2[-1]
+
+    if -1 in labels1.keys():
+        labels1[max_int_label+1] = labels1[-1]
+        del labels1[-1]
+    if -1 in labels2.keys():
+        labels2[max_int_label+1] = labels2[-1]
+        del labels2[-1]
 
     # initialize two np arrays to the size of distinct_labels
     prob_array1 = np.zeros(len(distinct_labels))
@@ -89,10 +92,10 @@ def calculate_jsd(label_dict_corp1, label_dict_corp2, log_base=2.0):
 if __name__ == '__main__':
 
     # possible to pass dict objects OR Counter objects
-    #a1 = {0: 11, 1: 7}
-    #a2 = {0: 10}
-    a1 = Counter({-1: 3409, 0: 2, 1: 2, 2: 2, 3: 2, 4: 2})
-    a2 = Counter({-1: 1839, 5: 3, 6: 7, 7: 2, 8: 3, 9: 2, 10: 2})
+    a1 = {0: 11, 1: 7}
+    a2 = {0: 10}
+    #a1 = Counter({-1: 3409, 0: 2, 1: 2, 2: 2, 3: 2, 4: 2})
+    #a2 = Counter({-1: 1839, 5: 3, 6: 7, 7: 2, 8: 3, 9: 2, 10: 2})
 
     jsd = calculate_jsd(a1, a2, log_base=2.0)
     print("JSD: ", jsd)
