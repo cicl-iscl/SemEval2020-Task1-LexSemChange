@@ -662,8 +662,8 @@ if __name__ == '__main__':
 
     # 3. Load the corpora
     # TODO: uncomment path if you want to use a second file for the same language (also might have to change semcor)
-    #path_to_corpus = '../starting_kit/trial_data_public/corpora/{}2/corpus{}/semcor{}.txt'
-    path_to_corpus = '../starting_kit/trial_data_public/corpora/{}/corpus{}/corpus{}.txt'
+    path_to_corpus = '../starting_kit/trial_data_public/corpora/{}2/corpus{}/semcor{}.txt'
+    #path_to_corpus = '../starting_kit/trial_data_public/corpora/{}/corpus{}/corpus{}.txt'
     corpus_historic = load_corpus(path_to_corpus.format(lang, 1, 1))
     corpus_modern = load_corpus(path_to_corpus.format(lang, 2, 2))
 
@@ -783,7 +783,7 @@ if __name__ == '__main__':
     #  python3 cluster_fixed.py LANGUAGE K N classify_words kmeans -kmk VALUE_OF_KMK -t file_with_targets.txt
     #  DBSCAN:
     #  python3 cluster_fixed.py LANGUAGE K N classify_words dbscan -eps VALUE_OF_EPS - nsamp NUM_OF_SAMPLES -t file_with_targets.txt
-    out_file_path = "out/{}_pred_{}_{}_{}_".format(lang,cluster_with_dbscan,k,n)
+    out_file_path = "out/results.txt"
     to_file = {}
     to_file["Language"] = lang
     to_file["Target file"] = target_file
@@ -793,20 +793,22 @@ if __name__ == '__main__':
         to_file["algorithm"] = "DBSCAN"
         to_file["epsilon"] = eps
         to_file["Number of samples"] = n_samples
-        out_file_path = out_file_path + "{}_{}"
-        out_file_path.format(eps,n_samples)
-        out_file_path = out_file_path + ".txt"
+        #out_file_path = out_file_path + "{}_{}"
+        #out_file_path.format(eps,n_samples)
+        #out_file_path = out_file_path + ".txt"
     else:
         to_file["algorithm"] = "KMEANS"
         to_file["k value for get_k"] = kmk
-        out_file_path = out_file_path + "{}"
-        out_file_path.format(kmk)
-        out_file_path = out_file_path +".txt"
+        #out_file_path = out_file_path + "{}"
+        #out_file_path.format(kmk)
+        #out_file_path = out_file_path +".txt"
     to_file["accuracy"] = accuracy_score(y_true, y_pred)
     to_file["jsd_score"] = results_jsd
     print(DIVIDER)
     print(to_file.items())
-    with open (out_file_path, 'w') as f:
+    with open(out_file_path, "a") as f:
+        f.write("\n")
+        f.write("RESULTS" + "\n")
         for i in to_file.keys():
-            line = i + "\t"+ str(to_file[i])
+            line = i + "\t" + str(to_file[i]) + "\n"
             f.write(line)
