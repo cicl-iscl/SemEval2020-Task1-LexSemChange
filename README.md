@@ -56,7 +56,7 @@ Language    english - using embeddings (not context embeddings)
 
 - Target file	english.txt
 - k	2
-- n	6
+- n	5
 - algorithm	KMEANS
 - k value for get_k	1.3
 - accuracy	0.5
