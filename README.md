@@ -52,3 +52,11 @@ Language	latin - using word embeddings (not context embeddings)
 - accuracy	0.8115942028985508
 
 
+Language    english - using embeddings (not context embeddings)
+
+- Target file	english.txt
+- k	2
+- n	6
+- algorithm	KMEANS
+- k value for get_k	1.3
+- accuracy	0.5
