@@ -40,7 +40,7 @@ n_train_tokens = 176451  //ENGLISH C1 + C2 (train model on own corpus)
 
 
 
-# Tuning Results
+# Best Tuning Results for each language
 
 Language	latin - using word embeddings (not context embeddings)
 
