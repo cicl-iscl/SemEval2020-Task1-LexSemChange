@@ -36,3 +36,19 @@ these are the amount of words in all training files (1 sentence per file) ignori
 n_train_tokens = 181530  //GERMAN C1 + C2
 
 n_train_tokens = 176451  //ENGLISH C1 + C2 (train model on own corpus)
+
+
+
+
+# Tuning Results
+
+- LATIN:
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	KMEANS
+k value for get_k	1.6
+accuracy	0.8115942028985508
+
+
