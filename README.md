@@ -44,16 +44,11 @@ n_train_tokens = 176451  //ENGLISH C1 + C2 (train model on own corpus)
 
 Language	latin
 
-Target file	latin.txt
-
-k	0
-
-n	1.0
-
-algorithm	KMEANS
-
-k value for get_k	1.6
-
-accuracy	0.8115942028985508
+- Target file	latin.txt
+- k	0
+- n	1.0
+- algorithm	KMEANS
+- k value for get_k	1.6
+- accuracy	0.8115942028985508
 
 
