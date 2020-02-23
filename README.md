@@ -42,7 +42,7 @@ n_train_tokens = 176451  //ENGLISH C1 + C2 (train model on own corpus)
 
 # Tuning Results
 
-Language	latin
+Language	latin - using word embeddings (not context embeddings)
 
 - Target file	latin.txt
 - k	0
