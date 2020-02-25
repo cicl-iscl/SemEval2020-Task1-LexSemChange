@@ -1,0 +1,10 @@
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	KMEANS
+k value for get_k	1.6
+classification_score	{'imperator': '1', 'fidelis': '0', 'sanctus': '0', 'civitas': '0', 'scriptura': '0', 'dux': '0', 'pontifex': '0', 'virtus': '0', 'cohors': '0', 'itero': '0', 'consul': '0', 'humanitas': '0', 'potestas': '0', 'dolus': '0', 'beatus': '0', 'poena': '0', 'credo': '0', 'honor': '0', 'consilium': '0', 'acerbus': '0', 'nobilitas': '0', 'templum': '0', 'ancilla': '0', 'sapientia': '0', 'senatus': '0', 'hostis': '0', 'titulus': '0', 'sensus': '0', 'adsumo': '0', 'oportet': '0', 'simplex': '0', 'regnum': '0', 'dubius': '0', 'licet': '0', 'voluntas': '0', 'nepos': '0', 'necessarius': '0', 'jus': '0', 'salus': '0', 'sacramentum': '0'}
+jsd_score	{'imperator': 0.657, 'fidelis': 0.0, 'sanctus': 0.0, 'civitas': 0.156, 'scriptura': 0.0, 'dux': 0.0, 'pontifex': 0.0, 'virtus': 0.0, 'cohors': 0.205, 'itero': 0.0, 'consul': 0.0, 'humanitas': 0.0, 'potestas': 0.0, 'dolus': 0.06, 'beatus': 0.0, 'poena': 0.0, 'credo': 0.0, 'honor': 0.184, 'consilium': 0.0, 'acerbus': 0.0, 'nobilitas': 0.0, 'templum': 0.208, 'ancilla': 0.149, 'sapientia': 0.11, 'senatus': 0.018, 'hostis': 0.0, 'titulus': 0.0, 'sensus': 0.0, 'adsumo': 0.257, 'oportet': 0.0, 'simplex': 0.0, 'regnum': 0.0, 'dubius': 0.0, 'licet': 0.0, 'voluntas': 0.0, 'nepos': 0.066, 'necessarius': 0.0, 'jus': 0.0, 'salus': 0.102, 'sacramentum': 0.284}
