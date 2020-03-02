@@ -1,0 +1,534 @@
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.1
+accuracy	0.5
+jsd_score	{'experience': 0.054, 'type': 0.199, 'approach': 0.101, 'amount': 0.39, 'see': 0.011, 'continue': 0.052, 'eye': 0.092, 'plant': 0.124}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.2
+accuracy	0.5
+jsd_score	{'experience': 0.063, 'type': 0.199, 'approach': 0.101, 'amount': 0.343, 'see': 0.003, 'continue': 0.001, 'eye': 0.115, 'plant': 0.036}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.3
+accuracy	0.5
+jsd_score	{'experience': 0.053, 'type': 0.199, 'approach': 0.101, 'amount': 0.368, 'see': 0.003, 'continue': 0.006, 'eye': 0.068, 'plant': 0.049}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.4
+accuracy	0.5
+jsd_score	{'experience': 0.034, 'type': 0.119, 'approach': 0.101, 'amount': 0.378, 'see': 0.0, 'continue': 0.006, 'eye': 0.02, 'plant': 0.055}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.5
+accuracy	0.5
+jsd_score	{'experience': 0.034, 'type': 0.119, 'approach': 0.101, 'amount': 0.381, 'see': 0.0, 'continue': 0.001, 'eye': 0.08, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.6
+accuracy	0.5
+jsd_score	{'experience': 0.034, 'type': 0.119, 'approach': 0.101, 'amount': 0.386, 'see': 0.0, 'continue': 0.0, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.7
+accuracy	0.5
+jsd_score	{'experience': 0.034, 'type': 0.119, 'approach': 0.101, 'amount': 0.388, 'see': 0.0, 'continue': 0.0, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.8
+accuracy	0.5
+jsd_score	{'experience': 0.0, 'type': 0.119, 'approach': 0.101, 'amount': 0.0, 'see': 0.0, 'continue': 0.0, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.9
+accuracy	0.5
+jsd_score	{'experience': 0.0, 'type': 0.119, 'approach': 0.101, 'amount': 0.0, 'see': 0.0, 'continue': 0.0, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	2.0
+accuracy	0.5
+jsd_score	{'experience': 0.0, 'type': 0.119, 'approach': 0.101, 'amount': 0.0, 'see': 0.0, 'continue': 0.0, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	2.5
+Number of samples	2
+accuracy	0.5
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.155, 'see': 0.073, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	3.0
+Number of samples	2
+accuracy	0.5
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.193, 'see': 0.073, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	3.5
+Number of samples	2
+accuracy	0.5
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.193, 'see': 0.071, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	4.0
+Number of samples	2
+accuracy	0.5
+jsd_score	{'experience': 0.0, 'type': 0.097, 'approach': 0.0, 'amount': 0.193, 'see': 0.072, 'continue': 0.115, 'eye': 0.071, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	4.5
+Number of samples	2
+accuracy	0.375
+jsd_score	{'experience': 0.004, 'type': 0.137, 'approach': 0.0, 'amount': 0.193, 'see': 0.106, 'continue': 0.115, 'eye': 0.071, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	2
+accuracy	0.375
+jsd_score	{'experience': 0.036, 'type': 0.153, 'approach': 0.0, 'amount': 0.234, 'see': 0.113, 'continue': 0.158, 'eye': 0.161, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	2.5
+Number of samples	3
+accuracy	0.5
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.0, 'see': 0.059, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	3.0
+Number of samples	3
+accuracy	0.5
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.0, 'see': 0.059, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	3.5
+Number of samples	3
+accuracy	0.5
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.0, 'see': 0.056, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	4.0
+Number of samples	3
+accuracy	0.5
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.0, 'see': 0.058, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	4.5
+Number of samples	3
+accuracy	0.375
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.0, 'see': 0.074, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	3
+accuracy	0.375
+jsd_score	{'experience': 0.035, 'type': 0.118, 'approach': 0.0, 'amount': 0.141, 'see': 0.073, 'continue': 0.115, 'eye': 0.124, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.1
+accuracy	0.5
+jsd_score	{'experience': 0.063, 'type': 0.207, 'approach': 0.101, 'amount': 0.36, 'see': 0.013, 'continue': 0.054, 'eye': 0.078, 'plant': 0.051}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.2
+accuracy	0.5
+jsd_score	{'experience': 0.063, 'type': 0.207, 'approach': 0.101, 'amount': 0.381, 'see': 0.003, 'continue': 0.006, 'eye': 0.134, 'plant': 0.01}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.3
+accuracy	0.5
+jsd_score	{'experience': 0.043, 'type': 0.207, 'approach': 0.101, 'amount': 0.346, 'see': 0.003, 'continue': 0.001, 'eye': 0.056, 'plant': 0.116}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.4
+accuracy	0.5
+jsd_score	{'experience': 0.034, 'type': 0.119, 'approach': 0.101, 'amount': 0.357, 'see': 0.0, 'continue': 0.001, 'eye': 0.02, 'plant': 0.038}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.5
+accuracy	0.5
+jsd_score	{'experience': 0.034, 'type': 0.119, 'approach': 0.101, 'amount': 0.365, 'see': 0.0, 'continue': 0.009, 'eye': 0.074, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.6
+accuracy	0.5
+jsd_score	{'experience': 0.034, 'type': 0.119, 'approach': 0.101, 'amount': 0.388, 'see': 0.0, 'continue': 0.0, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english2.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.7
+accuracy	0.5
+jsd_score	{'experience': 0.034, 'type': 0.119, 'approach': 0.101, 'amount': 0.376, 'see': 0.0, 'continue': 0.0, 'eye': 0.0, 'plant': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.1
+accuracy	0.5
+jsd_score	{'sit': 0.059, 'determine': 0.208, 'drop': 0.075, 'report': 0.17, 'become': 0.064, 'read': 0.082, 'stop': 0.331, 'boy': 0.102}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.2
+accuracy	0.5
+jsd_score	{'sit': 0.056, 'determine': 0.034, 'drop': 0.17, 'report': 0.118, 'become': 0.064, 'read': 0.055, 'stop': 0.313, 'boy': 0.105}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.3
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.042, 'drop': 0.08, 'report': 0.091, 'become': 0.061, 'read': 0.082, 'stop': 0.316, 'boy': 0.087}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.4
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.034, 'drop': 0.08, 'report': 0.081, 'become': 0.064, 'read': 0.068, 'stop': 0.316, 'boy': 0.115}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.5
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.034, 'drop': 0.08, 'report': 0.075, 'become': 0.061, 'read': 0.068, 'stop': 0.288, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.6
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.0, 'drop': 0.08, 'report': 0.0, 'become': 0.064, 'read': 0.082, 'stop': 0.0, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.7
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.0, 'drop': 0.08, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.8
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.0, 'drop': 0.08, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.9
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.0, 'drop': 0.08, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	2.0
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.0, 'drop': 0.08, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	2.5
+Number of samples	2
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.168, 'drop': 0.0, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	3.0
+Number of samples	2
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.185, 'drop': 0.0, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	3.5
+Number of samples	2
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.186, 'drop': 0.0, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.092}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	4.0
+Number of samples	2
+accuracy	0.375
+jsd_score	{'sit': 0.029, 'determine': 0.182, 'drop': 0.0, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.13}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	4.5
+Number of samples	2
+accuracy	0.375
+jsd_score	{'sit': 0.076, 'determine': 0.182, 'drop': 0.0, 'report': 0.116, 'become': 0.0, 'read': 0.0, 'stop': 0.094, 'boy': 0.16}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	2
+accuracy	0.5
+jsd_score	{'sit': 0.142, 'determine': 0.173, 'drop': 0.0, 'report': 0.165, 'become': 0.003, 'read': 0.1, 'stop': 0.15, 'boy': 0.163}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	2.5
+Number of samples	3
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.0, 'drop': 0.0, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	3.0
+Number of samples	3
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.117, 'drop': 0.0, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	3.5
+Number of samples	3
+accuracy	0.5
+jsd_score	{'sit': 0.0, 'determine': 0.122, 'drop': 0.0, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	4.0
+Number of samples	3
+accuracy	0.375
+jsd_score	{'sit': 0.0, 'determine': 0.062, 'drop': 0.0, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	4.5
+Number of samples	3
+accuracy	0.375
+jsd_score	{'sit': 0.07, 'determine': 0.062, 'drop': 0.0, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.0, 'boy': 0.0}
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	3
+accuracy	0.5
+jsd_score	{'sit': 0.07, 'determine': 0.027, 'drop': 0.0, 'report': 0.0, 'become': 0.0, 'read': 0.0, 'stop': 0.15, 'boy': 0.034}
