@@ -1,0 +1,222 @@
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	KMEANS
+k value for get_k	1.1
+accuracy	0.6521739130434783
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.558, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.284, 'concido': nan, 'dico': 0.214, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.629, 'latus': 0.261, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 0.0, 'pecus': 0.451, 'penitus': nan, 'praedico': 0.598, 'promptus': 0.437, 'senectus': 1.0, 'truncus': nan, 'verum': 0.655, 'Brutus': 0.647, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.479, 'accido': 0.652, 'adeo': 0.617, 'adversus': 0.381, 'amicus': 0.492, 'centurio': 0.741, 'ceterum': 0.152, 'comparo': 0.334, 'edo': 0.479, 'fides': 0.449, 'foedus': 0.756, 'foris': 0.816, 'frons': 0.286, 'illic': 1.0, 'incido': 1.0, 'lego': 0.375, 'levis': 0.339, 'liber': 0.17, 'litus': 0.144, 'malus': 0.174, 'mora': 0.342, 'ne': 0.143, 'occido': 0.26, 'os': 0.168, 'pario': 0.41, 'paro': 0.097, 'partus': 0.259, 'populus': 0.144, 'quam': 0.159, 'quis': 0.113, 'sero': 0.652, 'totus': 0.201, 'utique': 0.797, 'versus': 0.435, 'volo': 0.226}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	KMEANS
+k value for get_k	1.2
+accuracy	0.6811594202898551
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.558, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.284, 'concido': nan, 'dico': 0.195, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.629, 'latus': 0.261, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 1.0, 'pecus': 0.451, 'penitus': nan, 'praedico': 0.598, 'promptus': 0.437, 'senectus': 0.629, 'truncus': nan, 'verum': 0.655, 'Brutus': 0.647, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.479, 'accido': 0.652, 'adeo': 0.617, 'adversus': 0.381, 'amicus': 0.492, 'centurio': 0.741, 'ceterum': 0.152, 'comparo': 0.334, 'edo': 0.479, 'fides': 0.449, 'foedus': 0.756, 'foris': 0.816, 'frons': 0.286, 'illic': 1.0, 'incido': 1.0, 'lego': 0.375, 'levis': 0.256, 'liber': 0.17, 'litus': 0.144, 'malus': 0.174, 'mora': 0.342, 'ne': 0.144, 'occido': 0.26, 'os': 0.168, 'pario': 0.194, 'paro': 0.097, 'partus': 0.259, 'populus': 0.132, 'quam': 0.169, 'quis': 0.123, 'sero': 0.652, 'totus': 0.138, 'utique': 0.797, 'versus': 0.192, 'volo': 0.192}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	KMEANS
+k value for get_k	1.3
+accuracy	0.6811594202898551
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.558, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.284, 'concido': nan, 'dico': 0.239, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.629, 'latus': 0.261, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 1.0, 'pecus': 0.451, 'penitus': nan, 'praedico': 0.598, 'promptus': 0.437, 'senectus': 0.629, 'truncus': nan, 'verum': 0.655, 'Brutus': 0.647, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.479, 'accido': 0.652, 'adeo': 0.617, 'adversus': 0.381, 'amicus': 0.492, 'centurio': 0.741, 'ceterum': 0.152, 'comparo': 0.334, 'edo': 0.479, 'fides': 0.438, 'foedus': 0.756, 'foris': 0.816, 'frons': 0.286, 'illic': 1.0, 'incido': 1.0, 'lego': 0.375, 'levis': 0.256, 'liber': 0.17, 'litus': 0.144, 'malus': 0.174, 'mora': 0.342, 'ne': 0.129, 'occido': 0.26, 'os': 0.168, 'pario': 0.194, 'paro': 0.097, 'partus': 0.259, 'populus': 0.132, 'quam': 0.148, 'quis': 0.114, 'sero': 0.783, 'totus': 0.139, 'utique': 0.797, 'versus': 0.192, 'volo': 0.195}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	KMEANS
+k value for get_k	1.4
+accuracy	0.6956521739130435
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.558, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.284, 'concido': nan, 'dico': 0.191, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.629, 'latus': 0.261, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 1.0, 'pecus': 0.451, 'penitus': nan, 'praedico': 0.598, 'promptus': 0.437, 'senectus': 0.629, 'truncus': nan, 'verum': 0.655, 'Brutus': 0.647, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.479, 'accido': 0.652, 'adeo': 0.617, 'adversus': 0.376, 'amicus': 0.492, 'centurio': 0.741, 'ceterum': 0.152, 'comparo': 0.334, 'edo': 0.479, 'fides': 0.471, 'foedus': 0.756, 'foris': 0.0, 'frons': 0.286, 'illic': 1.0, 'incido': 0.678, 'lego': 0.375, 'levis': 0.256, 'liber': 0.17, 'litus': 0.144, 'malus': 0.102, 'mora': 0.342, 'ne': 0.119, 'occido': 0.26, 'os': 0.168, 'pario': 0.194, 'paro': 0.097, 'partus': 0.259, 'populus': 0.177, 'quam': 0.148, 'quis': 0.143, 'sero': 0.652, 'totus': 0.139, 'utique': 0.797, 'versus': 0.192, 'volo': 0.186}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	KMEANS
+k value for get_k	1.5
+accuracy	0.7246376811594203
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.558, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.005, 'concido': nan, 'dico': 0.221, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.629, 'latus': 0.261, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 1.0, 'pecus': 0.451, 'penitus': nan, 'praedico': 0.598, 'promptus': 0.437, 'senectus': 0.629, 'truncus': nan, 'verum': 0.655, 'Brutus': 0.647, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.479, 'accido': 0.652, 'adeo': 0.617, 'adversus': 0.376, 'amicus': 0.492, 'centurio': 0.741, 'ceterum': 0.152, 'comparo': 0.334, 'edo': 0.479, 'fides': 0.449, 'foedus': 0.756, 'foris': 0.0, 'frons': 0.286, 'illic': 1.0, 'incido': 0.678, 'lego': 0.375, 'levis': 0.256, 'liber': 0.17, 'litus': 0.144, 'malus': 0.102, 'mora': 0.342, 'ne': 0.143, 'occido': 0.26, 'os': 0.168, 'pario': 0.132, 'paro': 0.097, 'partus': 0.037, 'populus': 0.144, 'quam': 0.144, 'quis': 0.112, 'sero': 0.652, 'totus': 0.139, 'utique': 0.797, 'versus': 0.192, 'volo': 0.226}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	KMEANS
+k value for get_k	1.6
+accuracy	0.7246376811594203
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.558, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.005, 'concido': nan, 'dico': 0.152, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.629, 'latus': 0.261, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 1.0, 'pecus': 0.451, 'penitus': nan, 'praedico': 0.598, 'promptus': 0.437, 'senectus': 0.629, 'truncus': nan, 'verum': 0.655, 'Brutus': 0.256, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.479, 'accido': 0.652, 'adeo': 0.617, 'adversus': 0.376, 'amicus': 0.492, 'centurio': 0.741, 'ceterum': 0.152, 'comparo': 0.334, 'edo': 0.479, 'fides': 0.449, 'foedus': 0.756, 'foris': 0.0, 'frons': 0.286, 'illic': 1.0, 'incido': 0.678, 'lego': 0.338, 'levis': 0.17, 'liber': 0.108, 'litus': 0.144, 'malus': 0.102, 'mora': 0.342, 'ne': 0.119, 'occido': 0.26, 'os': 0.168, 'pario': 0.132, 'paro': 0.097, 'partus': 0.037, 'populus': 0.167, 'quam': 0.148, 'quis': 0.145, 'sero': 0.783, 'totus': 0.139, 'utique': 0.797, 'versus': 0.192, 'volo': 0.186}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	KMEANS
+k value for get_k	1.7
+accuracy	0.7101449275362319
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.558, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.005, 'concido': nan, 'dico': 0.161, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.629, 'latus': 0.261, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 1.0, 'pecus': 0.204, 'penitus': nan, 'praedico': 0.839, 'promptus': 0.437, 'senectus': 0.629, 'truncus': nan, 'verum': 0.655, 'Brutus': 0.256, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.479, 'accido': 0.652, 'adeo': 0.617, 'adversus': 0.376, 'amicus': 0.492, 'centurio': 0.741, 'ceterum': 0.152, 'comparo': 0.334, 'edo': 0.479, 'fides': 0.438, 'foedus': 0.756, 'foris': 0.0, 'frons': 0.286, 'illic': 1.0, 'incido': 0.678, 'lego': 0.338, 'levis': 0.256, 'liber': 0.17, 'litus': 0.144, 'malus': 0.102, 'mora': 0.342, 'ne': 0.143, 'occido': 0.259, 'os': 0.168, 'pario': 0.132, 'paro': 0.097, 'partus': 0.037, 'populus': 0.121, 'quam': 0.134, 'quis': 0.116, 'sero': 0.783, 'totus': 0.139, 'utique': 0.797, 'versus': 0.192, 'volo': 0.192}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	KMEANS
+k value for get_k	1.8
+accuracy	0.7101449275362319
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.558, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.005, 'concido': nan, 'dico': 0.16, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.629, 'latus': 0.261, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 1.0, 'pecus': 0.204, 'penitus': nan, 'praedico': 0.839, 'promptus': 0.437, 'senectus': 0.629, 'truncus': nan, 'verum': 0.655, 'Brutus': 0.256, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.479, 'accido': 0.652, 'adeo': 0.617, 'adversus': 0.376, 'amicus': 0.492, 'centurio': 0.741, 'ceterum': 0.152, 'comparo': 0.211, 'edo': 0.479, 'fides': 0.438, 'foedus': 0.756, 'foris': 0.0, 'frons': 0.286, 'illic': 1.0, 'incido': 0.678, 'lego': 0.338, 'levis': 0.256, 'liber': 0.17, 'litus': 0.144, 'malus': 0.102, 'mora': 0.342, 'ne': 0.143, 'occido': 0.259, 'os': 0.168, 'pario': 0.132, 'paro': 0.133, 'partus': 0.037, 'populus': 0.144, 'quam': 0.132, 'quis': 0.096, 'sero': 0.783, 'totus': 0.139, 'utique': 0.797, 'versus': 0.192, 'volo': 0.226}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	KMEANS
+k value for get_k	1.9
+accuracy	0.7246376811594203
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.558, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.005, 'concido': nan, 'dico': 0.187, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.629, 'latus': 0.261, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 1.0, 'pecus': 0.204, 'penitus': nan, 'praedico': 0.839, 'promptus': 0.298, 'senectus': 0.629, 'truncus': nan, 'verum': 0.46, 'Brutus': 0.256, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.479, 'accido': 0.652, 'adeo': 0.617, 'adversus': 0.376, 'amicus': 0.32, 'centurio': 0.741, 'ceterum': 0.152, 'comparo': 0.334, 'edo': 0.479, 'fides': 0.449, 'foedus': 0.756, 'foris': 0.0, 'frons': 0.286, 'illic': 1.0, 'incido': 0.678, 'lego': 0.338, 'levis': 0.256, 'liber': 0.17, 'litus': 0.144, 'malus': 0.102, 'mora': 0.342, 'ne': 0.086, 'occido': 0.26, 'os': 0.168, 'pario': 0.132, 'paro': 0.172, 'partus': 0.037, 'populus': 0.121, 'quam': 0.108, 'quis': 0.075, 'sero': 0.652, 'totus': 0.124, 'utique': 0.797, 'versus': 0.192, 'volo': 0.195}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	DBSCAN
+epsilon	2.5
+Number of samples	2
+accuracy	0.5362318840579711
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.741, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.043, 'concido': nan, 'dico': 0.08, 'educo': 0.339, 'falso': nan, 'fundo': 0.678, 'indico': 0.663, 'latus': 0.217, 'levo': 0.085, 'limus': nan, 'palma': nan, 'patrius': 0.0, 'pecus': 0.557, 'penitus': nan, 'praedico': 0.671, 'promptus': 0.437, 'senectus': 0.781, 'truncus': nan, 'verum': 0.729, 'Brutus': 0.741, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.54, 'accido': 0.783, 'adeo': 0.085, 'adversus': 0.259, 'amicus': 0.273, 'centurio': 0.558, 'ceterum': 0.028, 'comparo': 0.065, 'edo': 0.577, 'fides': 0.333, 'foedus': 0.82, 'foris': 0.816, 'frons': 0.685, 'illic': 0.558, 'incido': 0.783, 'lego': 0.256, 'levis': 0.376, 'liber': 0.328, 'litus': 0.678, 'malus': 0.182, 'mora': 0.355, 'ne': 0.07, 'occido': 0.228, 'os': 0.118, 'pario': 0.397, 'paro': 0.274, 'partus': 0.11, 'populus': 0.167, 'quam': 0.037, 'quis': 0.013, 'sero': 0.714, 'totus': 0.156, 'utique': 0.706, 'versus': 0.491, 'volo': 0.081}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	DBSCAN
+epsilon	3.0
+Number of samples	2
+accuracy	0.5362318840579711
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.741, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.043, 'concido': nan, 'dico': 0.056, 'educo': 0.339, 'falso': nan, 'fundo': 0.678, 'indico': 0.663, 'latus': 0.217, 'levo': 0.085, 'limus': nan, 'palma': nan, 'patrius': 0.0, 'pecus': 0.557, 'penitus': nan, 'praedico': 0.627, 'promptus': 0.437, 'senectus': 0.781, 'truncus': nan, 'verum': 0.634, 'Brutus': 0.741, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.54, 'accido': 0.652, 'adeo': 0.085, 'adversus': 0.164, 'amicus': 0.47, 'centurio': 0.558, 'ceterum': 0.028, 'comparo': 0.065, 'edo': 0.577, 'fides': 0.214, 'foedus': 0.82, 'foris': 0.816, 'frons': 0.685, 'illic': 0.741, 'incido': 0.844, 'lego': 0.256, 'levis': 0.376, 'liber': 0.184, 'litus': 0.678, 'malus': 0.0, 'mora': 0.355, 'ne': 0.07, 'occido': 0.228, 'os': 0.118, 'pario': 0.336, 'paro': 0.192, 'partus': 0.11, 'populus': 0.213, 'quam': 0.067, 'quis': 0.052, 'sero': 0.652, 'totus': 0.113, 'utique': 0.867, 'versus': 0.487, 'volo': 0.0}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	DBSCAN
+epsilon	3.5
+Number of samples	2
+accuracy	0.5942028985507246
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.371, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.043, 'concido': nan, 'dico': 0.056, 'educo': 0.339, 'falso': nan, 'fundo': 0.678, 'indico': 0.663, 'latus': 0.217, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 0.0, 'pecus': 0.4, 'penitus': nan, 'praedico': 0.58, 'promptus': 0.437, 'senectus': 0.781, 'truncus': nan, 'verum': 0.634, 'Brutus': 0.468, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.54, 'accido': 0.652, 'adeo': 0.367, 'adversus': 0.164, 'amicus': 0.371, 'centurio': 0.558, 'ceterum': 0.028, 'comparo': 0.065, 'edo': 0.479, 'fides': 0.214, 'foedus': 0.756, 'foris': 0.816, 'frons': 0.437, 'illic': 1.0, 'incido': 0.844, 'lego': 0.256, 'levis': 0.376, 'liber': 0.154, 'litus': 0.437, 'malus': 0.0, 'mora': 0.342, 'ne': 0.07, 'occido': 0.228, 'os': 0.241, 'pario': 0.375, 'paro': 0.0, 'partus': 0.11, 'populus': 0.055, 'quam': 0.0, 'quis': 0.013, 'sero': 0.652, 'totus': 0.089, 'utique': 0.663, 'versus': 0.0, 'volo': 0.0}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	DBSCAN
+epsilon	4.0
+Number of samples	2
+accuracy	0.5797101449275363
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.0, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.043, 'concido': nan, 'dico': 0.056, 'educo': 0.085, 'falso': nan, 'fundo': 0.678, 'indico': 0.663, 'latus': 0.0, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 1.0, 'pecus': 0.0, 'penitus': nan, 'praedico': 0.371, 'promptus': 0.437, 'senectus': 0.781, 'truncus': nan, 'verum': 0.634, 'Brutus': 0.468, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.437, 'accido': 0.652, 'adeo': 0.367, 'adversus': 0.164, 'amicus': 0.371, 'centurio': 0.558, 'ceterum': 0.018, 'comparo': 0.065, 'edo': 0.479, 'fides': 0.214, 'foedus': 0.756, 'foris': 0.816, 'frons': 0.0, 'illic': 1.0, 'incido': 0.844, 'lego': 0.256, 'levis': 0.376, 'liber': 0.154, 'litus': 0.0, 'malus': 0.0, 'mora': 0.342, 'ne': 0.07, 'occido': 0.217, 'os': 0.241, 'pario': 0.409, 'paro': 0.0, 'partus': 0.11, 'populus': 0.0, 'quam': 0.0, 'quis': 0.0, 'sero': 0.652, 'totus': 0.089, 'utique': 0.663, 'versus': 0.0, 'volo': 0.0}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	DBSCAN
+epsilon	4.5
+Number of samples	2
+accuracy	0.5797101449275363
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.0, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.043, 'concido': nan, 'dico': 0.097, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.663, 'latus': 0.0, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 1.0, 'pecus': 0.0, 'penitus': nan, 'praedico': 0.371, 'promptus': 0.437, 'senectus': 0.781, 'truncus': nan, 'verum': 0.634, 'Brutus': 0.468, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.437, 'accido': 0.652, 'adeo': 0.231, 'adversus': 0.164, 'amicus': 0.371, 'centurio': 0.707, 'ceterum': 0.018, 'comparo': 0.0, 'edo': 0.437, 'fides': 0.214, 'foedus': 0.585, 'foris': 0.816, 'frons': 0.0, 'illic': 1.0, 'incido': 0.844, 'lego': 0.256, 'levis': 0.199, 'liber': 0.0, 'litus': 0.0, 'malus': 0.0, 'mora': 0.342, 'ne': 0.07, 'occido': 0.217, 'os': 0.241, 'pario': 0.409, 'paro': 0.0, 'partus': 0.037, 'populus': 0.0, 'quam': 0.0, 'quis': 0.0, 'sero': 0.652, 'totus': 0.089, 'utique': 0.663, 'versus': 0.0, 'volo': 0.0}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	2
+accuracy	0.5942028985507246
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.371, 'Piso': 0.0, 'Stator': nan, 'Torquatus': 0.558, 'assiduus': nan, 'capio': 0.043, 'concido': nan, 'dico': 0.056, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.663, 'latus': 0.0, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 1.0, 'pecus': 0.0, 'penitus': nan, 'praedico': 0.371, 'promptus': 0.437, 'senectus': 1.0, 'truncus': nan, 'verum': 0.634, 'Brutus': 0.468, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.185, 'accido': 0.652, 'adeo': 0.228, 'adversus': 0.164, 'amicus': 0.0, 'centurio': 0.707, 'ceterum': 0.018, 'comparo': 0.0, 'edo': 0.437, 'fides': 0.214, 'foedus': 0.475, 'foris': 0.816, 'frons': 0.0, 'illic': 1.0, 'incido': 0.678, 'lego': 0.256, 'levis': 0.199, 'liber': 0.0, 'litus': 0.0, 'malus': 0.0, 'mora': 0.342, 'ne': 0.07, 'occido': 0.217, 'os': 0.241, 'pario': 0.191, 'paro': 0.0, 'partus': 0.037, 'populus': 0.0, 'quam': 0.0, 'quis': 0.0, 'sero': 0.652, 'totus': 0.089, 'utique': 0.663, 'versus': 0.0, 'volo': 0.0}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	DBSCAN
+epsilon	2.5
+Number of samples	3
+accuracy	0.6231884057971014
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.144, 'Piso': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'assiduus': nan, 'capio': 0.043, 'concido': nan, 'dico': 0.054, 'educo': 0.339, 'falso': nan, 'fundo': 0.0, 'indico': 0.663, 'latus': 0.323, 'levo': 0.085, 'limus': nan, 'palma': nan, 'patrius': 0.0, 'pecus': 0.044, 'penitus': nan, 'praedico': 0.671, 'promptus': 0.437, 'senectus': 0.0, 'truncus': nan, 'verum': 0.488, 'Brutus': 0.741, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.54, 'accido': 0.361, 'adeo': 0.051, 'adversus': 0.181, 'amicus': 0.061, 'centurio': 0.0, 'ceterum': 0.028, 'comparo': 0.065, 'edo': 0.0, 'fides': 0.061, 'foedus': 0.82, 'foris': 0.0, 'frons': 0.685, 'illic': 0.0, 'incido': 0.741, 'lego': 0.256, 'levis': 0.154, 'liber': 0.192, 'litus': 0.678, 'malus': 0.182, 'mora': 0.191, 'ne': 0.141, 'occido': 0.17, 'os': 0.118, 'pario': 0.356, 'paro': 0.274, 'partus': 0.078, 'populus': 0.232, 'quam': 0.083, 'quis': 0.002, 'sero': 0.558, 'totus': 0.156, 'utique': 0.56, 'versus': 0.491, 'volo': 0.0}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	DBSCAN
+epsilon	3.0
+Number of samples	3
+accuracy	0.5942028985507246
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.144, 'Piso': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'assiduus': nan, 'capio': 0.043, 'concido': nan, 'dico': 0.054, 'educo': 0.339, 'falso': nan, 'fundo': 0.0, 'indico': 0.663, 'latus': 0.217, 'levo': 0.085, 'limus': nan, 'palma': nan, 'patrius': 0.0, 'pecus': 0.044, 'penitus': nan, 'praedico': 0.627, 'promptus': 0.437, 'senectus': 0.0, 'truncus': nan, 'verum': 0.634, 'Brutus': 0.741, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.54, 'accido': 0.144, 'adeo': 0.051, 'adversus': 0.164, 'amicus': 0.47, 'centurio': 0.0, 'ceterum': 0.028, 'comparo': 0.065, 'edo': 0.0, 'fides': 0.214, 'foedus': 0.82, 'foris': 0.0, 'frons': 0.685, 'illic': 0.741, 'incido': 0.741, 'lego': 0.256, 'levis': 0.154, 'liber': 0.184, 'litus': 0.678, 'malus': 0.0, 'mora': 0.191, 'ne': 0.07, 'occido': 0.17, 'os': 0.118, 'pario': 0.286, 'paro': 0.192, 'partus': 0.078, 'populus': 0.055, 'quam': 0.003, 'quis': 0.002, 'sero': 0.144, 'totus': 0.113, 'utique': 0.867, 'versus': 0.487, 'volo': 0.081}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	DBSCAN
+epsilon	3.5
+Number of samples	3
+accuracy	0.6376811594202898
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.144, 'Piso': 0.371, 'Stator': nan, 'Torquatus': 0.0, 'assiduus': nan, 'capio': 0.043, 'concido': nan, 'dico': 0.056, 'educo': 0.339, 'falso': nan, 'fundo': 0.0, 'indico': 0.663, 'latus': 0.217, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 0.0, 'pecus': 0.4, 'penitus': nan, 'praedico': 0.58, 'promptus': 0.437, 'senectus': 0.0, 'truncus': nan, 'verum': 0.634, 'Brutus': 0.468, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.54, 'accido': 0.144, 'adeo': 0.051, 'adversus': 0.164, 'amicus': 0.371, 'centurio': 0.0, 'ceterum': 0.028, 'comparo': 0.065, 'edo': 0.479, 'fides': 0.214, 'foedus': 0.756, 'foris': 0.0, 'frons': 0.437, 'illic': 1.0, 'incido': 0.741, 'lego': 0.256, 'levis': 0.154, 'liber': 0.154, 'litus': 0.437, 'malus': 0.0, 'mora': 0.342, 'ne': 0.07, 'occido': 0.17, 'os': 0.241, 'pario': 0.375, 'paro': 0.0, 'partus': 0.11, 'populus': 0.055, 'quam': 0.0, 'quis': 0.013, 'sero': 0.144, 'totus': 0.089, 'utique': 0.663, 'versus': 0.0, 'volo': 0.0}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	DBSCAN
+epsilon	4.0
+Number of samples	3
+accuracy	0.6086956521739131
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.144, 'Piso': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'assiduus': nan, 'capio': 0.043, 'concido': nan, 'dico': 0.056, 'educo': 0.085, 'falso': nan, 'fundo': 0.0, 'indico': 0.663, 'latus': 0.0, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'praedico': 0.371, 'promptus': 0.437, 'senectus': 0.781, 'truncus': nan, 'verum': 0.634, 'Brutus': 0.468, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.437, 'accido': 0.144, 'adeo': 0.051, 'adversus': 0.164, 'amicus': 0.371, 'centurio': 0.0, 'ceterum': 0.018, 'comparo': 0.065, 'edo': 0.479, 'fides': 0.214, 'foedus': 0.756, 'foris': 0.0, 'frons': 0.0, 'illic': 1.0, 'incido': 0.741, 'lego': 0.256, 'levis': 0.154, 'liber': 0.0, 'litus': 0.0, 'malus': 0.0, 'mora': 0.342, 'ne': 0.07, 'occido': 0.217, 'os': 0.241, 'pario': 0.409, 'paro': 0.0, 'partus': 0.11, 'populus': 0.0, 'quam': 0.0, 'quis': 0.0, 'sero': 0.144, 'totus': 0.089, 'utique': 0.663, 'versus': 0.0, 'volo': 0.0}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	DBSCAN
+epsilon	4.5
+Number of samples	3
+accuracy	0.5942028985507246
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.144, 'Piso': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'assiduus': nan, 'capio': 0.043, 'concido': nan, 'dico': 0.056, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.663, 'latus': 0.0, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'praedico': 0.371, 'promptus': 0.437, 'senectus': 0.781, 'truncus': nan, 'verum': 0.634, 'Brutus': 0.468, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.437, 'accido': 0.144, 'adeo': 0.144, 'adversus': 0.164, 'amicus': 0.371, 'centurio': 0.0, 'ceterum': 0.018, 'comparo': 0.0, 'edo': 0.437, 'fides': 0.214, 'foedus': 0.585, 'foris': 0.0, 'frons': 0.0, 'illic': 1.0, 'incido': 0.741, 'lego': 0.256, 'levis': 0.199, 'liber': 0.0, 'litus': 0.0, 'malus': 0.0, 'mora': 0.342, 'ne': 0.07, 'occido': 0.217, 'os': 0.241, 'pario': 0.409, 'paro': 0.0, 'partus': 0.037, 'populus': 0.055, 'quam': 0.0, 'quis': 0.031, 'sero': 0.144, 'totus': 0.089, 'utique': 0.663, 'versus': 0.0, 'volo': 0.0}
+
+RESULTS
+Language	latin
+Target file	latin.txt
+k	0
+n	1.0
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	3
+accuracy	0.6086956521739131
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.144, 'Piso': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'assiduus': nan, 'capio': 0.043, 'concido': nan, 'dico': 0.056, 'educo': 0.085, 'falso': nan, 'fundo': 0.437, 'indico': 0.663, 'latus': 0.0, 'levo': 0.486, 'limus': nan, 'palma': nan, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'praedico': 0.371, 'promptus': 0.437, 'senectus': 1.0, 'truncus': nan, 'verum': 0.634, 'Brutus': 0.468, 'Civilis': 0.0, 'Crassus': 0.678, 'Scipio': 0.185, 'accido': 0.144, 'adeo': 0.228, 'adversus': 0.164, 'amicus': 0.0, 'centurio': 0.0, 'ceterum': 0.018, 'comparo': 0.0, 'edo': 0.437, 'fides': 0.214, 'foedus': 0.475, 'foris': 0.0, 'frons': 0.0, 'illic': 1.0, 'incido': 0.678, 'lego': 0.256, 'levis': 0.199, 'liber': 0.0, 'litus': 0.0, 'malus': 0.0, 'mora': 0.342, 'ne': 0.07, 'occido': 0.217, 'os': 0.241, 'pario': 0.191, 'paro': 0.0, 'partus': 0.037, 'populus': 0.0, 'quam': 0.0, 'quis': 0.0, 'sero': 0.144, 'totus': 0.089, 'utique': 0.663, 'versus': 0.0, 'volo': 0.0}
