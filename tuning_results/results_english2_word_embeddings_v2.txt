@@ -1,0 +1,232 @@
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	KMEANS
+k value for get_k	1.1
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.053, 'type': 0.199, 'approach': 0.137, 'amount': 0.374, 'see': 0.012, 'continue': 0.044, 'eye': 0.1, 'plant': 0.021}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	KMEANS
+k value for get_k	1.2
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.063, 'type': 0.199, 'approach': 0.101, 'amount': 0.37, 'see': 0.003, 'continue': 0.001, 'eye': 0.115, 'plant': 0.036}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	KMEANS
+k value for get_k	1.3
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.064, 'type': 0.199, 'approach': 0.101, 'amount': 0.39, 'see': 0.003, 'continue': 0.002, 'eye': 0.05, 'plant': 0.14}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	KMEANS
+k value for get_k	1.4
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.034, 'type': 0.119, 'approach': 0.101, 'amount': 0.365, 'see': 0.0, 'continue': 0.006, 'eye': 0.056, 'plant': 0.031}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	KMEANS
+k value for get_k	1.5
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.034, 'type': 0.119, 'approach': 0.101, 'amount': 0.381, 'see': 0.0, 'continue': 0.006, 'eye': 0.074, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	KMEANS
+k value for get_k	1.6
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.034, 'type': 0.119, 'approach': 0.101, 'amount': 0.386, 'see': 0.0, 'continue': 0.0, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	KMEANS
+k value for get_k	1.7
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.034, 'type': 0.119, 'approach': 0.101, 'amount': 0.398, 'see': 0.0, 'continue': 0.0, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	KMEANS
+k value for get_k	1.8
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.0, 'type': 0.119, 'approach': 0.101, 'amount': 0.0, 'see': 0.0, 'continue': 0.0, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	KMEANS
+k value for get_k	1.9
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.0, 'type': 0.119, 'approach': 0.101, 'amount': 0.0, 'see': 0.0, 'continue': 0.0, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	KMEANS
+k value for get_k	2.0
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.0, 'type': 0.119, 'approach': 0.101, 'amount': 0.0, 'see': 0.0, 'continue': 0.0, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	DBSCAN
+epsilon	2.5
+Number of samples	2
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.155, 'see': 0.073, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	DBSCAN
+epsilon	3.0
+Number of samples	2
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.193, 'see': 0.073, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	DBSCAN
+epsilon	3.5
+Number of samples	2
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.193, 'see': 0.071, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	DBSCAN
+epsilon	4.0
+Number of samples	2
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.0, 'type': 0.097, 'approach': 0.0, 'amount': 0.193, 'see': 0.072, 'continue': 0.115, 'eye': 0.071, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	DBSCAN
+epsilon	4.5
+Number of samples	2
+accuracy	0.375
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '1', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.004, 'type': 0.137, 'approach': 0.0, 'amount': 0.193, 'see': 0.106, 'continue': 0.115, 'eye': 0.071, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	2
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '1', 'continue': '0', 'eye': '1', 'plant': '0'}
+jsd_score	{'experience': 0.036, 'type': 0.153, 'approach': 0.0, 'amount': 0.234, 'see': 0.113, 'continue': 0.158, 'eye': 0.161, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	DBSCAN
+epsilon	2.5
+Number of samples	3
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.0, 'see': 0.059, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	DBSCAN
+epsilon	3.0
+Number of samples	3
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.0, 'see': 0.059, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	DBSCAN
+epsilon	3.5
+Number of samples	3
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.0, 'see': 0.056, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	DBSCAN
+epsilon	4.0
+Number of samples	3
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '0', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.0, 'see': 0.058, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	DBSCAN
+epsilon	4.5
+Number of samples	3
+accuracy	0.375
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '1', 'continue': '0', 'eye': '0', 'plant': '0'}
+jsd_score	{'experience': 0.0, 'type': 0.0, 'approach': 0.0, 'amount': 0.0, 'see': 0.074, 'continue': 0.115, 'eye': 0.0, 'plant': 0.0}
+
+Language	english
+Target file	english2.txt
+k	2
+n	5
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	3
+accuracy	0.5
+classification_score	{'experience': '0', 'type': '0', 'approach': '0', 'amount': '0', 'see': '1', 'continue': '0', 'eye': '1', 'plant': '0'}
+jsd_score	{'experience': 0.035, 'type': 0.118, 'approach': 0.0, 'amount': 0.141, 'see': 0.073, 'continue': 0.115, 'eye': 0.124, 'plant': 0.0}
