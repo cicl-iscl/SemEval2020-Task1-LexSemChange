@@ -1,6 +1,7 @@
 import numpy as np
 from collections import Counter
 from scipy.spatial import distance
+import math
 
 """
     Calculates the Jensen Shannon Distance between two 1-dim. probability arrays, examples:
@@ -77,13 +78,20 @@ def calculate_jsd(label_dict_corp1, label_dict_corp2, log_base=2.0):
         total_datapoints2 += value
 
     for key, value in labels1.items():
+        print("prob_array1[key] = value/total_datapoints1", prob_array1[key], " = ", value, "/", total_datapoints1)
         prob_array1[key] = value/total_datapoints1
 
     for k, v in labels2.items():
+        print("prob_array2[k] = v/total_datapoints2", prob_array2[k], " = ", v, "/", total_datapoints2)
         prob_array2[k] = v/total_datapoints2
 
 
+    print("prob_array1: ", prob_array1)
+    print("prob_array2: ", prob_array2)
     jsd = distance.jensenshannon(prob_array1, prob_array2, log_base)
+
+    if math.isnan(jsd):
+        jsd = 1
 
     return jsd
 
@@ -92,8 +100,14 @@ def calculate_jsd(label_dict_corp1, label_dict_corp2, log_base=2.0):
 if __name__ == '__main__':
 
     # possible to pass dict objects OR Counter objects
-    a1 = {0: 11, 1: 7}
-    a2 = {0: 10}
+    # careful: when the setting is e.g. like a1 = {0: 110} and a2 = {0: 10} (meaning both corpora have the word in the same
+    #          cluster and therefore the combined corpus has only one cluster for this word) the jsd score will be 0.0
+    #a1 = {0: 110, 1: 7}
+    #a2 = {0: 2}
+
+    a1 = {0: 110, 1: 7}
+    a2 = {}  # this results in JSD score 'nan' (not a number)
+
     #a1 = Counter({-1: 3409, 0: 2, 1: 2, 2: 2, 3: 2, 4: 2})
     #a2 = Counter({-1: 1839, 5: 3, 6: 7, 7: 2, 8: 3, 9: 2, 10: 2})
 
