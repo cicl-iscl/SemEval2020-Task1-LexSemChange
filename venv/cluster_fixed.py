@@ -3,6 +3,7 @@ import argparse
 import math
 import matplotlib.pyplot as plt
 import numpy as np
+import gzip
 from sklearn.metrics import accuracy_score
 import tensorflow as tf
 import torch
@@ -13,6 +14,7 @@ from collections import Counter
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from elmoformanylangs import Embedder
+from allennlp.modules.elmo import Elmo, batch_to_ids
 from sklearn.cluster import KMeans
 from silhouette_score import get_silhouette_scores, get_silhouette_score_with_plot
 np.set_printoptions(threshold=sys.maxsize)
@@ -32,12 +34,18 @@ def load_corpus(filename):
         :returns tokenized: a list of sentences, where each sentence is a list of words [["I", "eat", "apples"], ["she", "sleeps"]]
     """
     print(filename)
+    tokenized = []
+    """if '.gz' in filename:
+        with gzip.open(filename, 'r') as f:
+            for line in f:
+                tokenized.append(line.strip().split())
+    else:"""
     with open(filename, encoding="utf8") as f:
         content = f.readlines()
     tokenized = [line.strip().split() for line in content]
     return tokenized
 
-
+    """
 def load_model(lang):
     model_path = '../models/{}-model'.format(lang)
 
@@ -47,6 +55,23 @@ def load_model(lang):
         model = Embedder(model_path, batch_size=64)
 
     return model
+    """
+
+
+def load_model(lang, trained_on_own_corpora=True):
+    if trained_on_own_corpora:  # IF THE MODEL SHOULD BE THE ONE WE TRAINED
+        options_file = "../final_models_trained/{}_model/options.json".format(lang)
+        weight_file = "../final_models_trained/{}_model/weights.hdf5".format(lang)  # sys.argv[1]
+        model = Elmo(options_file, weight_file, 2, dropout=0)
+    else:
+        model_path = '../models/{}-model'.format(lang)
+        if lang == "english":
+            model = hub.Module("https://tfhub.dev/google/elmo/3", trainable=True)
+        else:
+            model = Embedder(model_path, batch_size=64)
+
+    return model
+
 
 def load_targets(filename):
     """
@@ -88,7 +113,7 @@ def collect_all_occurrences(corpus):
     """
     indices = {}
     print("_______________")
-    print(corpus[0])
+    #print(corpus[0])
     print("_______________")
     for i, sent in enumerate(corpus):
         for ind, word in enumerate(sent):
@@ -106,7 +131,7 @@ def collect_all_occurrences(corpus):
                 indices[word].append((i, idx))
             #print("index of current sentence: ", i)
             #print("index of ", word, " in ", sent, " is ", idx)
-    print(indices)
+    #print(indices)
     return indices
 
 
@@ -188,7 +213,7 @@ def calc_distance(x1, y1, a, b, c):
 
 
 
-def get_k(word, emb_single_word, range_upper_bound, kmk, embed_context = False):
+def get_k(word, emb_single_word, range_upper_bound, kmk, cluster_words = False):
     """
         Determine the optimal number of k for a single word.
         Creates an elbow plot, and automatically determines the bend in the plot.
@@ -204,12 +229,12 @@ def get_k(word, emb_single_word, range_upper_bound, kmk, embed_context = False):
     dist_points_from_cluster_center = []
 
     # reshape the array into 2d array (which is needed to fit the model)
-    if embed_context:
-        nsamples = len(emb_single_word)
-        print("nsamples in get_k for context vectors:", len(emb_single_word))
-    else:
+    if cluster_words:
         nsamples, _ = emb_single_word.shape
         print("n_samples if word embeddings, not context embeddings", nsamples)
+    else:
+        nsamples = len(emb_single_word)
+        print("nsamples in get_k for context vectors:", len(emb_single_word))
     #d2_emb_single_word = emb_single_word.reshape((nsamples, nx * ny))
 
     # in case there are less occurrences of the word in the corpus, e.g. Gott appears only 3 times in GER2 corpus:
@@ -220,8 +245,9 @@ def get_k(word, emb_single_word, range_upper_bound, kmk, embed_context = False):
 
     if (range_upper_bound > nsamples):
         range_upper_bound = nsamples + 1
+
     # create the actual range
-    K = range(1, range_upper_bound)
+    K = range(1, range_upper_bound) # TODO : adjust range K (from 2)
 
     print("looking for the best k...")
 
@@ -229,13 +255,13 @@ def get_k(word, emb_single_word, range_upper_bound, kmk, embed_context = False):
         k_model = KMeans(n_clusters=no_of_clusters)
         k_model.fit(emb_single_word)
         dist_points_from_cluster_center.append(k_model.inertia_)
-
+    # TODO: OUTCOMMENT TO GET K = 2
     # it is possible to only have one cluster, so we need a value for 0 as well. Default is to double the value for k=1
     print(type(1.2))
     print(type(kmk))
     distance_at_zero = dist_points_from_cluster_center[0] * kmk # get k=1 distance and multiply by the value given
     dist_points_from_cluster_center.insert(0, distance_at_zero)  # add it at the beginning of the list created above
-    K = range(0, range_upper_bound)  # adjust range K
+    K = range(0, range_upper_bound)  # TODO : adjust range K (from 2)
 
     # plot the elbow graph
     # plt.plot(K, dist_points_from_cluster_center)
@@ -251,7 +277,7 @@ def get_k(word, emb_single_word, range_upper_bound, kmk, embed_context = False):
     c2 = K[range_upper_bound - 1] * dist_points_from_cluster_center[0]
     c = c1 - c2
     distance_of_points_from_line = []
-    for k in range(0, range_upper_bound):
+    for k in range(0, range_upper_bound): # TODO : adjust range K (from 2)
         distance_of_points_from_line.append(calc_distance(K[k], dist_points_from_cluster_center[k], a, b, c))
 
     # plot the three lines: elbow, distance_of_points_from_line, and hypotenuse
@@ -278,11 +304,11 @@ def get_k(word, emb_single_word, range_upper_bound, kmk, embed_context = False):
         word:       the individual word that is investigated
 """
 
-def cluster(language, corpus_id, word, embeddings, kmk, save_to_file = False,  embed_context = False):
+def cluster(language, corpus_id, word, embeddings, kmk, save_to_file = False,  cluster_words = False):
 
     # 1. Cluster the data points of the single word of one corpus and get the optimal k
     # get the optimal k from the reduced embeddings, indicate the upper range bound of k (k = 11-1 --> k will be maximally 10)
-    optimal_k_corp_word = get_k(word + "_" + language + corpus_id, embeddings, 11, kmk, embed_context)
+    optimal_k_corp_word = get_k(word + "_" + language + corpus_id, embeddings, 11, kmk, cluster_words)
 
     """
     silhouette_scores = get_silhouette_scores(embeddings)
@@ -309,7 +335,7 @@ def cluster(language, corpus_id, word, embeddings, kmk, save_to_file = False,  e
 
     return labels_corp_word
 
-def get_sentence_embeddings(occurrences_of_all_words, all_sentences, elmo, word, corpus_id, language):
+def get_sentence_embeddings(occurrences_of_all_words, all_sentences, elmo, word, corpus_id, language, trained_on_own_corpora = True):
     """
         Get Elmo embeddings for a specific word.
 
@@ -326,21 +352,28 @@ def get_sentence_embeddings(occurrences_of_all_words, all_sentences, elmo, word,
     # 1. Get a list of sentences that contain the target word
     sentences_with_word = [all_sentences[tup[0]] for tup in occurrences_of_all_words[word]]
     print(len(sentences_with_word))
-
-    # 2. Get the embeddings for all the sentences that contain the target word
-    if language == "english":
-        sentence_embeddings = elmo(sentences_with_word, signature="default", as_dict=True)["elmo"]
-        with tf.Session() as sess:
-            sess.run(tf.global_variables_initializer())
-            sentence_embeddings = sess.run(sentence_embeddings)
-
-        print("PRINTING SHAPE OF ENGLISH SENTENCE EMBEDDINGS:")
-        print(sentence_embeddings.shape)
-        print("Printing the type of sentence embeddings in english: ", type(sentence_embeddings))
-    else:
-        sentence_embeddings = elmo.sents2elmo(sentences_with_word)  # list of numpy arrays, each with the shape = (seq_len, embedding_size)
-        print("\nSentence_embeddings length of {}: ".format(corpus_id), len(sentence_embeddings))
+    if trained_on_own_corpora:
+        char_ids = batch_to_ids(sentences_with_word)
+        embeddings = elmo(char_ids)
+        sentence_embeddings = embeddings["elmo_representations"][0]
+        print("\nOWN MODEL: Sentence_embeddings length of {}: ".format(corpus_id), len(sentence_embeddings))
         print("element 0 shapes: ", sentence_embeddings[0].shape, "\n")
+
+    else:
+        # 2. Get the embeddings for all the sentences that contain the target word
+        if language == "english":
+            sentence_embeddings = elmo(sentences_with_word, signature="default", as_dict=True)["elmo"]
+            with tf.Session() as sess:
+                sess.run(tf.global_variables_initializer())
+                sentence_embeddings = sess.run(sentence_embeddings)
+
+            print("PRINTING SHAPE OF ENGLISH SENTENCE EMBEDDINGS:")
+            print(sentence_embeddings.shape)
+            print("Printing the type of sentence embeddings in english: ", type(sentence_embeddings))
+        else:
+            sentence_embeddings = elmo.sents2elmo(sentences_with_word)  # list of numpy arrays, each with the shape = (seq_len, embedding_size)
+            print("\nSentence_embeddings length of {}: ".format(corpus_id), len(sentence_embeddings))
+            print("element 0 shapes: ", sentence_embeddings[0].shape, "\n")
 
     return sentence_embeddings
 
@@ -358,9 +391,12 @@ def get_word_embeddings(sentence_embed, word_indices, corpus_id):
         :return word_embeddings: an array with embeddings just for the target word (occurrences of the word, 1024)
     """
     # 3. Get the individual word_embeddings (word_embeddings  is a list of 1D arrays: (occurrences of the word, 1024))
-    word_embeddings = [sentence_embed[i][tup[1]] for i, tup in enumerate(word_indices)]
+    print("type of sent_embed: ", type(sentence_embed))
+    #word_embeddings = [sentence_embed[i][tup[1]] for i, tup in enumerate(word_indices)]
+    word_embeddings = [sentence_embed[i][tup[1]].detach().numpy() for i, tup in enumerate(word_indices)]
     print("word_embeddings length of {}: ".format(corpus_id), len(word_embeddings))
     print("element 0 shapes: ", word_embeddings[0].shape, "\n")
+    print("element 0 type", type(word_embeddings[0]))
 
     # 4. Convert word_embeddings to a numpy array
     word_embeddings = np.asarray(word_embeddings)
@@ -408,63 +444,34 @@ def changed_sense(all_clusters, cor1_clusters, cor2_clusters, k, n):
         :param threshold: the threshold which determines whether a cluster can be regarded as not having any datapoints
         :return True: if a word has changed senses, False otherwise
     """
-
     for label in all_clusters:
-        print(all_clusters)
+        #print(all_clusters)
         print(cor1_clusters.items())
         print(cor2_clusters.items())
-        if lang == "latin":
-            print(type(k))
-            if cor1_clusters.get(label) is None:
-                n_occur_c1 = 0
-            else:
-                n_occur_c1 = cor1_clusters.get(label)
-            if cor2_clusters.get(label) is None:
-                n_occur_c2 = 0
-            else:
-                n_occur_c2 = cor2_clusters.get(label)
-            if n_occur_c1 <= k and n_occur_c2 >= n:
-                return True
-            if n_occur_c2 <= k and n_occur_c1 >= n:
-                return True
-            continue
-        # if the language is not latin
-        if label in cor1_clusters and label in cor2_clusters:
-            if cor1_clusters.get(label) <= k and cor2_clusters.get(label) >= n:
-                return True
-            if cor2_clusters.get(label) <= k and cor1_clusters.get(label) >= n:
-                return True
-    return False
-    """    
-       n_occur = 0
-    if len(all_clusters) == 1:
-        print("No change as combined corpora have only 1 cluster in total")
-        return False
-        # if word appears in both corpora, ignore it
-        if label in cor1_clusters and label in cor2_clusters:
-            if cor2_clusters.get(label) > threshold and cor1_clusters.get(label) > threshold:
-                print("Label ", label, " is above the threshold in both corpora: ", cor1_clusters.get(label))
-                continue
-            if cor1_clusters.get(label) == cor2_clusters.get(label): # no change if the number of data points in both is the same
-                print("Label ", label, " has equal number of datapoints", cor1_clusters.get(label))
-                continue
-            # IF the number of data points in one of the corpora is below the threshold, count it as change IF K
-            if cor2_clusters.get(label) <= threshold:
-                n_occur = cor1_clusters.get(label)
-            elif cor1_clusters.get(label) <= threshold:
-                n_occur = cor2_clusters.get(label)
-        # if the word lost a sense (in C1 but not in C2)
-        elif label in cor1_clusters and label not in cor2_clusters:
-            print("Label ", label, " is in corpus1", cor1_clusters.get(label))
-            n_occur = cor1_clusters.get(label)
-        # if the word gained a sense (not in C1 but in C2)
-        elif label in cor2_clusters and label not in cor1_clusters:
-            print("Label ", label, " is in corpus2", cor2_clusters.get(label))
-            n_occur = cor2_clusters.get(label)
-        if n_occur >= k:
-            print("Label ", label, " occurs ", n_occur, " times IN only one of the corpora.", " k: ", k)
+
+        if cor1_clusters.get(label) is None:
+            n_occur_c1 = 0
+        else:
+            n_occur_c1 = cor1_clusters.get(label)
+        if cor2_clusters.get(label) is None:
+            n_occur_c2 = 0
+        else:
+            n_occur_c2 = cor2_clusters.get(label)
+
+        if n_occur_c1 <= k and n_occur_c2 >= n:
+            print("CHANGED!")
+            print(label, "\t", "occ in c1: ", n_occur_c1, "occ in c2: ", n_occur_c2)
             return True
-    return False"""
+        if n_occur_c2 <= k and n_occur_c1 >= n:
+            print("CHANGED!")
+            print(label, "\t", "occ in c1: ", n_occur_c1, "occ in c2: ", n_occur_c2)
+            return True
+        print("NO CHANGE!")
+        print(label, "\t", "occ in c1: ", n_occur_c1, "occ in c2: ", n_occur_c2)
+        continue
+
+    return False
+
 
 def get_start_index(word_indices, hist_corp_length):
     """
@@ -490,7 +497,7 @@ def get_averaged_context_embeddings(context_embed):
     """
     averaged_embeddings = [] # [np.array([0.25]), np.array([0.9])] where each element is the context of a word
     for sent_context in context_embed:
-        print(sent_context)
+        #print(sent_context)
         word_array = []
         for word in sent_context:
             #print(sum(word))
@@ -501,7 +508,7 @@ def get_averaged_context_embeddings(context_embed):
         mean = sum(word_array)/len(word_array) # 0.56
         sentence_np_array = np.array([mean]) # np.array([0.56])
         averaged_embeddings.append(sentence_np_array)
-    return averaged_embeddings
+    return np.array(averaged_embeddings)
 
 
 def print_analysis(historic_clusters, modern_clusters ,comb_clusters):
@@ -589,9 +596,29 @@ def load_gold_labels(filename):
         print(vals)
         if len(vals) != 2:
             print("does not contain two elements")
-            continue
+            raise Exception("does not contain two elements")
         dictionary[vals[0]] = vals[1]
     return dictionary
+
+def load_ranking_info(filename):
+    """
+
+    :param filename:
+    :return: [(word, real ranking), ... , (wordn, real ranking]
+    """
+    rankings = []
+    with open(filename, encoding="utf8") as f:
+        content = f.readlines()
+        rankings = [tuple(line.strip().split()) for line in content]
+    return rankings
+
+def compare_ranks(gold_rankings_filename, jsd_scores):
+
+    gold_ranking = load_ranking_info(gold_rankings_filename)
+    gold_ranking = sorted(gold_ranking, key = lambda x: x[1], reverse = True)
+    jsd_scores = {k: v for k, v in sorted(jsd_scores.items(), key=lambda item: item[1], reverse = True)}
+    print(gold_ranking)
+    print(jsd_scores)
 
 if __name__ == '__main__':
 
@@ -624,10 +651,10 @@ if __name__ == '__main__':
     target_file = args.targets
     target_words = []
     cluster_with_dbscan = False
-    n = args.n
+    n = int(args.n)
 
     # TODO: choose whether we want to cluster context or word embeddings. if contexts -> set cluster_words = False
-    cluster_words = True #False   TODO: should be reset if do not need to cluster embeddings
+    cluster_words = True  # TODO: should be reset if do not need to cluster embeddings
     results = dict() # absolute semantic change (binary classificaiton)
     results_jsd = dict() # degree of semantic change: Jensen-Shannon distance
 
@@ -636,8 +663,9 @@ if __name__ == '__main__':
             parser.error('The file containing the target words is required if you want to classify words. Please '
                          'use the -t argument')
         else:
-            #target_words = load_targets('targets/{}'.format(target_file)) # targets/file.txt
+            # target_words = load_targets('targets/{}'.format(target_file)) # targets/file.txt
             target_words = load_targets('targets/{}'.format(target_file))
+            #target_words = load_targets('../starting_kit_2/test_data_public/{}/{}'.format(lang, target_file))
 
     else:
         if args.word is None:
@@ -658,12 +686,16 @@ if __name__ == '__main__':
         kmk = float(args.kmk)
 
     # 2. Load the elmo model for this language
-    elmo = load_model(lang)
+    elmo = load_model(lang) # TODO: ADD FALSE in case you want to load pretrained(Elmo for many langs and official EN) models!
 
     # 3. Load the corpora
+
+    #path_to_corpus = '../starting_kit_2/test_data_public/{}/corpus{}/lemma/corpus{}.txt'
+    # these were used for tuning:
     # TODO: uncomment path if you want to use a second file for the same language (also might have to change semcor)
-    path_to_corpus = '../starting_kit/trial_data_public/corpora/{}2/corpus{}/semcor{}.txt'
-    #path_to_corpus = '../starting_kit/trial_data_public/corpora/{}/corpus{}/corpus{}.txt'
+    path_to_corpus = '../starting_kit_1/trial_data_public/corpora/{}2/corpus{}/semcor{}.txt' # English semcor
+    #path_to_corpus = '../starting_kit_1/trial_data_public/corpora/{}/corpus{}/corpus{}.txt' # corpora provided by organizers
+
     corpus_historic = load_corpus(path_to_corpus.format(lang, 1, 1))
     corpus_modern = load_corpus(path_to_corpus.format(lang, 2, 2))
 
@@ -698,8 +730,8 @@ if __name__ == '__main__':
     # 6. Iterate over the target words
     for word in target_words: #target_words = [""]
         print("Printing the indices at which ", word, " occurs...")
-        for x in indices_joined[word]:
-            print(x)
+        #for x in indices_joined[word]:
+            #print(x)
 
         print("\nSTARTING THE ANALYSIS FOR TARGET WORD: " + word + "\n" + DIVIDER)
 
@@ -734,8 +766,13 @@ if __name__ == '__main__':
         # 10. Determine where sentences from corpus2 start in sentences_with_target_word
         start_ind = get_start_index(indices_joined[word],len(corpus_historic)) # get start index of corpus2 (helps divide the labels)
         print(start_ind)
-        labels_corpus1 = labels_both[0:start_ind]  # [0, 0, 1, 1, 1, 1, 0, 3, 3]
-        labels_corpus2 = labels_both[start_ind:]  # [0, 0, 0, 2, 2, 2, 0, 3, 3, 3]
+
+        if start_ind != -1:
+            labels_corpus1 = labels_both[0:start_ind]  # [0, 0, 1, 1, 1, 1, 0, 3, 3]
+            labels_corpus2 = labels_both[start_ind:]  # [0, 0, 0, 2, 2, 2, 0, 3, 3, 3]
+        else:
+            labels_corpus1 = labels_both  # [0, 0, 1, 1, 1, 1, 0, 3, 3]
+            labels_corpus2 = []
         print_labels(labels_corpus1,labels_corpus2, word)
 
         # 11. Use the Counter object to count clusters in each corpus AFTER partitioning them
@@ -759,7 +796,7 @@ if __name__ == '__main__':
 
     # 13. Calculate the accuracy score. Need a file with word true_label
     # TODO: name your file with gold labels as show here: e.g. "english_with_change_info.txt"
-    true_vals = load_gold_labels("targets/{}_with_change_info.txt".format(lang))
+    true_vals = load_gold_labels("targets/{}_with_change_info_1.txt".format(lang))
     incorrectly_predicted = []
     y_true = []
     y_pred = []
@@ -770,9 +807,10 @@ if __name__ == '__main__':
         y_pred.append(results[i])
         if true_vals[i] != results[i]:
             incorrectly_predicted.append(i)
-    with open ("out/incorrect_pred{}.txt".format(lang), 'w') as f:
+    with open ("out/incorrect_pred_{}.txt".format(lang), 'w') as f:
         for i in incorrectly_predicted:
             f.write(i)
+
     print(DIVIDER)
 
 
@@ -783,8 +821,10 @@ if __name__ == '__main__':
     #  python3 cluster_fixed.py LANGUAGE K N classify_words kmeans -kmk VALUE_OF_KMK -t file_with_targets.txt
     #  DBSCAN:
     #  python3 cluster_fixed.py LANGUAGE K N classify_words dbscan -eps VALUE_OF_EPS - nsamp NUM_OF_SAMPLES -t file_with_targets.txt
-    out_file_path = "out/results.txt"
+    out_file_path = "out/tuning_results_{}_word_embeddings_TRAINED_BY_US.txt".format(target_file[:-4])
+    #out_file_path = '../starting_kit_2/test_data_public/predictions/predictions_{].txt'.format(target_file[:-4])
     to_file = {}
+    to_file['model'] = "trained_by_us"
     to_file["Language"] = lang
     to_file["Target file"] = target_file
     to_file["k"] = k
@@ -793,22 +833,32 @@ if __name__ == '__main__':
         to_file["algorithm"] = "DBSCAN"
         to_file["epsilon"] = eps
         to_file["Number of samples"] = n_samples
-        #out_file_path = out_file_path + "{}_{}"
-        #out_file_path.format(eps,n_samples)
-        #out_file_path = out_file_path + ".txt"
     else:
         to_file["algorithm"] = "KMEANS"
         to_file["k value for get_k"] = kmk
-        #out_file_path = out_file_path + "{}"
-        #out_file_path.format(kmk)
-        #out_file_path = out_file_path +".txt"
+
     to_file["accuracy"] = accuracy_score(y_true, y_pred)
+    to_file["classification_score"] = results
     to_file["jsd_score"] = results_jsd
+
+
     print(DIVIDER)
-    print(to_file.items())
-    with open(out_file_path, "a") as f:
+    for k, v in to_file.items():
+        print(k,v)
+    with open (out_file_path, 'a+') as f:
         f.write("\n")
-        f.write("RESULTS" + "\n")
         for i in to_file.keys():
             line = i + "\t" + str(to_file[i]) + "\n"
             f.write(line)
+            ''' alternative version: use to see if 
+            if i == "jsd_score":
+                jsd_scores = {k: v for k, v in sorted(to_file[i].items(), key=lambda item: item[1], reverse=True)}
+                f.write("\nJSD SCORES:")
+                for score in jsd_scores:
+                    prediction = score + "\t" + str(to_file[i][score]) + "\n"
+                    f.write(prediction)
+            else:
+                line = i + "\t"+ str(to_file[i]) + "\n"
+                f.write(line)'''
+
+
