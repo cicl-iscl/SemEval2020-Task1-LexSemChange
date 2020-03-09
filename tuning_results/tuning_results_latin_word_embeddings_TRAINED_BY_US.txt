@@ -1,0 +1,243 @@
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	KMEANS
+k value for get_k	1.1
+accuracy	0.463768115942029
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '1', 'Civilis': '0', 'Crassus': '1', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '1', 'Piso': '1', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '1', 'adeo': '1', 'adversus': '1', 'amicus': '1', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '1', 'comparo': '1', 'concido': '1', 'dico': '1', 'edo': '1', 'educo': '1', 'falso': '1', 'fides': '1', 'foedus': '1', 'foris': '1', 'frons': '1', 'fundo': '0', 'illic': '1', 'incido': '1', 'indico': '1', 'latus': '0', 'lego': '1', 'levis': '1', 'levo': '1', 'liber': '1', 'limus': '1', 'litus': '1', 'malus': '1', 'mora': '1', 'ne': '0', 'occido': '1', 'os': '0', 'palma': '1', 'pario': '1', 'paro': '1', 'partus': '1', 'patrius': '0', 'pecus': '1', 'penitus': '1', 'populus': '0', 'praedico': '1', 'promptus': '1', 'quam': '0', 'quis': '0', 'senectus': '0', 'sero': '1', 'totus': '1', 'truncus': '1', 'utique': '1', 'versus': '1', 'verum': '1', 'volo': '1'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.741, 'Civilis': 0.0, 'Crassus': 0.652, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.652, 'Piso': 0.741, 'Scipio': 0.198, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.673, 'adeo': 0.411, 'adversus': 0.583, 'amicus': 0.371, 'assiduus': nan, 'capio': 0.354, 'centurio': 0.0, 'ceterum': 0.55, 'comparo': 0.704, 'concido': nan, 'dico': 0.452, 'edo': 0.446, 'educo': 0.701, 'falso': nan, 'fides': 0.265, 'foedus': 0.426, 'foris': 0.816, 'frons': 0.442, 'fundo': 0.0, 'illic': 1.0, 'incido': 0.726, 'indico': 0.607, 'latus': 0.371, 'lego': 0.486, 'levis': 0.205, 'levo': 0.502, 'liber': 0.342, 'limus': nan, 'litus': 0.878, 'malus': 0.183, 'mora': 0.518, 'ne': 0.274, 'occido': 0.476, 'os': 0.417, 'palma': nan, 'pario': 0.271, 'paro': 0.673, 'partus': 0.407, 'patrius': 0.0, 'pecus': 0.601, 'penitus': nan, 'populus': 0.329, 'praedico': 0.534, 'promptus': 1.0, 'quam': 0.269, 'quis': 0.205, 'senectus': 0.0, 'sero': 0.707, 'totus': 0.371, 'truncus': nan, 'utique': 0.835, 'versus': 0.439, 'verum': 0.723, 'volo': 0.412}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	KMEANS
+k value for get_k	1.2
+accuracy	0.5652173913043478
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '1', 'Civilis': '0', 'Crassus': '1', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '1', 'Piso': '1', 'Scipio': '1', 'Stator': '1', 'Torquatus': '0', 'accido': '1', 'adeo': '1', 'adversus': '1', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '1', 'ceterum': '1', 'comparo': '1', 'concido': '1', 'dico': '0', 'edo': '1', 'educo': '1', 'falso': '1', 'fides': '0', 'foedus': '1', 'foris': '1', 'frons': '1', 'fundo': '0', 'illic': '1', 'incido': '1', 'indico': '1', 'latus': '1', 'lego': '1', 'levis': '0', 'levo': '1', 'liber': '1', 'limus': '1', 'litus': '1', 'malus': '0', 'mora': '1', 'ne': '0', 'occido': '1', 'os': '1', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '1', 'patrius': '0', 'pecus': '1', 'penitus': '1', 'populus': '0', 'praedico': '1', 'promptus': '1', 'quam': '0', 'quis': '0', 'senectus': '1', 'sero': '1', 'totus': '1', 'truncus': '1', 'utique': '1', 'versus': '1', 'verum': '1', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.647, 'Civilis': 0.0, 'Crassus': 0.652, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.652, 'Piso': 0.741, 'Scipio': 0.523, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.501, 'adeo': 0.329, 'adversus': 0.458, 'amicus': 0.102, 'assiduus': nan, 'capio': 0.353, 'centurio': 1.0, 'ceterum': 0.606, 'comparo': 0.644, 'concido': nan, 'dico': 0.417, 'edo': 0.509, 'educo': 0.663, 'falso': nan, 'fides': 0.0, 'foedus': 0.211, 'foris': 0.816, 'frons': 0.442, 'fundo': 0.0, 'illic': 0.558, 'incido': 0.719, 'indico': 0.545, 'latus': 0.573, 'lego': 0.457, 'levis': 0.105, 'levo': 0.502, 'liber': 0.457, 'limus': nan, 'litus': 0.836, 'malus': 0.082, 'mora': 0.35, 'ne': 0.227, 'occido': 0.4, 'os': 0.415, 'palma': nan, 'pario': 0.187, 'paro': 0.019, 'partus': 0.518, 'patrius': 0.0, 'pecus': 0.563, 'penitus': nan, 'populus': 0.272, 'praedico': 0.728, 'promptus': 1.0, 'quam': 0.268, 'quis': 0.216, 'senectus': 1.0, 'sero': 0.641, 'totus': 0.495, 'truncus': nan, 'utique': 0.639, 'versus': 0.292, 'verum': 0.723, 'volo': 0.373}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	KMEANS
+k value for get_k	1.3
+accuracy	0.6086956521739131
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '1', 'Civilis': '0', 'Crassus': '1', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '1', 'Piso': '1', 'Scipio': '1', 'Stator': '1', 'Torquatus': '0', 'accido': '1', 'adeo': '1', 'adversus': '1', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '1', 'ceterum': '1', 'comparo': '1', 'concido': '1', 'dico': '1', 'edo': '1', 'educo': '1', 'falso': '1', 'fides': '0', 'foedus': '1', 'foris': '1', 'frons': '1', 'fundo': '1', 'illic': '1', 'incido': '1', 'indico': '1', 'latus': '1', 'lego': '1', 'levis': '0', 'levo': '1', 'liber': '0', 'limus': '1', 'litus': '1', 'malus': '0', 'mora': '1', 'ne': '0', 'occido': '1', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '1', 'penitus': '1', 'populus': '0', 'praedico': '1', 'promptus': '1', 'quam': '0', 'quis': '0', 'senectus': '1', 'sero': '1', 'totus': '1', 'truncus': '1', 'utique': '1', 'versus': '1', 'verum': '1', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.468, 'Civilis': 0.0, 'Crassus': 0.652, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.652, 'Piso': 0.741, 'Scipio': 0.486, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.501, 'adeo': 0.329, 'adversus': 0.353, 'amicus': 0.28, 'assiduus': nan, 'capio': 0.353, 'centurio': 1.0, 'ceterum': 0.437, 'comparo': 0.617, 'concido': nan, 'dico': 0.46, 'edo': 0.322, 'educo': 0.663, 'falso': nan, 'fides': 0.0, 'foedus': 0.356, 'foris': 0.456, 'frons': 0.303, 'fundo': 0.437, 'illic': 0.558, 'incido': 0.678, 'indico': 0.428, 'latus': 0.573, 'lego': 0.457, 'levis': 0.105, 'levo': 0.502, 'liber': 0.334, 'limus': nan, 'litus': 0.705, 'malus': 0.036, 'mora': 0.518, 'ne': 0.202, 'occido': 0.217, 'os': 0.205, 'palma': nan, 'pario': 0.132, 'paro': 0.297, 'partus': 0.487, 'patrius': 0.0, 'pecus': 0.563, 'penitus': nan, 'populus': 0.272, 'praedico': 0.728, 'promptus': 1.0, 'quam': 0.251, 'quis': 0.0, 'senectus': 0.781, 'sero': 0.707, 'totus': 0.241, 'truncus': nan, 'utique': 0.835, 'versus': 0.274, 'verum': 0.723, 'volo': 0.0}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	KMEANS
+k value for get_k	1.4
+accuracy	0.6231884057971014
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '1', 'Civilis': '0', 'Crassus': '1', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '1', 'Scipio': '1', 'Stator': '1', 'Torquatus': '0', 'accido': '1', 'adeo': '1', 'adversus': '0', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '1', 'ceterum': '1', 'comparo': '1', 'concido': '1', 'dico': '1', 'edo': '1', 'educo': '1', 'falso': '1', 'fides': '0', 'foedus': '1', 'foris': '0', 'frons': '1', 'fundo': '1', 'illic': '1', 'incido': '1', 'indico': '1', 'latus': '1', 'lego': '1', 'levis': '0', 'levo': '1', 'liber': '0', 'limus': '1', 'litus': '1', 'malus': '0', 'mora': '1', 'ne': '0', 'occido': '1', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '1', 'partus': '0', 'patrius': '0', 'pecus': '1', 'penitus': '1', 'populus': '0', 'praedico': '1', 'promptus': '1', 'quam': '0', 'quis': '0', 'senectus': '1', 'sero': '1', 'totus': '0', 'truncus': '1', 'utique': '1', 'versus': '1', 'verum': '1', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.558, 'Civilis': 0.0, 'Crassus': 0.652, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.144, 'Piso': 0.741, 'Scipio': 0.5, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.458, 'adeo': 0.228, 'adversus': 0.417, 'amicus': 0.034, 'assiduus': nan, 'capio': 0.381, 'centurio': 1.0, 'ceterum': 0.437, 'comparo': 0.429, 'concido': nan, 'dico': 0.452, 'edo': 0.322, 'educo': 0.545, 'falso': nan, 'fides': 0.0, 'foedus': 0.244, 'foris': 0.286, 'frons': 0.303, 'fundo': 0.437, 'illic': 0.558, 'incido': 0.558, 'indico': 0.298, 'latus': 0.529, 'lego': 0.457, 'levis': 0.105, 'levo': 0.389, 'liber': 0.398, 'limus': nan, 'litus': 0.685, 'malus': 0.082, 'mora': 0.518, 'ne': 0.252, 'occido': 0.217, 'os': 0.205, 'palma': nan, 'pario': 0.0, 'paro': 0.534, 'partus': 0.361, 'patrius': 0.0, 'pecus': 0.437, 'penitus': nan, 'populus': 0.258, 'praedico': 0.728, 'promptus': 1.0, 'quam': 0.0, 'quis': 0.0, 'senectus': 0.781, 'sero': 0.309, 'totus': 0.0, 'truncus': nan, 'utique': 0.629, 'versus': 0.274, 'verum': 0.723, 'volo': 0.0}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	KMEANS
+k value for get_k	1.5
+accuracy	0.7681159420289855
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '1', 'Civilis': '0', 'Crassus': '1', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '1', 'Scipio': '1', 'Stator': '1', 'Torquatus': '1', 'accido': '1', 'adeo': '0', 'adversus': '0', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '1', 'ceterum': '1', 'comparo': '1', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '1', 'falso': '1', 'fides': '0', 'foedus': '0', 'foris': '0', 'frons': '1', 'fundo': '1', 'illic': '1', 'incido': '1', 'indico': '1', 'latus': '1', 'lego': '1', 'levis': '0', 'levo': '0', 'liber': '1', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '1', 'ne': '0', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '1', 'pecus': '1', 'penitus': '1', 'populus': '0', 'praedico': '1', 'promptus': '1', 'quam': '0', 'quis': '0', 'senectus': '1', 'sero': '0', 'totus': '0', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '1', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.468, 'Civilis': 0.0, 'Crassus': 0.652, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.144, 'Piso': 0.741, 'Scipio': 0.534, 'Stator': nan, 'Torquatus': 0.558, 'accido': 0.371, 'adeo': 0.071, 'adversus': 0.417, 'amicus': 0.0, 'assiduus': nan, 'capio': 0.407, 'centurio': 1.0, 'ceterum': 0.397, 'comparo': 0.4, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.298, 'falso': nan, 'fides': 0.0, 'foedus': 0.0, 'foris': 0.286, 'frons': 0.303, 'fundo': 0.437, 'illic': 0.558, 'incido': 0.678, 'indico': 0.437, 'latus': 0.529, 'lego': 0.457, 'levis': 0.105, 'levo': 0.0, 'liber': 0.544, 'limus': nan, 'litus': 0.165, 'malus': 0.0, 'mora': 0.518, 'ne': 0.0, 'occido': 0.0, 'os': 0.165, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.248, 'patrius': 1.0, 'pecus': 0.437, 'penitus': nan, 'populus': 0.258, 'praedico': 0.582, 'promptus': 1.0, 'quam': 0.0, 'quis': 0.0, 'senectus': 0.781, 'sero': 0.144, 'totus': 0.0, 'truncus': nan, 'utique': 0.409, 'versus': 0.136, 'verum': 0.723, 'volo': 0.0}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	KMEANS
+k value for get_k	1.6
+accuracy	0.7681159420289855
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '1', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '1', 'Scipio': '0', 'Stator': '1', 'Torquatus': '1', 'accido': '1', 'adeo': '1', 'adversus': '0', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '1', 'ceterum': '1', 'comparo': '0', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '1', 'falso': '1', 'fides': '0', 'foedus': '0', 'foris': '1', 'frons': '0', 'fundo': '1', 'illic': '1', 'incido': '1', 'indico': '0', 'latus': '0', 'lego': '1', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '1', 'ne': '0', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '1', 'pecus': '1', 'penitus': '1', 'populus': '0', 'praedico': '1', 'promptus': '1', 'quam': '0', 'quis': '0', 'senectus': '0', 'sero': '0', 'totus': '0', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '1', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.652, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.144, 'Piso': 0.741, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.558, 'accido': 0.371, 'adeo': 0.329, 'adversus': 0.367, 'amicus': 0.0, 'assiduus': nan, 'capio': 0.353, 'centurio': 1.0, 'ceterum': 0.437, 'comparo': 0.0, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.298, 'falso': nan, 'fides': 0.0, 'foedus': 0.0, 'foris': 0.437, 'frons': 0.144, 'fundo': 0.437, 'illic': 0.558, 'incido': 0.558, 'indico': 0.0, 'latus': 0.494, 'lego': 0.457, 'levis': 0.105, 'levo': 0.0, 'liber': 0.301, 'limus': nan, 'litus': 0.165, 'malus': 0.0, 'mora': 0.348, 'ne': 0.0, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.487, 'patrius': 1.0, 'pecus': 0.437, 'penitus': nan, 'populus': 0.0, 'praedico': 0.728, 'promptus': 1.0, 'quam': 0.0, 'quis': 0.0, 'senectus': 0.0, 'sero': 0.144, 'totus': 0.0, 'truncus': nan, 'utique': 0.409, 'versus': 0.0, 'verum': 0.723, 'volo': 0.0}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	KMEANS
+k value for get_k	1.7
+accuracy	0.7391304347826086
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '1', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '1', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '1', 'adeo': '1', 'adversus': '0', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '1', 'comparo': '0', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '1', 'falso': '1', 'fides': '0', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '1', 'illic': '1', 'incido': '1', 'indico': '0', 'latus': '1', 'lego': '1', 'levis': '0', 'levo': '0', 'liber': '1', 'limus': '1', 'litus': '1', 'malus': '0', 'mora': '1', 'ne': '0', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '1', 'penitus': '1', 'populus': '0', 'praedico': '1', 'promptus': '0', 'quam': '0', 'quis': '0', 'senectus': '0', 'sero': '0', 'totus': '0', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '1', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.437, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.144, 'Piso': 0.741, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.371, 'adeo': 0.228, 'adversus': 0.0, 'amicus': 0.0, 'assiduus': nan, 'capio': 0.407, 'centurio': 0.0, 'ceterum': 0.437, 'comparo': 0.0, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.298, 'falso': nan, 'fides': 0.0, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.144, 'fundo': 0.437, 'illic': 0.558, 'incido': 0.678, 'indico': 0.0, 'latus': 0.59, 'lego': 0.457, 'levis': 0.105, 'levo': 0.0, 'liber': 0.486, 'limus': nan, 'litus': 0.809, 'malus': 0.0, 'mora': 0.348, 'ne': 0.0, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.437, 'penitus': nan, 'populus': 0.0, 'praedico': 0.728, 'promptus': 0.0, 'quam': 0.0, 'quis': 0.0, 'senectus': 0.0, 'sero': 0.144, 'totus': 0.0, 'truncus': nan, 'utique': 0.409, 'versus': 0.0, 'verum': 0.723, 'volo': 0.0}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	KMEANS
+k value for get_k	1.8
+accuracy	0.7536231884057971
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '1', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '1', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '1', 'comparo': '0', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '0', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '1', 'illic': '1', 'incido': '1', 'indico': '0', 'latus': '0', 'lego': '1', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '1', 'ne': '0', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '1', 'promptus': '0', 'quam': '0', 'quis': '0', 'senectus': '0', 'sero': '0', 'totus': '0', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '1', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.437, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.144, 'Piso': 0.371, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.0, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.437, 'comparo': 0.0, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.0, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.144, 'fundo': 0.437, 'illic': 0.558, 'incido': 0.678, 'indico': 0.0, 'latus': 0.417, 'lego': 0.457, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.348, 'ne': 0.0, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.728, 'promptus': 0.0, 'quam': 0.0, 'quis': 0.0, 'senectus': 0.0, 'sero': 0.144, 'totus': 0.0, 'truncus': nan, 'utique': 0.56, 'versus': 0.0, 'verum': 0.723, 'volo': 0.0}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	KMEANS
+k value for get_k	1.9
+accuracy	0.7391304347826086
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '1', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '1', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '1', 'comparo': '0', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '0', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '1', 'incido': '1', 'indico': '0', 'latus': '0', 'lego': '1', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '1', 'ne': '0', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '1', 'promptus': '0', 'quam': '0', 'quis': '0', 'senectus': '0', 'sero': '0', 'totus': '0', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '1', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.437, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.144, 'Piso': 0.371, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.0, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.241, 'comparo': 0.0, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.0, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.144, 'fundo': 0.0, 'illic': 0.558, 'incido': 0.678, 'indico': 0.0, 'latus': 0.0, 'lego': 0.457, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.348, 'ne': 0.0, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.728, 'promptus': 0.0, 'quam': 0.0, 'quis': 0.0, 'senectus': 0.0, 'sero': 0.305, 'totus': 0.0, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.723, 'volo': 0.0}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	DBSCAN
+epsilon	2.5
+Number of samples	2
+accuracy	0.6666666666666666
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '0', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '0', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '1', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '0', 'comparo': '0', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '1', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '0', 'incido': '0', 'indico': '0', 'latus': '0', 'lego': '0', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '1', 'ne': '1', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '0', 'promptus': '0', 'quam': '1', 'quis': '1', 'senectus': '0', 'sero': '0', 'totus': '1', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '0', 'volo': '1'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.0, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.0, 'Piso': 0.0, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.222, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.0, 'comparo': 0.0, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.173, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.0, 'fundo': 0.0, 'illic': 0.0, 'incido': 0.0, 'indico': 0.0, 'latus': 0.0, 'lego': 0.0, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.348, 'ne': 0.099, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.0, 'promptus': 0.0, 'quam': 0.08, 'quis': 0.087, 'senectus': 0.0, 'sero': 0.0, 'totus': 0.249, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.0, 'volo': 0.115}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	DBSCAN
+epsilon	3.0
+Number of samples	2
+accuracy	0.6666666666666666
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '0', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '0', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '1', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '0', 'comparo': '0', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '1', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '0', 'incido': '0', 'indico': '0', 'latus': '0', 'lego': '0', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '1', 'ne': '1', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '0', 'promptus': '0', 'quam': '1', 'quis': '1', 'senectus': '0', 'sero': '0', 'totus': '1', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '0', 'volo': '1'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.0, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.0, 'Piso': 0.0, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.222, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.0, 'comparo': 0.0, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.173, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.0, 'fundo': 0.0, 'illic': 0.0, 'incido': 0.0, 'indico': 0.0, 'latus': 0.0, 'lego': 0.0, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.348, 'ne': 0.099, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.0, 'promptus': 0.0, 'quam': 0.08, 'quis': 0.087, 'senectus': 0.0, 'sero': 0.0, 'totus': 0.249, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.0, 'volo': 0.115}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	DBSCAN
+epsilon	3.5
+Number of samples	2
+accuracy	0.6521739130434783
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '0', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '0', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '1', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '0', 'comparo': '0', 'concido': '1', 'dico': '1', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '1', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '0', 'incido': '0', 'indico': '0', 'latus': '0', 'lego': '0', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '1', 'ne': '1', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '0', 'promptus': '0', 'quam': '1', 'quis': '1', 'senectus': '0', 'sero': '0', 'totus': '1', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '0', 'volo': '1'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.0, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.0, 'Piso': 0.0, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.222, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.0, 'comparo': 0.0, 'concido': nan, 'dico': 0.073, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.173, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.0, 'fundo': 0.0, 'illic': 0.0, 'incido': 0.0, 'indico': 0.0, 'latus': 0.0, 'lego': 0.0, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.348, 'ne': 0.099, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.0, 'promptus': 0.0, 'quam': 0.08, 'quis': 0.087, 'senectus': 0.0, 'sero': 0.0, 'totus': 0.249, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.0, 'volo': 0.115}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	DBSCAN
+epsilon	4.0
+Number of samples	2
+accuracy	0.6521739130434783
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '0', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '0', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '1', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '0', 'comparo': '0', 'concido': '1', 'dico': '1', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '1', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '0', 'incido': '0', 'indico': '0', 'latus': '0', 'lego': '0', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '1', 'ne': '1', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '0', 'promptus': '0', 'quam': '1', 'quis': '1', 'senectus': '0', 'sero': '0', 'totus': '1', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '0', 'volo': '1'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.0, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.0, 'Piso': 0.0, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.222, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.0, 'comparo': 0.0, 'concido': nan, 'dico': 0.073, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.173, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.0, 'fundo': 0.0, 'illic': 0.0, 'incido': 0.0, 'indico': 0.0, 'latus': 0.0, 'lego': 0.0, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.348, 'ne': 0.099, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.0, 'promptus': 0.0, 'quam': 0.08, 'quis': 0.087, 'senectus': 0.0, 'sero': 0.0, 'totus': 0.249, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.0, 'volo': 0.115}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	DBSCAN
+epsilon	4.5
+Number of samples	2
+accuracy	0.6521739130434783
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '0', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '0', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '1', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '0', 'comparo': '0', 'concido': '1', 'dico': '1', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '1', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '0', 'incido': '0', 'indico': '0', 'latus': '0', 'lego': '0', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '1', 'ne': '1', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '0', 'promptus': '0', 'quam': '1', 'quis': '1', 'senectus': '0', 'sero': '0', 'totus': '1', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '0', 'volo': '1'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.0, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.0, 'Piso': 0.0, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.222, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.0, 'comparo': 0.0, 'concido': nan, 'dico': 0.073, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.173, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.0, 'fundo': 0.0, 'illic': 0.0, 'incido': 0.0, 'indico': 0.0, 'latus': 0.0, 'lego': 0.0, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.348, 'ne': 0.099, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.0, 'promptus': 0.0, 'quam': 0.08, 'quis': 0.087, 'senectus': 0.0, 'sero': 0.0, 'totus': 0.249, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.0, 'volo': 0.115}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	2
+accuracy	0.6521739130434783
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '0', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '0', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '1', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '0', 'comparo': '0', 'concido': '1', 'dico': '1', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '1', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '0', 'incido': '0', 'indico': '0', 'latus': '0', 'lego': '0', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '1', 'ne': '1', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '0', 'promptus': '0', 'quam': '1', 'quis': '1', 'senectus': '0', 'sero': '0', 'totus': '1', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '0', 'volo': '1'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.0, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.0, 'Piso': 0.0, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.222, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.0, 'comparo': 0.0, 'concido': nan, 'dico': 0.073, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.173, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.0, 'fundo': 0.0, 'illic': 0.0, 'incido': 0.0, 'indico': 0.0, 'latus': 0.0, 'lego': 0.0, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.348, 'ne': 0.099, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.0, 'promptus': 0.0, 'quam': 0.08, 'quis': 0.087, 'senectus': 0.0, 'sero': 0.0, 'totus': 0.249, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.0, 'volo': 0.115}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	DBSCAN
+epsilon	2.5
+Number of samples	3
+accuracy	0.782608695652174
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '0', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '0', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '0', 'comparo': '0', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '0', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '0', 'incido': '0', 'indico': '0', 'latus': '0', 'lego': '0', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '0', 'ne': '0', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '0', 'promptus': '0', 'quam': '0', 'quis': '0', 'senectus': '0', 'sero': '0', 'totus': '0', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '0', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.0, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.0, 'Piso': 0.0, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.0, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.0, 'comparo': 0.0, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.0, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.0, 'fundo': 0.0, 'illic': 0.0, 'incido': 0.0, 'indico': 0.0, 'latus': 0.0, 'lego': 0.0, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.0, 'ne': 0.0, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.0, 'promptus': 0.0, 'quam': 0.0, 'quis': 0.0, 'senectus': 0.0, 'sero': 0.0, 'totus': 0.0, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.0, 'volo': 0.0}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	DBSCAN
+epsilon	3.0
+Number of samples	3
+accuracy	0.782608695652174
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '0', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '0', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '0', 'comparo': '0', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '0', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '0', 'incido': '0', 'indico': '0', 'latus': '0', 'lego': '0', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '0', 'ne': '0', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '0', 'promptus': '0', 'quam': '0', 'quis': '0', 'senectus': '0', 'sero': '0', 'totus': '0', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '0', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.0, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.0, 'Piso': 0.0, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.0, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.0, 'comparo': 0.0, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.0, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.0, 'fundo': 0.0, 'illic': 0.0, 'incido': 0.0, 'indico': 0.0, 'latus': 0.0, 'lego': 0.0, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.0, 'ne': 0.0, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.0, 'promptus': 0.0, 'quam': 0.0, 'quis': 0.0, 'senectus': 0.0, 'sero': 0.0, 'totus': 0.0, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.0, 'volo': 0.0}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	DBSCAN
+epsilon	3.5
+Number of samples	3
+accuracy	0.782608695652174
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '0', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '0', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '0', 'comparo': '0', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '0', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '0', 'incido': '0', 'indico': '0', 'latus': '0', 'lego': '0', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '0', 'ne': '0', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '0', 'promptus': '0', 'quam': '0', 'quis': '0', 'senectus': '0', 'sero': '0', 'totus': '0', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '0', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.0, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.0, 'Piso': 0.0, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.0, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.0, 'comparo': 0.0, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.0, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.0, 'fundo': 0.0, 'illic': 0.0, 'incido': 0.0, 'indico': 0.0, 'latus': 0.0, 'lego': 0.0, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.0, 'ne': 0.0, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.0, 'promptus': 0.0, 'quam': 0.0, 'quis': 0.0, 'senectus': 0.0, 'sero': 0.0, 'totus': 0.0, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.0, 'volo': 0.0}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	DBSCAN
+epsilon	4.0
+Number of samples	3
+accuracy	0.782608695652174
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '0', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '0', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '0', 'comparo': '0', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '0', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '0', 'incido': '0', 'indico': '0', 'latus': '0', 'lego': '0', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '0', 'ne': '0', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '0', 'promptus': '0', 'quam': '0', 'quis': '0', 'senectus': '0', 'sero': '0', 'totus': '0', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '0', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.0, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.0, 'Piso': 0.0, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.0, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.0, 'comparo': 0.0, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.0, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.0, 'fundo': 0.0, 'illic': 0.0, 'incido': 0.0, 'indico': 0.0, 'latus': 0.0, 'lego': 0.0, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.0, 'ne': 0.0, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.0, 'promptus': 0.0, 'quam': 0.0, 'quis': 0.0, 'senectus': 0.0, 'sero': 0.0, 'totus': 0.0, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.0, 'volo': 0.0}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	DBSCAN
+epsilon	4.5
+Number of samples	3
+accuracy	0.782608695652174
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '0', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '0', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '0', 'comparo': '0', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '0', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '0', 'incido': '0', 'indico': '0', 'latus': '0', 'lego': '0', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '0', 'ne': '0', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '0', 'promptus': '0', 'quam': '0', 'quis': '0', 'senectus': '0', 'sero': '0', 'totus': '0', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '0', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.0, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.0, 'Piso': 0.0, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.0, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.0, 'comparo': 0.0, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.0, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.0, 'fundo': 0.0, 'illic': 0.0, 'incido': 0.0, 'indico': 0.0, 'latus': 0.0, 'lego': 0.0, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.0, 'ne': 0.0, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.0, 'promptus': 0.0, 'quam': 0.0, 'quis': 0.0, 'senectus': 0.0, 'sero': 0.0, 'totus': 0.0, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.0, 'volo': 0.0}
+
+model	trained_by_us
+Language	latin
+Target file	latin.txt
+k	0
+n	1
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	3
+accuracy	0.782608695652174
+classification_score	{'Apulia': '1', 'Ascanius': '1', 'Augustus': '1', 'Brutus': '0', 'Civilis': '0', 'Crassus': '0', 'Daedalus': '1', 'Flaccus': '1', 'Lentulus': '1', 'Pansa': '1', 'Paulus': '0', 'Piso': '0', 'Scipio': '0', 'Stator': '1', 'Torquatus': '0', 'accido': '0', 'adeo': '0', 'adversus': '0', 'amicus': '0', 'assiduus': '1', 'capio': '0', 'centurio': '0', 'ceterum': '0', 'comparo': '0', 'concido': '1', 'dico': '0', 'edo': '0', 'educo': '0', 'falso': '1', 'fides': '0', 'foedus': '0', 'foris': '0', 'frons': '0', 'fundo': '0', 'illic': '0', 'incido': '0', 'indico': '0', 'latus': '0', 'lego': '0', 'levis': '0', 'levo': '0', 'liber': '0', 'limus': '1', 'litus': '0', 'malus': '0', 'mora': '0', 'ne': '0', 'occido': '0', 'os': '0', 'palma': '1', 'pario': '0', 'paro': '0', 'partus': '0', 'patrius': '0', 'pecus': '0', 'penitus': '1', 'populus': '0', 'praedico': '0', 'promptus': '0', 'quam': '0', 'quis': '0', 'senectus': '0', 'sero': '0', 'totus': '0', 'truncus': '1', 'utique': '0', 'versus': '0', 'verum': '0', 'volo': '0'}
+jsd_score	{'Apulia': nan, 'Ascanius': nan, 'Augustus': nan, 'Brutus': 0.0, 'Civilis': 0.0, 'Crassus': 0.0, 'Daedalus': nan, 'Flaccus': nan, 'Lentulus': nan, 'Pansa': nan, 'Paulus': 0.0, 'Piso': 0.0, 'Scipio': 0.0, 'Stator': nan, 'Torquatus': 0.0, 'accido': 0.0, 'adeo': 0.0, 'adversus': 0.0, 'amicus': 0.0, 'assiduus': nan, 'capio': 0.0, 'centurio': 0.0, 'ceterum': 0.0, 'comparo': 0.0, 'concido': nan, 'dico': 0.0, 'edo': 0.0, 'educo': 0.0, 'falso': nan, 'fides': 0.0, 'foedus': 0.0, 'foris': 0.0, 'frons': 0.0, 'fundo': 0.0, 'illic': 0.0, 'incido': 0.0, 'indico': 0.0, 'latus': 0.0, 'lego': 0.0, 'levis': 0.0, 'levo': 0.0, 'liber': 0.0, 'limus': nan, 'litus': 0.0, 'malus': 0.0, 'mora': 0.0, 'ne': 0.0, 'occido': 0.0, 'os': 0.0, 'palma': nan, 'pario': 0.0, 'paro': 0.0, 'partus': 0.0, 'patrius': 0.0, 'pecus': 0.0, 'penitus': nan, 'populus': 0.0, 'praedico': 0.0, 'promptus': 0.0, 'quam': 0.0, 'quis': 0.0, 'senectus': 0.0, 'sero': 0.0, 'totus': 0.0, 'truncus': nan, 'utique': 0.0, 'versus': 0.0, 'verum': 0.0, 'volo': 0.0}
