@@ -46,4 +46,3 @@ vorliegen	0.023
 vorweisen	0.057
 weitgreifend	0.235
 zersetzen	0.294
-

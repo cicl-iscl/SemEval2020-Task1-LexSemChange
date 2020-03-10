@@ -35,4 +35,3 @@ tip_vb	0.077
 tree_nn	0.08
 twist_nn	0.0
 word_nn	0.053
-

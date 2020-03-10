@@ -38,4 +38,3 @@ necessarius	0.0
 jus	0.0
 salus	0.105
 sacramentum	0.283
-

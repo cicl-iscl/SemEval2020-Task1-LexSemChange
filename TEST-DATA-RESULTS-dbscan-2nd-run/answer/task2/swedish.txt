@@ -29,4 +29,3 @@ uppläggning	0.143
 uträtta	0.033
 vaktmästare	0.045
 vegetation	0.052
-

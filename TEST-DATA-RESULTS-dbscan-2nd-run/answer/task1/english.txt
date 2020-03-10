@@ -35,4 +35,3 @@ tip_vb	1
 tree_nn	1
 twist_nn	0
 word_nn	1
-
