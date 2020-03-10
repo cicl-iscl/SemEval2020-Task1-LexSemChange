@@ -1,0 +1,355 @@
+German corpus1:
+
+number of occurrences for abbauen is: 65
+number of occurrences for abdecken is: 54
+number of occurrences for abgebrüht is: 66
+number of occurrences for Abgesang is: 159
+number of occurrences for Ackergerät is: 66
+number of occurrences for Armenhaus is: 113
+number of occurrences for artikulieren is: 83
+number of occurrences for aufrechterhalten is: 46
+number of occurrences for Ausnahmegesetz is: 59
+number of occurrences for ausspannen is: 272
+number of occurrences for beimischen is: 271
+number of occurrences for Dynamik is: 109
+number of occurrences for Einreichung is: 63
+number of occurrences for Eintagsfliege is: 61
+number of occurrences for Engpaß is: 82
+number of occurrences for Entscheidung is: 4392
+number of occurrences for Festspiel is: 56
+number of occurrences for Frechheit is: 372
+number of occurrences for Fuß is: 42272
+number of occurrences for Gesichtsausdruck is: 101
+number of occurrences for Knotenpunkt is: 388
+number of occurrences for Kubikmeter is: 124
+number of occurrences for Lyzeum is: 135
+number of occurrences for Manschette is: 125
+number of occurrences for Mißklang is: 55
+number of occurrences for Mulatte is: 155
+number of occurrences for Naturschönheit is: 98
+number of occurrences for Ohrwurm is: 72
+number of occurrences for Pachtzins is: 44
+number of occurrences for packen is: 2609
+number of occurrences for Rezeption is: 147
+number of occurrences for Schmiere is: 501
+number of occurrences for Seminar is: 590
+number of occurrences for Sensation is: 234
+number of occurrences for Spielball is: 60
+number of occurrences for Tier is: 96658
+number of occurrences for Titel is: 4945
+number of occurrences for Tragfähigkeit is: 85
+number of occurrences for Truppenteil is: 207
+number of occurrences for überspannen is: 169
+number of occurrences for Unentschlossenheit is: 76
+number of occurrences for verbauen is: 70
+number of occurrences for vergönnen is: 709
+number of occurrences for voranstellen is: 164
+number of occurrences for vorliegen is: 4315
+number of occurrences for vorweisen is: 68
+number of occurrences for weitgreifend is: 64
+number of occurrences for zersetzen is: 853
+
+
+
+German corpus2:
+
+number of occurrences for abbauen is: 1198
+number of occurrences for abdecken is: 394
+number of occurrences for abgebrüht is: 108
+number of occurrences for Abgesang is: 119
+number of occurrences for Ackergerät is: 106
+number of occurrences for Armenhaus is: 127
+number of occurrences for artikulieren is: 221
+number of occurrences for aufrechterhalten is: 1187
+number of occurrences for Ausnahmegesetz is: 174
+number of occurrences for ausspannen is: 129
+number of occurrences for beimischen is: 122
+number of occurrences for Dynamik is: 806
+number of occurrences for Einreichung is: 146
+number of occurrences for Eintagsfliege is: 137
+number of occurrences for Engpaß is: 338
+number of occurrences for Entscheidung is: 10332
+number of occurrences for Festspiel is: 5649
+number of occurrences for Frechheit is: 217
+number of occurrences for Fuß is: 21454
+number of occurrences for Gesichtsausdruck is: 158
+number of occurrences for Knotenpunkt is: 353
+number of occurrences for Kubikmeter is: 1939
+number of occurrences for Lyzeum is: 124
+number of occurrences for Manschette is: 195
+number of occurrences for Mißklang is: 107
+number of occurrences for Mulatte is: 124
+number of occurrences for Naturschönheit is: 130
+number of occurrences for Ohrwurm is: 108
+number of occurrences for Pachtzins is: 105
+number of occurrences for packen is: 3441
+number of occurrences for Rezeption is: 234
+number of occurrences for Schmiere is: 540
+number of occurrences for Seminar is: 2965
+number of occurrences for Sensation is: 1543
+number of occurrences for Spielball is: 177
+number of occurrences for Tier is: 82333
+number of occurrences for Titel is: 18020
+number of occurrences for Tragfähigkeit is: 332
+number of occurrences for Truppenteil is: 938
+number of occurrences for überspannen is: 203
+number of occurrences for Unentschlossenheit is: 131
+number of occurrences for verbauen is: 213
+number of occurrences for vergönnen is: 205
+number of occurrences for voranstellen is: 195
+number of occurrences for vorliegen is: 3486
+number of occurrences for vorweisen is: 371
+number of occurrences for weitgreifend is: 103
+number of occurrences for zersetzen is: 283
+
+
+
+English corpus1:
+
+number of occurrences for attack_nn is: 454
+number of occurrences for bag_nn is: 214
+number of occurrences for ball_nn is: 440
+number of occurrences for bit_nn is: 296
+number of occurrences for chairman_nn is: 147
+number of occurrences for circle_vb is: 131
+number of occurrences for contemplation_nn is: 240
+number of occurrences for donkey_nn is: 118
+number of occurrences for edge_nn is: 457
+number of occurrences for face_nn is: 3394
+number of occurrences for fiction_nn is: 202
+number of occurrences for gas_nn is: 155
+number of occurrences for graft_nn is: 119
+number of occurrences for head_nn is: 3599
+number of occurrences for land_nn is: 2321
+number of occurrences for lane_nn is: 489
+number of occurrences for lass_nn is: 111
+number of occurrences for multitude_nn is: 475
+number of occurrences for ounce_nn is: 208
+number of occurrences for part_nn is: 4410
+number of occurrences for pin_vb is: 114
+number of occurrences for plane_nn is: 278
+number of occurrences for player_nn is: 132
+number of occurrences for prop_nn is: 121
+number of occurrences for quilt_nn is: 106
+number of occurrences for rag_nn is: 158
+number of occurrences for record_nn is: 420
+number of occurrences for relationship_nn is: 130
+number of occurrences for risk_nn is: 286
+number of occurrences for savage_nn is: 504
+number of occurrences for stab_nn is: 92
+number of occurrences for stroke_vb is: 110
+number of occurrences for thump_nn is: 89
+number of occurrences for tip_vb is: 119
+number of occurrences for tree_nn is: 2322
+number of occurrences for twist_nn is: 103
+number of occurrences for word_nn is: 4387
+
+
+
+
+English corpus2:
+
+number of occurrences for attack_nn is: 833
+number of occurrences for bag_nn is: 899
+number of occurrences for ball_nn is: 878
+number of occurrences for bit_nn is: 622
+number of occurrences for chairman_nn is: 683
+number of occurrences for circle_vb is: 245
+number of occurrences for contemplation_nn is: 111
+number of occurrences for donkey_nn is: 148
+number of occurrences for edge_nn is: 1072
+number of occurrences for face_nn is: 3932
+number of occurrences for fiction_nn is: 326
+number of occurrences for gas_nn is: 680
+number of occurrences for graft_nn is: 109
+number of occurrences for head_nn is: 4127
+number of occurrences for land_nn is: 1624
+number of occurrences for lane_nn is: 1081
+number of occurrences for lass_nn is: 106
+number of occurrences for multitude_nn is: 131
+number of occurrences for ounce_nn is: 189
+number of occurrences for part_nn is: 3213
+number of occurrences for pin_vb is: 217
+number of occurrences for plane_nn is: 792
+number of occurrences for player_nn is: 939
+number of occurrences for prop_nn is: 147
+number of occurrences for quilt_nn is: 189
+number of occurrences for rag_nn is: 208
+number of occurrences for record_nn is: 1188
+number of occurrences for relationship_nn is: 841
+number of occurrences for risk_nn is: 643
+number of occurrences for savage_nn is: 133
+number of occurrences for stab_nn is: 117
+number of occurrences for stroke_vb is: 227
+number of occurrences for thump_nn is: 127
+number of occurrences for tip_vb is: 241
+number of occurrences for tree_nn is: 1596
+number of occurrences for twist_nn is: 186
+number of occurrences for word_nn is: 3166
+
+
+
+Swedish corpus1:
+
+number of occurrences for aktiv is: 194
+number of occurrences for annandag is: 756
+number of occurrences for antyda is: 3792
+number of occurrences for bearbeta is: 310
+number of occurrences for bedömande is: 130
+number of occurrences for beredning is: 893
+number of occurrences for blockera is: 763
+number of occurrences for bolagsstämma is: 1273
+number of occurrences for bröllop is: 626
+number of occurrences for by is: 92934
+number of occurrences for central is: 299
+number of occurrences for färg is: 15780
+number of occurrences for förhandling is: 101
+number of occurrences for gagn is: 25979
+number of occurrences for granskare is: 213
+number of occurrences for kemisk is: 111
+number of occurrences for kokärt is: 180
+number of occurrences for konduktör is: 105
+number of occurrences for krita is: 629
+number of occurrences for ledning is: 27205
+number of occurrences for medium is: 714
+number of occurrences for motiv is: 539
+number of occurrences for notis is: 434
+number of occurrences for studie is: 947
+number of occurrences for undertrycka is: 291
+number of occurrences for uppfattning is: 84
+number of occurrences for uppfostran is: 5169
+number of occurrences for uppläggning is: 167
+number of occurrences for uträtta is: 3359
+number of occurrences for vaktmästare is: 178
+
+
+
+Swedish corpus2:
+
+number of occurrences for aktiv is: 1629
+number of occurrences for annandag is: 2139
+number of occurrences for antyda is: 4400
+number of occurrences for bearbeta is: 1821
+number of occurrences for bedömande is: 1552
+number of occurrences for beredning is: 6717
+number of occurrences for blockera is: 263
+number of occurrences for bolagsstämma is: 12559
+number of occurrences for bröllop is: 8844
+number of occurrences for by is: 274123
+number of occurrences for central is: 13981
+number of occurrences for färg is: 32852
+number of occurrences for förhandling is: 10478
+number of occurrences for gagn is: 35691
+number of occurrences for granskare is: 193
+number of occurrences for kemisk is: 4069
+number of occurrences for kokärt is: 213
+number of occurrences for konduktör is: 2107
+number of occurrences for krita is: 498
+number of occurrences for ledning is: 81385
+number of occurrences for medium is: 540
+number of occurrences for motiv is: 13178
+number of occurrences for notis is: 6123
+number of occurrences for studie is: 5651
+number of occurrences for undertrycka is: 1805
+number of occurrences for uppfattning is: 9720
+number of occurrences for uppfostran is: 3687
+number of occurrences for uppläggning is: 213
+number of occurrences for uträtta is: 3991
+number of occurrences for vaktmästare is: 3495
+
+
+Latin corpus1:
+
+number of occurrences for imperator is: 762
+number of occurrences for fidelis is: 153
+number of occurrences for sanctus is: 215
+number of occurrences for civitas is: 1694
+number of occurrences for scriptura is: 28
+number of occurrences for dux is: 971
+number of occurrences for pontifex is: 134
+number of occurrences for virtus is: 1653
+number of occurrences for cohors is: 294
+number of occurrences for itero is: 32
+number of occurrences for consul is: 5831
+number of occurrences for humanitas is: 134
+number of occurrences for potestas is: 916
+number of occurrences for dolus is: 138
+number of occurrences for beatus is: 349
+number of occurrences for poena is: 461
+number of occurrences for credo is: 1682
+number of occurrences for honor is: 987
+number of occurrences for consilium is: 1780
+number of occurrences for acerbus is: 150
+number of occurrences for nobilitas is: 196
+number of occurrences for templum is: 443
+number of occurrences for ancilla is: 105
+number of occurrences for sapientia is: 324
+number of occurrences for senatus is: 2663
+number of occurrences for hostis is: 3092
+number of occurrences for titulus is: 45
+number of occurrences for sensus is: 635
+number of occurrences for adsumo is: 45
+number of occurrences for oportet is: 1278
+number of occurrences for simplex is: 144
+number of occurrences for regnum is: 765
+number of occurrences for dubius is: 424
+number of occurrences for licet is: 1194
+number of occurrences for voluntas is: 537
+number of occurrences for nepos is: 71
+number of occurrences for necessarius is: 409
+number of occurrences for jus is: 1553
+number of occurrences for salus is: 750
+number of occurrences for sacramentum is: 43
+
+
+
+Latin corpus2:
+
+number of occurrences for imperator is: 10723
+number of occurrences for fidelis is: 3160
+number of occurrences for sanctus is: 10527
+number of occurrences for civitas is: 7083
+number of occurrences for scriptura is: 1553
+number of occurrences for dux is: 5446
+number of occurrences for pontifex is: 1490
+number of occurrences for virtus is: 5472
+number of occurrences for cohors is: 1034
+number of occurrences for itero is: 303
+number of occurrences for consul is: 6759
+number of occurrences for humanitas is: 557
+number of occurrences for potestas is: 4008
+number of occurrences for dolus is: 770
+number of occurrences for beatus is: 2923
+number of occurrences for poena is: 4025
+number of occurrences for credo is: 9081
+number of occurrences for honor is: 7292
+number of occurrences for consilium is: 4969
+number of occurrences for acerbus is: 354
+number of occurrences for nobilitas is: 679
+number of occurrences for templum is: 3283
+number of occurrences for ancilla is: 623
+number of occurrences for sapientia is: 2787
+number of occurrences for senatus is: 2309
+number of occurrences for hostis is: 6049
+number of occurrences for titulus is: 1549
+number of occurrences for sensus is: 4700
+number of occurrences for adsumo is: 338
+number of occurrences for oportet is: 3414
+number of occurrences for simplex is: 2155
+number of occurrences for regnum is: 7379
+number of occurrences for dubius is: 2058
+number of occurrences for licet is: 14522
+number of occurrences for voluntas is: 3217
+number of occurrences for nepos is: 1242
+number of occurrences for necessarius is: 2980
+number of occurrences for jus is: 10814
+number of occurrences for salus is: 3786
+number of occurrences for sacramentum is: 1675
+
+
+
+
+
+
+
+
