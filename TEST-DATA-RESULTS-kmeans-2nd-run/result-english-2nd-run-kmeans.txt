@@ -1,0 +1,10 @@
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.3
+classification_score	{'attack_nn': '0', 'bag_nn': '0', 'ball_nn': '0', 'bit_nn': '0', 'chairman_nn': '0', 'circle_vb': '0', 'contemplation_nn': '0', 'donkey_nn': '0', 'edge_nn': '0', 'face_nn': '0', 'fiction_nn': '0', 'gas_nn': '0', 'graft_nn': '0', 'head_nn': '0', 'land_nn': '0', 'lane_nn': '0', 'lass_nn': '0', 'multitude_nn': '0', 'ounce_nn': '0', 'part_nn': '0', 'pin_vb': '0', 'plane_nn': '0', 'player_nn': '0', 'prop_nn': '0', 'quilt_nn': '0', 'rag_nn': '0', 'record_nn': '0', 'relationship_nn': '0', 'risk_nn': '0', 'savage_nn': '0', 'stab_nn': '0', 'stroke_vb': '0', 'thump_nn': '0', 'tip_vb': '0', 'tree_nn': '0', 'twist_nn': '0', 'word_nn': '0'}
+jsd_score	{'attack_nn': 0.1, 'bag_nn': 0.132, 'ball_nn': 0.012, 'bit_nn': 0.135, 'chairman_nn': 0.067, 'circle_vb': 0.226, 'contemplation_nn': 0.237, 'donkey_nn': 0.0, 'edge_nn': 0.011, 'face_nn': 0.144, 'fiction_nn': 0.058, 'gas_nn': 0.0, 'graft_nn': 0.466, 'head_nn': 0.117, 'land_nn': 0.013, 'lane_nn': 0.125, 'lass_nn': 0.169, 'multitude_nn': 0.314, 'ounce_nn': 0.331, 'part_nn': 0.0, 'pin_vb': 0.025, 'plane_nn': 0.094, 'player_nn': 0.004, 'prop_nn': 0.0, 'quilt_nn': 0.169, 'rag_nn': 0.142, 'record_nn': 0.023, 'relationship_nn': 0.103, 'risk_nn': 0.162, 'savage_nn': 0.044, 'stab_nn': 0.329, 'stroke_vb': 0.034, 'thump_nn': 0.133, 'tip_vb': 0.077, 'tree_nn': 0.08, 'twist_nn': 0.0, 'word_nn': 0.053}

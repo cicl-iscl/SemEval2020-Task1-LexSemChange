@@ -1,0 +1,10 @@
+
+RESULTS
+Language	swedish
+Target file	swedish.txt
+k	2
+n	5.0
+algorithm	KMEANS
+k value for get_k	1.3
+classification_score	{'aktiv': '0', 'annandag': '0', 'antyda': '0', 'bearbeta': '0', 'bedömande': '0', 'beredning': '0', 'blockera': '0', 'bolagsstämma': '0', 'bröllop': '0', 'by': '0', 'central': '1', 'färg': '0', 'förhandling': '0', 'gagn': '0', 'granskare': '0', 'kemisk': '1', 'kokärt': '1', 'konduktör': '0', 'krita': '0', 'ledning': '0', 'medium': '0', 'motiv': '0', 'notis': '0', 'studie': '0', 'undertrycka': '0', 'uppfattning': '1', 'uppfostran': '0', 'uppläggning': '0', 'uträtta': '0', 'vaktmästare': '1', 'vegetation': '0'}
+jsd_score	{'aktiv': 0.078, 'annandag': 0.143, 'antyda': 0.214, 'bearbeta': 0.242, 'bedömande': 0.257, 'beredning': 0.063, 'blockera': 0.173, 'bolagsstämma': 0.341, 'bröllop': 0.157, 'by': 0.104, 'central': 0.473, 'färg': 0.071, 'förhandling': 0.019, 'gagn': 0.282, 'granskare': 0.133, 'kemisk': 0.437, 'kokärt': 0.499, 'konduktör': 0.34, 'krita': 0.268, 'ledning': 0.094, 'medium': 0.119, 'motiv': 0.209, 'notis': 0.005, 'studie': 0.139, 'undertrycka': 0.054, 'uppfattning': 0.294, 'uppfostran': 0.2, 'uppläggning': 0.012, 'uträtta': 0.083, 'vaktmästare': 0.381, 'vegetation': 0.01}

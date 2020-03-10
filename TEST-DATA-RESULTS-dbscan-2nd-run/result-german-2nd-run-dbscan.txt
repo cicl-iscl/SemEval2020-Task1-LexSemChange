@@ -1,0 +1,11 @@
+
+RESULTS
+Language	german
+Target file	german.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	2
+classification_score	{'abbauen': '1', 'abdecken': '0', 'abgebrüht': '0', 'Abgesang': '0', 'Ackergerät': '0', 'Armenhaus': '1', 'artikulieren': '1', 'aufrechterhalten': '1', 'Ausnahmegesetz': '1', 'ausspannen': '1', 'beimischen': '0', 'Dynamik': '0', 'Einreichung': '0', 'Eintagsfliege': '0', 'Engpaß': '0', 'Entscheidung': '0', 'Festspiel': '0', 'Frechheit': '0', 'Fuß': '1', 'Gesichtsausdruck': '0', 'Knotenpunkt': '0', 'Kubikmeter': '0', 'Lyzeum': '0', 'Manschette': '0', 'Mißklang': '0', 'Mulatte': '1', 'Naturschönheit': '0', 'Ohrwurm': '0', 'Pachtzins': '0', 'packen': '0', 'Rezeption': '1', 'Schmiere': '1', 'Seminar': '0', 'Sensation': '1', 'Spielball': '0', 'Tier': '1', 'Titel': '1', 'Tragfähigkeit': '0', 'Truppenteil': '1', 'überspannen': '0', 'Unentschlossenheit': '0', 'verbauen': '0', 'vergönnen': '1', 'voranstellen': '0', 'vorliegen': '0', 'vorweisen': '0', 'weitgreifend': '0', 'zersetzen': '0'}
+jsd_score	{'abbauen': 0.124, 'abdecken': 0.089, 'abgebrüht': 0.335, 'Abgesang': 0.092, 'Ackergerät': 0.288, 'Armenhaus': 0.168, 'artikulieren': 0.347, 'aufrechterhalten': 0.095, 'Ausnahmegesetz': 0.156, 'ausspannen': 0.098, 'beimischen': 0.026, 'Dynamik': 0.085, 'Einreichung': 0.146, 'Eintagsfliege': 0.221, 'Engpaß': 0.216, 'Entscheidung': 0.028, 'Festspiel': 0.123, 'Frechheit': 0.004, 'Fuß': 0.121, 'Gesichtsausdruck': 0.062, 'Knotenpunkt': 0.077, 'Kubikmeter': 0.191, 'Lyzeum': 0.206, 'Manschette': 0.028, 'Mißklang': 0.285, 'Mulatte': 0.301, 'Naturschönheit': 0.215, 'Ohrwurm': 0.401, 'Pachtzins': 0.26, 'packen': 0.042, 'Rezeption': 0.174, 'Schmiere': 0.395, 'Seminar': 0.139, 'Sensation': 0.153, 'Spielball': 0.037, 'Tier': 0.131, 'Titel': 0.184, 'Tragfähigkeit': 0.309, 'Truppenteil': 0.23, 'überspannen': 0.158, 'Unentschlossenheit': 0.101, 'verbauen': 0.286, 'vergönnen': 0.121, 'voranstellen': 0.082, 'vorliegen': 0.023, 'vorweisen': 0.057, 'weitgreifend': 0.235, 'zersetzen': 0.294}

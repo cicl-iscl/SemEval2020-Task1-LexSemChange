@@ -1,0 +1,11 @@
+
+RESULTS
+Language	swedish
+Target file	swedish.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	2
+classification_score	{'aktiv': '1', 'annandag': '0', 'antyda': '1', 'bearbeta': '0', 'bedömande': '0', 'beredning': '0', 'blockera': '0', 'bolagsstämma': '1', 'bröllop': '1', 'by': '1', 'central': '1', 'färg': '1', 'förhandling': '0', 'gagn': '1', 'granskare': '0', 'kemisk': '1', 'kokärt': '0', 'konduktör': '1', 'krita': '0', 'ledning': '0', 'medium': '1', 'motiv': '1', 'notis': '1', 'studie': '0', 'undertrycka': '0', 'uppfattning': '1', 'uppfostran': '0', 'uppläggning': '0', 'uträtta': '0', 'vaktmästare': '0', 'vegetation': '0'}
+jsd_score	{'aktiv': 0.321, 'annandag': 0.006, 'antyda': 0.044, 'bearbeta': 0.024, 'bedömande': 0.037, 'beredning': 0.025, 'blockera': 0.037, 'bolagsstämma': 0.108, 'bröllop': 0.036, 'by': 0.036, 'central': 0.465, 'färg': 0.018, 'förhandling': 0.007, 'gagn': 0.047, 'granskare': 0.069, 'kemisk': 0.299, 'kokärt': 0.128, 'konduktör': 0.049, 'krita': 0.0, 'ledning': 0.04, 'medium': 0.155, 'motiv': 0.038, 'notis': 0.026, 'studie': 0.004, 'undertrycka': 0.044, 'uppfattning': 0.033, 'uppfostran': 0.058, 'uppläggning': 0.143, 'uträtta': 0.033, 'vaktmästare': 0.045, 'vegetation': 0.052}

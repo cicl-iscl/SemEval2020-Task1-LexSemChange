@@ -1,0 +1,11 @@
+
+RESULTS
+Language	english
+Target file	english.txt
+k	2
+n	5.0
+algorithm	DBSCAN
+epsilon	5.0
+Number of samples	2
+classification_score	{'attack_nn': '1', 'bag_nn': '0', 'ball_nn': '1', 'bit_nn': '1', 'chairman_nn': '0', 'circle_vb': '0', 'contemplation_nn': '0', 'donkey_nn': '0', 'edge_nn': '1', 'face_nn': '1', 'fiction_nn': '0', 'gas_nn': '1', 'graft_nn': '0', 'head_nn': '1', 'land_nn': '0', 'lane_nn': '1', 'lass_nn': '0', 'multitude_nn': '0', 'ounce_nn': '1', 'part_nn': '1', 'pin_vb': '0', 'plane_nn': '1', 'player_nn': '0', 'prop_nn': '0', 'quilt_nn': '0', 'rag_nn': '0', 'record_nn': '0', 'relationship_nn': '1', 'risk_nn': '1', 'savage_nn': '0', 'stab_nn': '0', 'stroke_vb': '1', 'thump_nn': '1', 'tip_vb': '1', 'tree_nn': '1', 'twist_nn': '0', 'word_nn': '1'}
+jsd_score	{'attack_nn': 0.19, 'bag_nn': 0.204, 'ball_nn': 0.17, 'bit_nn': 0.128, 'chairman_nn': 0.305, 'circle_vb': 0.139, 'contemplation_nn': 0.188, 'donkey_nn': 0.0, 'edge_nn': 0.226, 'face_nn': 0.18, 'fiction_nn': 0.2, 'gas_nn': 0.23, 'graft_nn': 0.0, 'head_nn': 0.172, 'land_nn': 0.143, 'lane_nn': 0.116, 'lass_nn': 0.136, 'multitude_nn': 0.162, 'ounce_nn': 0.35, 'part_nn': 0.162, 'pin_vb': 0.094, 'plane_nn': 0.297, 'player_nn': 0.155, 'prop_nn': 0.148, 'quilt_nn': 0.361, 'rag_nn': 0.169, 'record_nn': 0.122, 'relationship_nn': 0.165, 'risk_nn': 0.109, 'savage_nn': 0.182, 'stab_nn': 0.167, 'stroke_vb': 0.221, 'thump_nn': 0.299, 'tip_vb': 0.196, 'tree_nn': 0.157, 'twist_nn': 0.224, 'word_nn': 0.181}
