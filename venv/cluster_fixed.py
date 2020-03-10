@@ -3,6 +3,7 @@ import argparse
 import math
 import matplotlib.pyplot as plt
 import numpy as np
+from allennlp.commands.elmo import ElmoEmbedder
 import gzip
 from sklearn.metrics import accuracy_score
 import tensorflow as tf
@@ -45,24 +46,15 @@ def load_corpus(filename):
     tokenized = [line.strip().split() for line in content]
     return tokenized
 
-    """
-def load_model(lang):
-    model_path = '../models/{}-model'.format(lang)
-
-    if lang == "english":
-        model = hub.Module("https://tfhub.dev/google/elmo/3", trainable=True)
-    else:
-        model = Embedder(model_path, batch_size=64)
-
-    return model
-    """
-
-
 def load_model(lang, trained_on_own_corpora=True):
     if trained_on_own_corpora:  # IF THE MODEL SHOULD BE THE ONE WE TRAINED
         options_file = "../final_models_trained/{}_model/options.json".format(lang)
         weight_file = "../final_models_trained/{}_model/weights.hdf5".format(lang)  # sys.argv[1]
-        model = Elmo(options_file, weight_file, 2, dropout=0)
+        '''device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        model = Elmo(options_file, weight_file, 2, dropout=0).to(device)'''
+        model = Elmo(options_file, weight_file, 2, dropout=0)#.cuda() #TODO: added .cuda()
+        #model = ElmoEmbedder(options_file=options_file, weight_file=weight_file)
+
     else:
         model_path = '../models/{}-model'.format(lang)
         if lang == "english":
@@ -353,9 +345,38 @@ def get_sentence_embeddings(occurrences_of_all_words, all_sentences, elmo, word,
     sentences_with_word = [all_sentences[tup[0]] for tup in occurrences_of_all_words[word]]
     print(len(sentences_with_word))
     if trained_on_own_corpora:
-        char_ids = batch_to_ids(sentences_with_word)
-        embeddings = elmo(char_ids)
-        sentence_embeddings = embeddings["elmo_representations"][0]
+        if len(sentences_with_word) <= 1000:
+            char_ids = batch_to_ids(sentences_with_word) # TODO: added .cuda()
+            embeddings = elmo(char_ids)
+            sentence_embeddings = embeddings["elmo_representations"][0]
+        else:
+            start_ind = 0
+            last_ind = 1000
+            print("More than 1000 sentences for elmo to process.")
+            sentence_embeddings = []
+            while start_ind < len(sentences_with_word):
+                char_ids = batch_to_ids(sentences_with_word[start_ind:last_ind])  # TODO: added .cuda()
+                embeddings = elmo(char_ids)
+                print("Type of embeddings['elmo_representations'][0]: ", type(embeddings["elmo_representations"][0]))
+                print("Type of element at 0: ", type(embeddings["elmo_representations"][0][0]))
+                print(embeddings["elmo_representations"][0].shape)
+                sentence_embeddings.append(embeddings["elmo_representations"][0])
+                #sentence_embeddings = sentence_embeddings + embeddings["elmo_representations"][0]
+                print("Start index: ", start_ind)
+                start_ind = last_ind
+                print("New start index: ", start_ind)
+                if last_ind + 1000 > len(sentences_with_word):
+                    print("if +1000, will get out of bounds: ", "last index:", last_ind,
+                          "length of the rest of the list of sentences: ",
+                          len(sentences_with_word[last_ind:]), "new last index: ", last_ind + len(sentences_with_word[last_ind:]) )
+                    last_ind = last_ind + len(sentences_with_word[last_ind:])
+                else:
+                    last_ind += 1000
+                embeddings = None
+            print("Done creating embeddings")
+
+
+        #sentence_embeddings = elmo.batch_to_embeddings(sentences_with_word)
         print("\nOWN MODEL: Sentence_embeddings length of {}: ".format(corpus_id), len(sentence_embeddings))
         print("element 0 shapes: ", sentence_embeddings[0].shape, "\n")
 
@@ -664,8 +685,8 @@ if __name__ == '__main__':
                          'use the -t argument')
         else:
             # target_words = load_targets('targets/{}'.format(target_file)) # targets/file.txt
-            target_words = load_targets('targets/{}'.format(target_file))
-            #target_words = load_targets('../starting_kit_2/test_data_public/{}/{}'.format(lang, target_file))
+            # target_words = load_targets('targets/{}'.format(target_file))
+            target_words = load_targets('../starting_kit_2/test_data_public/{}/{}'.format(lang, target_file))
 
     else:
         if args.word is None:
@@ -690,10 +711,10 @@ if __name__ == '__main__':
 
     # 3. Load the corpora
 
-    #path_to_corpus = '../starting_kit_2/test_data_public/{}/corpus{}/lemma/corpus{}.txt'
+    path_to_corpus = '../starting_kit_2/test_data_public/{}/corpus{}/lemma/corpus{}.txt'
     # these were used for tuning:
     # TODO: uncomment path if you want to use a second file for the same language (also might have to change semcor)
-    path_to_corpus = '../starting_kit_1/trial_data_public/corpora/{}2/corpus{}/semcor{}.txt' # English semcor
+    # path_to_corpus = '../starting_kit_1/trial_data_public/corpora/{}2/corpus{}/semcor{}.txt' # English semcor
     #path_to_corpus = '../starting_kit_1/trial_data_public/corpora/{}/corpus{}/corpus{}.txt' # corpora provided by organizers
 
     corpus_historic = load_corpus(path_to_corpus.format(lang, 1, 1))
@@ -783,7 +804,6 @@ if __name__ == '__main__':
 
         # 12. Based on the clustering results, decide whether a word has changed senses or not
 
-        # TODO: Problem: what if C1: 3 and C2:2 and threshold = 2
        # threshold = 1 # threshold for determining whether a cluster has enough data points
         if changed_sense(combined_clusters.keys(), cor1_clusters, cor2_clusters, k, n):
             results[word] = "1"
@@ -793,7 +813,7 @@ if __name__ == '__main__':
         print(cor2_clusters)
         jsd = calculate_jsd(cor1_clusters, cor2_clusters)
         results_jsd[word] = round(jsd, 3)
-
+    '''
     # 13. Calculate the accuracy score. Need a file with word true_label
     # TODO: name your file with gold labels as show here: e.g. "english_with_change_info.txt"
     true_vals = load_gold_labels("targets/{}_with_change_info_1.txt".format(lang))
@@ -810,7 +830,7 @@ if __name__ == '__main__':
     with open ("out/incorrect_pred_{}.txt".format(lang), 'w') as f:
         for i in incorrectly_predicted:
             f.write(i)
-
+    '''
     print(DIVIDER)
 
 
@@ -821,8 +841,8 @@ if __name__ == '__main__':
     #  python3 cluster_fixed.py LANGUAGE K N classify_words kmeans -kmk VALUE_OF_KMK -t file_with_targets.txt
     #  DBSCAN:
     #  python3 cluster_fixed.py LANGUAGE K N classify_words dbscan -eps VALUE_OF_EPS - nsamp NUM_OF_SAMPLES -t file_with_targets.txt
-    out_file_path = "out/tuning_results_{}_word_embeddings_TRAINED_BY_US.txt".format(target_file[:-4])
-    #out_file_path = '../starting_kit_2/test_data_public/predictions/predictions_{].txt'.format(target_file[:-4])
+    # out_file_path = "out/tuning_results_{}_word_embeddings_TRAINED_BY_US.txt".format(target_file[:-4])
+    out_file_path = '../starting_kit_2/test_data_public/predictions/predictions_{}_OUR_EMBEDDINGS.txt'.format(lang)
     to_file = {}
     to_file['model'] = "trained_by_us"
     to_file["Language"] = lang
@@ -837,7 +857,7 @@ if __name__ == '__main__':
         to_file["algorithm"] = "KMEANS"
         to_file["k value for get_k"] = kmk
 
-    to_file["accuracy"] = accuracy_score(y_true, y_pred)
+    #to_file["accuracy"] = accuracy_score(y_true, y_pred)
     to_file["classification_score"] = results
     to_file["jsd_score"] = results_jsd
 
