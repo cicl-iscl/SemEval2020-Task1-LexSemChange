@@ -1,3 +1,40 @@
+# SemEval2020 - System Description
+
+Google form:
+https://docs.google.com/forms/d/e/1FAIpQLSf87XLY1D7aMhGrSFyZ2FfxjrJmBbKx9byX6HMEPtGNj9MQ_w/viewform
+
+- Short description of your system. *: clustering of contextual word embeddings
+- Semantic Representation of your model (e.g. count vectors): Contextual word embeddings (Elmo)
+- Alignment type (if applicable, e.g. column intersection): none
+- Change measure (e.g., cosine distance): size and amount of clusters
+
+DETAILED DESCRIPTION:
+
+- Contextual embeddings: Elmo, we used pretrained word embeddings, word embeddings (english=official embs, other langs=elmoformanylangs)
+
+- we combined the lemmatized corpora (historic + modern) → this way, no alignment is necessary as they are in the same embedding space
+
+- collect indizes of each word in corpus
+
+- get embeddings for sentences that contain target word 
+
+- cluster these embeddings with dbscan or kmeans
+
+- kmeans: find optimal number of clusters:
+	→ cluster with number of clusters=1-10 
+	→ use elbow method to pick optimal cluster number (+ create artificial value for 0 clusters)
+	→ use this optimal number to do final clustering> 
+
+- dbscan: set epsilon + min_samples
+
+- take cluster labels and determine which labels belong to historic and which one to modern corpus, count amount of data points in each cluster
+
+- detect change using k and n (given by task organizers)
+
+- get Jensen-Shannon-Distance of the probability distributions of the cluster labels in C1 and C2
+
+
+
 # SemEval2020-Task1-LexSemChange
 participation in the shared task of SemEval 2020
 
