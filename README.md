@@ -18,7 +18,7 @@ DETAILED DESCRIPTION:
 
 - get embeddings for sentences that contain target word 
 
-- cluster these embeddings with dbscan or kmeans
+- cluster these embeddings with dbscan (GER & LAT) or kmeans (ENG & SWE)
 
 - kmeans: find optimal number of clusters:
 	→ cluster with number of clusters=1-10 
