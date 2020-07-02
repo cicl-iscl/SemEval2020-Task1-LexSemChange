@@ -1,0 +1,112 @@
+============================================================================ 
+SemEval 2020 Reviews for Submission #118
+============================================================================ 
+
+Title: TUE at SemEval-2020 Task 1: Detecting semantic change by clustering contextual word embeddings
+Authors: Anna Karnysheva and Pia Schwarz
+
+
+============================================================================
+                            REVIEWER #1
+============================================================================
+
+---------------------------------------------------------------------------
+Reviewer's Scores
+---------------------------------------------------------------------------
+                         Appropriateness: Appropriate (most submissions)
+                           Clarity (1-5): 4
+                         Soundness (1-5): 5
+                     Replicability (1-5): 4
+                  Overall recommendation: Accept
+
+Detailed Comments
+---------------------------------------------------------------------------
+The authors describe an approach using clustering of the contextualized embeddings to tackle the task of unsupervised semantic change detection. Overall, the paper is well-written and understandable. The  methods and results are presented well. The paper can be accepted with some minor modifications and clarifications.
+
+**Abstract**
+
+The sentence 'we use ELMO' should be restructured.
+
+**Introduction**
+
+1. The sentence 'range of different languages and different time periods' seems to be confusing.
+2. The sentence 'Diachronic lexical semantic change detection can be helpful ' could be  rewritten.
+
+**Task Description**
+1.	Last sentence, 'degree of lexical change', could be rewritten.
+
+**System overview**
+
+Any specific reasons to select the ELMO embeddings over other embeddings, such as BERT?
+
+**Results**
+1.	Results with using 'only kmeans' and 'only DBSCAN' can be reported  for a comparison and to increase the clarity of results.
+2.	Comments on the  selection of distance metrics can be specified.
+
+
+**Conclusion**
+1.	The sentence, 'Although we show that tackling..' should be rewritten.
+---------------------------------------------------------------------------
+
+
+
+============================================================================
+                            REVIEWER #2
+============================================================================
+
+---------------------------------------------------------------------------
+Reviewer's Scores
+---------------------------------------------------------------------------
+                         Appropriateness: Appropriate (most submissions)
+                           Clarity (1-5): 4
+                         Soundness (1-5): 4
+                     Replicability (1-5): 4
+                  Overall recommendation: Accept
+
+Detailed Comments
+---------------------------------------------------------------------------
+This paper presents a system for detecting semantic change that makes use of clustering methods and contextual word embeddings. The introduction outlines the addressed task and subtasks and gives a brief summary of the proposed approach. The rest of the paper describes further details, the experimental setup as well as the system results. Overall, the structure of the paper is straightforward and the method presented is simple and well explained.
+
+The paper is publishable as it is, but could be further improved with respect to a couple of points.
+
+ * Motivation: the idea of the proposed method is fairly intuitive, but could be described explicitly (e.g. what's the relation between clusters and word senses, cluster size and frequency).
+
+ * Assumptions / hypotheses: the paper unfortunately contains little or no information on the implicit assumptions underlying the proposed approach and on the research hypotheses tested in the experimental set-up. Again, most of this seems intuitively clear, but the authors' intentions could be different from a reader's intuitive interpretation.
+
+ * Analysis / discussion: the presented approach seems to do fairly well on subtask 1 but results are only presented quantitatively. Maybe some of the task description could be shortened to make space for a qualitative discussion of results.
+---------------------------------------------------------------------------
+
+
+
+============================================================================
+                            REVIEWER #3
+============================================================================
+
+---------------------------------------------------------------------------
+Reviewer's Scores
+---------------------------------------------------------------------------
+                         Appropriateness: Appropriate (most submissions)
+                           Clarity (1-5): 4
+                         Soundness (1-5): 5
+                     Replicability (1-5): 4
+                  Overall recommendation: Accept
+
+Detailed Comments
+---------------------------------------------------------------------------
+The authors present a model to detect semantic change based on clustering the representations of contextualized word embedding.
+This is a clearly written paper that presents a nice approach that circumvent the problem of alignment between embedding spaces that were trained separately. 
+However, this approach is not completely novel, and I ask the authors to cite Giulianelli et al. (https://arxiv.org/pdf/2004.14118.pdf) at the minimum (if not add a short related work section), and explain in what way does your model differ from previous work.
+
+If I understood your models correctly, there is no need for alignment when one uses contextualized word emebddings because the embedding space is set by the contextualized word embedding model at training time. As you used pretrained models, you in fact just make "inferences" of the words that appear in C1 and C2, and do not train the model. These representations are guarantied to lie in the same embedding space. In other words, using pretrained contextualized model makes it unnecessary to align the spaces altogether. I would suggest removing any mentioning of combining C1 and C2 to solve the alignment problem (in 3.1 and other sections if they appear as well). 
+
+In addition, if I can point to the fact that in order to find the "elbow" in K-Means, one could also use a much simpler approach of computing the first derivative of the error (blue line in your figure 1). This should converge to the same solution as you show.
+
+Importantly, the authors did not describe how did they decide, in subtask-1, which word is considered to undergone semantic change and which is stable. There must be a threshold of some kind, and I hope I didn't miss it. Please add this invaluable information to the paper.
+
+In Section 4 you write: "Although there was an available English model as well, we decided to use Deep contextualized word representations for English, a model implementation of ELMo trained on a 1 billion word benchmark, primarily due to the substantially greater corpus size of its training data (Peters et al., 2018)." 
+I guess you meant something else than saying "English" in both models?
+
+Also in Section 4 you write: "While the first setting uses the target word embeddings, the second setting uses embeddings of the context around the target word (i.e., the sentence in which the target word appears, with the target word excluded)." Please give a wider context, I believe you mentioned this in the introduction section, but here this is not clear.
+
+Additionally, I could not find the code in the provided URL.
+---------------------------------------------------------------------------
